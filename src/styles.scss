@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; color:  #2d3748 !important;}
+
+.mat-drawer-inner-container{
+    width: 256px !important;
+}
+
+.header-wrap{
+    padding-left:15px;
+    .brand{
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding-top: 1.4rem;
+    }
+  }
