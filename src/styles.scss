@@ -15,3 +15,24 @@ body { margin: 0; color:  #2d3748 !important;}
       padding-top: 1.4rem;
     }
   }
+//columns and grids
+.flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+.container{
+    width: 100%;
+}
+.mt-5{
+    margin-top: 1.25rem;
+}
+.col-3{
+    flex-basis: 33.33%;
+}
