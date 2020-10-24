@@ -12,29 +12,40 @@ export class DashboardComponent implements OnInit {
   features: Menu[] = [
     {
       name: 'Home',
-      icon: 'house'
+      icon: 'house',
+      url: '/'
     },
     {
       name: 'Airtime',
-      icon: 'call'
+      icon: 'call',
+      url: '/airtime'
+    },
+    {
+      name: 'Mobile Data',
+      icon: 'signal_cellular_4_bar',
+      url: '/mobile-data'
     },
     {
       name: 'Mobile Money',
-      icon: 'smartphone'
+      icon: 'smartphone',
+      url: '/mobile-money'
     },
     {
-      name: 'Shop',
-      icon: 'shopping_bag'
+      name: 'Banks',
+      icon: 'credit_card',
+      url: '/banks'
     }
   ];
   others: Menu[] = [
     {
       name: 'History',
-      icon: 'history'
+      icon: 'history',
+      url: '/history'
     },
     {
       name: 'Sign out',
-      icon: 'login'
+      icon: 'login',
+      url: '/auth'
     }
   ];
   constructor() { }

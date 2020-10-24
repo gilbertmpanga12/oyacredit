@@ -3,19 +3,20 @@
     <div class="header-wrap">
       <h1 class="brand">Oya MiroCredit</h1>
     </div>
-    <mat-list>
+    <mat-nav-list>
       <div mat-subheader>Dashboard</div>
-      <mat-list-item *ngFor="let feature of features">
+      <mat-list-item *ngFor="let feature of features" 
+      [routerLink]="feature.url">
         <mat-icon mat-list-icon>{{feature.icon}}</mat-icon>
         <div mat-line>{{feature.name}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <div mat-subheader>Others</div>
-      <mat-list-item *ngFor="let feature of others">
+      <mat-list-item *ngFor="let feature of others" [routerLink]="feature.url">
         <mat-icon mat-list-icon>{{feature.icon}}</mat-icon>
         <div mat-line>{{feature.name}}</div>
       </mat-list-item>
-    </mat-list>
+    </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar>
