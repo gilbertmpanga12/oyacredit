@@ -1,51 +1,30 @@
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-      <div class="header-wrap">
-        <h2 class="brand">Oya MiroCredit</h2>
-      </div>
-      <mat-list>
-        <div mat-subheader>Dashboard</div>
-        <mat-list-item *ngFor="let folder of folders">
-          <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
-          <div mat-line>{{folder.name}}</div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <div mat-subheader>Others</div>
-        <mat-list-item *ngFor="let note of notes">
-          <mat-icon mat-list-icon>{{note.icon}}</mat-icon>
-          <div mat-line>{{note.name}}</div>
-        </mat-list-item>
-      </mat-list>
-    </mat-drawer>
-    <mat-drawer-content>
-      <mat-toolbar>
-       <span>My App</span>
-       <span class="example-spacer"></span>
-     </mat-toolbar>
-     <div class="flex mt-5 wrap">
-      <div class="col-4">
-        <mat-card class="container">
-          <h1>Customers</h1>
-        </mat-card>
-      </div>
-      <div class="col-4">
-       <mat-card class="container">
-         <h1>Transactions</h1>
-       </mat-card>
-      </div>
-      <div class="col-4">
-       <mat-card class="container">
-         <h1>Conversations</h1>
-       </mat-card>
-      </div>
-      <div class="col-4">
-       <mat-card class="container">
-         <h1>Credit</h1>
-       </mat-card>
-      </div>
-    </div>
-    </mat-drawer-content>
+<div class="flex mt-5 wrap flex-row">
 
-   
+  <div class="col-3 mr-5">
+    <mat-card class="container">
+      <h1  class="header-card">Customers</h1>
+     <h1>0</h1>
+    </mat-card>
+  </div>
 
-  </mat-drawer-container>
+  <div class="col-3 mr-5">
+   <mat-card class="container">
+    <h1  class="header-card">Transactions</h1>
+    <h1>0</h1>
+   </mat-card>
+  </div>
+
+  <div class="col-3 mr-5">
+   <mat-card class="container">
+    <h1  class="header-card">Conversions</h1>
+    <h1>0</h1>
+   </mat-card>
+  </div>
+
+  <div class="col-3 mr-5">
+   <mat-card class="container ">
+     <h1  class="header-card">Credit</h1>
+     <h1>0</h1>
+   </mat-card>
+  </div>
+</div>

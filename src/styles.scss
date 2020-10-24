@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; color:  #2d3748 !important;}
 
+main{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+// typo
+h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
+  color: #2d3748 !important;
+}
+
 .mat-drawer-inner-container{
     width: 256px !important;
 }
@@ -15,24 +25,28 @@ body { margin: 0; color:  #2d3748 !important;}
       padding-top: 1.4rem;
     }
   }
+
 //columns and grids
 .flex{
-    display: flex;
+  display: flex;
 }
 
 .flex-row{
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .wrap{
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .container{
-    width: 100%;
+  width: 90%;
 }
 .mt-5{
-    margin-top: 1.25rem;
+  margin-top: 1.25rem;
+}
+.mr-5{
+  margin: 10px 5px;
 }
 .col-3{
-    flex-basis: 33.33%;
+  flex-basis: 30%;
 }
