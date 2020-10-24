@@ -12,9 +12,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { HistoryComponent } from './history/history.component';
+import { AirtimeComponent } from './airtime/airtime.component';
+import { MobiledataComponent } from './mobiledata/mobiledata.component';
+import { MobilemoneyComponent } from './mobilemoney/mobilemoney.component';
+import { BanksComponent } from './banks/banks.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, HistoryComponent],
+  declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
