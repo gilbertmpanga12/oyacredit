@@ -10,12 +10,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AppshellComponent } from './appshell/appshell.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AppshellComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
