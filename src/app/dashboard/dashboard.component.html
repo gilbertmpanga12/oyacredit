@@ -1,16 +1,16 @@
 
 
-
+  <mat-toolbar color="primary" class="mat-elevation-z3">
+    <span class="brand">Oya MicroCredit</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+     <mat-icon>notifications_none</mat-icon>
+   </button>
+  </mat-toolbar>
+ 
 <mat-drawer-container class="example-container">
   <mat-drawer-content>
-    <mat-toolbar style="background-color: #ffee58;" class="mat-elevation-z3">
-      <span>Oya MicroCredit</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-       <mat-icon>notifications_none</mat-icon>
-     </button>
-    </mat-toolbar>
-   
+  
 
 <main>
 <router-outlet></router-outlet>
@@ -19,10 +19,6 @@
 
   </mat-drawer-content>
   <mat-drawer mode="side" opened>
-    
-    <div class="header-wrap">
-      <h1 class="brand">Oya MiroCredit</h1>
-    </div>
     <mat-nav-list>
       <!-- <div mat-subheader>Dashboard</div> -->
       <mat-list-item *ngFor="let feature of features" 

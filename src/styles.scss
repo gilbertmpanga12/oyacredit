@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+// base colors
+$primary-color:  #ffee58;
+
 
 html, body { height: 100%; }
 body { margin: 0; color:  #2d3748 !important;}
@@ -6,6 +9,15 @@ body { margin: 0; color:  #2d3748 !important;}
 main{
     padding-right: 10px;
     padding-left: 10px;
+    padding-top: 5.3rem;
+}
+
+.mat-toolbar{
+ position: fixed;z-index: 2;
+}
+
+.mat-list-base{
+  padding-top: 5.3rem !important;
 }
 
 // typo
@@ -29,11 +41,12 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 
 .header-wrap{
     padding-left:15px;
-    .brand{
-      font-size: 1.25rem;
-      font-weight: 700;
-      padding-top: .70rem;
-    }
+    
+  }
+  .brand{
+    // font-size: 1.25rem;
+    font-weight: 600 !important;
+   
   }
 
 //columns and grids
