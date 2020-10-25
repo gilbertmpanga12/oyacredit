@@ -8,10 +8,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
-  declarations: [AuthComponent],
+  declarations: [AuthComponent, SigninComponent, RegisterComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
