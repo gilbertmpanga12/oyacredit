@@ -18,7 +18,10 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 .text-white{
   color: #fff !important;
 }
-
+.card-header{
+  font-size: 1.5rem;
+  font-weight: 600 !important;
+}
 .mat-drawer-inner-container{
     width: 256px !important;
 }
@@ -55,6 +58,9 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 }
 .col-3{
   flex-basis: 30%;
+}
+.col-10{
+  flex-basis: 100%;
 }
 
 // button spinners
