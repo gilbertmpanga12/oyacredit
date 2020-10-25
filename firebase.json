@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "oyacredit",
+      "public": "dist/oyacredit",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

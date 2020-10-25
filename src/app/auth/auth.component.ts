@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
+  hide = true;
+  title = 'hello-world';
+  loading = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  save(): void {
+    this.loading = true;
   }
 
 }
