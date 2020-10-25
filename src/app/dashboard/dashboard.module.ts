@@ -16,9 +16,10 @@ import { AirtimeComponent } from './airtime/airtime.component';
 import { MobiledataComponent } from './mobiledata/mobiledata.component';
 import { MobilemoneyComponent } from './mobilemoney/mobilemoney.component';
 import { BanksComponent } from './banks/banks.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent],
+  declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent, NotificationsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

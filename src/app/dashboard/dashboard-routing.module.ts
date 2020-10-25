@@ -8,6 +8,7 @@ import {BanksComponent} from './banks/banks.component';
 import {AirtimeComponent} from './airtime/airtime.component';
 import {MobilemoneyComponent} from './mobilemoney/mobilemoney.component';
 import {MobiledataComponent} from './mobiledata/mobiledata.component'
+import { NotificationsComponent } from './notifications/notifications.component';
 const routes: Routes = [{ path: '', component: DashboardComponent,
 children:[
 {
@@ -33,6 +34,10 @@ children:[
 {
   path: 'mobile-data',
   component: MobiledataComponent
+},
+{
+  path: 'notifications',
+  component: NotificationsComponent
 }
 ] }];
 
