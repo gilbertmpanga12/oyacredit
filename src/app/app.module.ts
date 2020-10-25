@@ -12,7 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AppshellComponent } from './appshell/appshell.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FusionChartsModule } from "angular-fusioncharts";
 
+// Import FusionCharts library and chart modules
+import * as FusionCharts from "fusioncharts";
+import * as charts from "fusioncharts/fusioncharts.charts";
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
+FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 
 @NgModule({
   declarations: [
@@ -29,7 +36,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    FusionChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

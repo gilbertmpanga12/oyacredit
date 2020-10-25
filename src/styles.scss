@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 // base colors
-$primary-color:  #ffee58;
 
 
 html, body { height: 100%; }
@@ -10,6 +9,7 @@ main{
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 5.3rem;
+
 }
 
 .mat-toolbar{
@@ -24,6 +24,9 @@ main{
 h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   color: #2d3748 !important;
 }
+// .headings{
+
+// }
 .text-center{
   text-align: center;
 }
@@ -96,4 +99,12 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   border: 2px solid #ffffff;
   border-top-color: #000000;
   animation: spinner .8s linear infinite;
+}
+
+//positions
+.absolute{
+  position: absolute;
+}
+.relative{
+  position: relative;
 }

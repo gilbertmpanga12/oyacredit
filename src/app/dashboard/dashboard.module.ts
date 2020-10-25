@@ -17,6 +17,8 @@ import { MobiledataComponent } from './mobiledata/mobiledata.component';
 import { MobilemoneyComponent } from './mobilemoney/mobilemoney.component';
 import { BanksComponent } from './banks/banks.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { FusionChartsModule } from 'angular-fusioncharts';
+
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent, NotificationsComponent],
@@ -28,7 +30,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    FusionChartsModule
   ]
 })
 export class DashboardModule { }

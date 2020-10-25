@@ -1,6 +1,17 @@
  
 .header-card{
-    font-size: 1.25rem;
-    text-transform: uppercase;
+    font-size: 1.2rem;
+    text-transform: capitalize;
     margin-bottom: 8px;
+    // font-weight: 600 !important;
+    text-align: right;
   }
+.icon-size-dashboard{
+  font-size: 4.5rem;
+  // color:  #ffee58 !important;
+
+}
+.icon-position-dashboard{
+  top: 22%;
+  left: 8%
+}
