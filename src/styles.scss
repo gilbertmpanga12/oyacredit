@@ -12,6 +12,12 @@ main{
 h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   color: #2d3748 !important;
 }
+.text-center{
+  text-align: center;
+}
+.text-white{
+  color: #fff !important;
+}
 
 .mat-drawer-inner-container{
     width: 256px !important;
