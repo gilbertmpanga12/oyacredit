@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthComponent } from './auth.component';
 
-const routes: Routes = [{ path: '', component: AuthComponent }];
+const routes: Routes = [{ path: '', component: AuthComponent, data: {animation: "SignInPage"}  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

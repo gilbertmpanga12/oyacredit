@@ -13,31 +13,38 @@ const routes: Routes = [{ path: '', component: DashboardComponent,
 children:[
 {
   path: '',
-  component: HomeComponent
+  component: HomeComponent,
+  data: {animation: "HomePage"}
 },
 {
   path: 'history',
-  component: HistoryComponent
+  component: HistoryComponent,
+  data: {animation: "HistoryPage"}
 },
 {
   path: 'banks',
-  component: BanksComponent
+  component: BanksComponent,
+  data: {animation: "BanksPage"}
 },
 {
   path: 'airtime',
-  component: AirtimeComponent
+  component: AirtimeComponent,
+  data: {animation: "AirtimePage"}
 },
 {
   path: 'mobile-money',
-  component: MobilemoneyComponent
+  component: MobilemoneyComponent,
+  data: {animation: "MobileMoneyPage"}
 },
 {
   path: 'mobile-data',
-  component: MobiledataComponent
+  component: MobiledataComponent,
+  data: {animation: "MobileDataPage"}
 },
 {
   path: 'notifications',
-  component: NotificationsComponent
+  component: NotificationsComponent,
+  data: {animation: "NotificationsPage"}
 }
 ] }];
 

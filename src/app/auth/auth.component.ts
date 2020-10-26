@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { Login } from '../models/models';
 import {MainService} from '../services/main.service';
 
@@ -62,5 +62,6 @@ export class AuthComponent implements OnInit {
       panelClass: ["success", "error"]
     });
   }
+
 
 }
