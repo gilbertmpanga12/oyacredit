@@ -13,13 +13,13 @@ import { AppshellComponent } from './appshell/appshell.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-// import { FusionChartsModule } from "angular-fusioncharts";
+import { FusionChartsModule } from "angular-fusioncharts";
 
-// // Import FusionCharts library and chart modules
-// import * as FusionCharts from "fusioncharts";
-// import * as charts from "fusioncharts/fusioncharts.charts";
-// import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-// FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
+// Import FusionCharts library and chart modules
+import * as FusionCharts from "fusioncharts";
+import * as charts from "fusioncharts/fusioncharts.charts";
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
 
 
 @NgModule({
@@ -38,6 +38,7 @@ import { environment } from 'src/environments/environment';
     MatToolbarModule,
     MatButtonModule,
     LayoutModule,
+    FusionChartsModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],

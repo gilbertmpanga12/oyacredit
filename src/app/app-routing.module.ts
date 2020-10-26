@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-// import {MainGuard} from './services/main.guard';
+import {MainGuard} from './services/main.guard';
 
 const routes: Routes = [{ path: '', 
 component: AppComponent,
-// canActivateChild: [MainGuard],
+canActivateChild: [MainGuard],
 children: [
   { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), }
 ] }, 
