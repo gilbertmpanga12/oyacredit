@@ -4,27 +4,34 @@
   <h1 class="text-center auth-brand">Oya MiroCredit</h1>
       <p class="text-center">Log in your account</p>
     <br/>
-      <form class="example-form" [formGroup]="loginGroup" (ngSubmit)="login()">
+      <form class="example-form" [formGroup]="loginGroup">
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Ex. johndoe@example.com" 
             value="Enter email" type="email" formControlName="email">
+            <mat-error *ngIf="control('email')">{{getErrorMessage('email')}}</mat-error>
           </mat-form-field>
         
         <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
             <input matInput placeholder="" value="Password" 
-            type="password" formControlName="password">
+             formControlName="password" [type]="hide ? 'password' : 'text'" minlength="6">
+             <button mat-icon-button matSuffix 
+             (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="control('password')">{{getErrorMessage('password')}}</mat-error>
           </mat-form-field>
         </form>
 <br/>
-    <mat-card-actions>
-        <button  color="primary"
-        class="mat-elevation-z4 
-        example-full-width text-white" 
-       
-         mat-raised-button>Log in</button>
-    </mat-card-actions>
+    <div class="mat-card-actions">
+      <button  color="primary" (click)="login()"
+      [class.spinner]="service.isLoading" [disabled]="service.isLoading"
+      class="mat-elevation-z4 
+      example-full-width text-white" 
+     
+       mat-raised-button>Log in</button>
+    </div>
  
   </mat-card>
 

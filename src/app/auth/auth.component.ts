@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Login } from '../models/models';
 import {MainService} from '../services/main.service';
 
 @Component({
@@ -9,9 +12,11 @@ import {MainService} from '../services/main.service';
 })
 export class AuthComponent implements OnInit {
   hide = true;
-  loading = false;
   loginGroup: FormGroup;
-  constructor(private _fb: FormBuilder, private service: MainService) { }
+  
+  constructor(private _fb: FormBuilder, 
+    public service: MainService, 
+    private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginGroup = this._fb.group({
@@ -20,10 +25,42 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  control(controlName:string): boolean{
+    return this.loginGroup.get(controlName).invalid;
+  }
+
+  getErrorMessage(controlName: string): string{
+    if(controlName == 'email'){
+      if(this.loginGroup.get('email').hasError('required')){
+        return Login.EmailRequired;
+      }
+      return Login.EmailInvalid;
+    }
+
+    if(this.loginGroup.get('password').hasError('required')){
+      return Login.PasswordRequired;
+    }
+    return Login.PasswordInvalid;
+  }
+
   login(): void {
-    this.loading = true;
     const payload: {email:string,password:string} = <{email:string,password:string}>this.loginGroup.getRawValue();
-    this.service.login(payload.email,payload.password);
+    this.service.login(payload.email,payload.password).then(() => {
+      this.service.isLoading = false;
+      this.router.navigate(['/']);
+    }).catch((e) => {
+      this.service.isLoading = false;
+      this.openSnackBar(e,'Ok');
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: ["success", "error"]
+    });
   }
 
 }

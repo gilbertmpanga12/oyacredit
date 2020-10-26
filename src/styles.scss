@@ -117,3 +117,18 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 .relative{
   position: relative;
 }
+
+.snackbar{
+  color: #fff !important;
+}
+
+
+.success{
+  background-color: #ffeb3b !important;
+}
+.error{
+  background-color: #f44336 !important;
+  span{
+    color: #fff !important;
+  }
+}

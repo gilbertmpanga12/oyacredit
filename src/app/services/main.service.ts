@@ -24,9 +24,7 @@ export class MainService {
 
    async login(email: string, password: string) {
     this.isLoading = true;
-    let result = await this.auth.signInWithEmailAndPassword(email,password);
-    this.router.navigate(['/']);
-    this.isLoading = false;
+    await this.auth.signInWithEmailAndPassword(email,password);
   }
 
 }
