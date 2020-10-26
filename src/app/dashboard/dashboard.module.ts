@@ -17,7 +17,7 @@ import { MobiledataComponent } from './mobiledata/mobiledata.component';
 import { MobilemoneyComponent } from './mobilemoney/mobilemoney.component';
 import { BanksComponent } from './banks/banks.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { FusionChartsModule } from 'angular-fusioncharts';
+// import { FusionChartsModule } from 'angular-fusioncharts';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    FusionChartsModule
+    // FusionChartsModule
   ]
 })
 export class DashboardModule { }

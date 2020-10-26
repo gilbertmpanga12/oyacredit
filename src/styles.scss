@@ -7,7 +7,7 @@ body { margin: 0; color:  #2d3748 !important;}
 
 main{
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-top: 5.3rem;
 
 }
@@ -30,9 +30,18 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 .text-center{
   text-align: center;
 }
+
 .text-white{
   color: #fff !important;
 }
+
+.dashboard-title{
+  margin-bottom: 2px !important;font-size: 1.4rem !important;
+}
+.mat-title{
+  font-size: 2.25rem !important;
+}
+
 .card-header{
   font-size: 1.5rem;
   font-weight: 600 !important;
@@ -48,7 +57,7 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   }
   .brand{
     // font-size: 1.25rem;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
    
   }
 
