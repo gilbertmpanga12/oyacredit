@@ -20,6 +20,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { FusionChartsModule } from 'angular-fusioncharts';
 
 
+
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent, NotificationsComponent],
   imports: [

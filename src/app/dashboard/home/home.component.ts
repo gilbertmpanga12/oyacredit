@@ -16,7 +16,7 @@ dataSource = {
     numberSuffix: "K",
     theme: "fusion", //Set the theme for your chart,
     baseFont: "Poppins, sans-serif",
-    paletteColors: "#ffff8b"
+    paletteColors: "#ffeb3b"
   },
   // Chart Data - from step 2
   data: chartData

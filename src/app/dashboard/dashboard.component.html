@@ -25,15 +25,23 @@
   <mat-drawer mode="side" opened>
     <mat-nav-list>
       <!-- <div mat-subheader>Dashboard</div> -->
+   
+      <mat-list-item style="margin-bottom: 13px !important;">
+        <img matListAvatar src="assets/icon.png">
+        <div mat-line style="font-weight: 700 !important;">HR Manager</div>
+        <mat-icon style="color: #4a5568 !important;">widgets</mat-icon>
+      </mat-list-item>
+ 
+
       <mat-list-item *ngFor="let feature of features" 
-      [routerLink]="feature.url">
+      [routerLink]="feature.url" [ngClass]="router.url == feature.url ? 'active' : 'not-active'">
         <mat-icon mat-list-icon>{{feature.icon}}</mat-icon>
         <div mat-line>{{feature.name}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <div mat-subheader>Others</div>
 
-      <mat-list-item routerLink="/history">
+      <mat-list-item routerLink="/history" [ngClass]="router.url == '/history' ? 'active' : 'not-active'">
         <mat-icon mat-list-icon>history</mat-icon>
         <div mat-line>History</div>
       </mat-list-item>
