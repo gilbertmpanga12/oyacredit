@@ -4,16 +4,17 @@
   <h1 class="text-center auth-brand">Oya MiroCredit</h1>
       <p class="text-center">Log in your account</p>
     <br/>
-      <form class="example-form">
+      <form class="example-form" [formGroup]="loginGroup" (ngSubmit)="login()">
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Ex. johndoe@example.com" 
-            value="Enter email" type="email">
+            value="Enter email" type="email" formControlName="email">
           </mat-form-field>
         
         <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="" value="Password" type="password">
+            <input matInput placeholder="" value="Password" 
+            type="password" formControlName="password">
           </mat-form-field>
         </form>
 <br/>

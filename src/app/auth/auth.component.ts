@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MainService} from '../services/main.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,15 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   hide = true;
-  title = 'hello-world';
   loading = false;
-  constructor() { }
+  loginGroup: FormGroup;
+  constructor(private _fb: FormBuilder, private service: MainService) { }
 
   ngOnInit(): void {
+    this.loginGroup = this._fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 
-  save(): void {
+  login(): void {
     this.loading = true;
+    const payload: {email:string,password:string} = <{email:string,password:string}>this.loginGroup.getRawValue();
+    this.service.login(payload.email,payload.password);
   }
 
 }
