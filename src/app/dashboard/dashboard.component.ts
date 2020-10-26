@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Menu } from '../models/models';
+import { MainService } from '../services/main.service';
 
 @Component({
   selector: 'app-home',
@@ -36,21 +38,13 @@ export class DashboardComponent implements OnInit {
       url: '/banks'
     }
   ];
-  others: Menu[] = [
-    {
-      name: 'History',
-      icon: 'history',
-      url: '/history'
-    },
-    {
-      name: 'Sign out',
-      icon: 'login',
-      url: '/auth'
-    }
-  ];
-  constructor() { }
+
+  constructor(private router: Router, public service: MainService) { }
 
   ngOnInit(): void {
   }
 
+  navigate(url: string): void{
+    this.router.navigate(['/' + url]);
+  }
 }

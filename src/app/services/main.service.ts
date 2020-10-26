@@ -26,5 +26,9 @@ export class MainService {
     this.isLoading = true;
     await this.auth.signInWithEmailAndPassword(email,password);
   }
+  async signOut(){
+    await this.auth.signOut();
+    this.router.navigate(['/auth']);
+  }
 
 }
