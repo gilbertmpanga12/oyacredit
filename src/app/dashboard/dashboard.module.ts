@@ -18,6 +18,7 @@ import { MobilemoneyComponent } from './mobilemoney/mobilemoney.component';
 import { BanksComponent } from './banks/banks.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FusionChartsModule } from 'angular-fusioncharts';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -32,7 +33,8 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    FusionChartsModule
+    FusionChartsModule,
+    MatBadgeModule
   ]
 })
 export class DashboardModule { }

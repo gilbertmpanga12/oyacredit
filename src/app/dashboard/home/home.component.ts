@@ -9,10 +9,10 @@ export class HomeComponent implements OnInit {
 // Chart Configuration
 dataSource = {
   chart: {
-    caption: "Last month\'s revenue", //Set the chart caption
+    caption: "Bulk Payments", //Set the chart caption
     subCaption: "Monthly Recurring Revenue (MRR)", //Set the chart subcaption
-    xAxisName: "Country", //Set the x-axis name
-    yAxisName: "Reserves (MMbbl)", //Set the y-axis name
+    xAxisName: "Payments", //Set the x-axis name
+    yAxisName: "Funds (UGX)", //Set the y-axis name
     numberSuffix: "K",
     theme: "fusion", //Set the theme for your chart,
     baseFont: "Poppins, sans-serif",
@@ -33,35 +33,47 @@ dataSource = {
 // Preparing the chart data
 const chartData = [
   {
-    label: "Uganda",
+    label: "Jan",
     value: "290"
   },
   {
-    label: "Saudi",
+    label: "Feb",
     value: "260"
   },
   {
-    label: "Canada",
+    label: "Mar",
     value: "180"
   },
   {
-    label: "Iran",
+    label: "Apr",
     value: "140"
   },
   {
-    label: "Russia",
+    label: "May",
     value: "115"
   },
   {
-    label: "UAE",
+    label: "Jun",
     value: "100"
   },
   {
-    label: "US",
+    label: "Jul",
     value: "30"
   },
   {
-    label: "China",
-    value: "30"
+    label: "Aug",
+    value: "23"
+  },
+  {
+    label: "Oct",
+    value: "63"
+  },
+  {
+    label: "Nov",
+    value: "43"
+  },
+  {
+    label: "Dec",
+    value: "13"
   }
 ];

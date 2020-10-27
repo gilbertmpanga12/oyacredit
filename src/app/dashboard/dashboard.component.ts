@@ -52,16 +52,16 @@ export class DashboardComponent implements OnInit {
       icon: 'house',
       url: '/'
     },
-    {
-      name: 'Airtime',
-      icon: 'call',
-      url: '/airtime'
-    },
-    {
-      name: 'Mobile Data',
-      icon: 'signal_cellular_4_bar',
-      url: '/mobile-data'
-    },
+    // {
+    //   name: 'Airtime',
+    //   icon: 'call',
+    //   url: '/airtime'
+    // },
+    // {
+    //   name: 'Mobile Data',
+    //   icon: 'signal_cellular_4_bar',
+    //   url: '/mobile-data'
+    // },
     {
       name: 'Mobile Money',
       icon: 'smartphone',
