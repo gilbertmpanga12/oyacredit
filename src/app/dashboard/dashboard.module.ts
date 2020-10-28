@@ -21,11 +21,13 @@ import { FusionChartsModule } from 'angular-fusioncharts';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ApprovalsComponent } from './approvals/approvals.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MobilemoneydialogComponent } from './mobilemoneydialog/mobilemoneydialog.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent, MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent],
+  declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
+     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -38,6 +40,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     FusionChartsModule,
     MatBadgeModule,
     MatDialogModule
+  ],
+  entryComponents: [
+    MobilemoneydialogComponent
   ]
 })
 export class DashboardModule { }

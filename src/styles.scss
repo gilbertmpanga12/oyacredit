@@ -30,6 +30,9 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 .text-center{
   text-align: center;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 
 .text-white{
   color: #fff !important;
@@ -78,6 +81,9 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 }
 .mt-5{
   margin-top: 1.25rem;
+}
+.mt-6{
+  margin: 1.5rem;
 }
 .mr-5{
   margin: 10px 5px;
