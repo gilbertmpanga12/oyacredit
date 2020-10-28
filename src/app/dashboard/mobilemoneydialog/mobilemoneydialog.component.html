@@ -2,7 +2,7 @@
     <h2 mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Your approvals</h2>
     <mat-divider></mat-divider>
     <mat-dialog-content>
-        <h1 class="text-center pt">No approvals found</h1>
+        <h1 class="text-center pt-6-dialog">No approvals found</h1>
 
     </mat-dialog-content>
     <br/><br/><br/><br/>
@@ -17,14 +17,28 @@
     <h2 mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Send mobile money to a many users</h2>
     <mat-divider></mat-divider>
 
-    <mat-dialog-content>
+    <mat-dialog-content >
+    
+
        <p class="text-center pt">
         <button mat-raised-button color="primary" 
-        class="upload-csv-btn">Upload file</button>
+        class="upload-csv-btn text-center"><strong>&nbsp;&nbsp;&nbsp;Upload file with contacts now&nbsp;&nbsp;&nbsp;&nbsp;</strong></button>
        </p>
-       <h3 class="text-center px-5">Upload file with contacts to money to.</h3>
+
+       
+
+       <div class="split-layout__label text-center p-3"><strong>Or</strong></div>
+
+      <p class="text-center">
+        <button mat-raised-button color="accent" 
+        class="upload-csv-btn text-center"><strong class="text-white">Download template for guidance</strong></button>
+
+      </p>
+
+        
+
     </mat-dialog-content>
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
         <button mat-flat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Send</button>
@@ -56,8 +70,8 @@
             
             <p>
                 <mat-form-field class="example-full-width">
-                    <mat-label>Address</mat-label>
-                    <textarea matInput placeholder="Ex. 100 Main St" formControlName="reason">1600 Amphitheatre Pkwy</textarea>
+                    <mat-label>Reason</mat-label>
+                    <textarea matInput placeholder="Ex. 100 Main St" formControlName="reason">Reason for sending</textarea>
                   </mat-form-field>
             </p>
                     </form>

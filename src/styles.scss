@@ -24,9 +24,7 @@ main{
 h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   color: #2d3748 !important;
 }
-// .headings{
 
-// }
 .text-center{
   text-align: center;
 }
@@ -183,6 +181,10 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 }
 .px-5{
   padding-left: 5px;padding-right: 5px;
+}
+.py-10{
+padding-top: 4rem;
+padding-bottom: 4rem;
 }
 
 // borders

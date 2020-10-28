@@ -2,7 +2,11 @@
     width: 100%;
 }
 .pt{
-    padding-top: 8rem;
+    padding-top: 3rem;
+}
+.pt-6-dialog{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 .upload-csv-btn{
     // width: 200px !important;
@@ -14,3 +18,12 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
 }
+.position-divider{
+    top: 41%;
+    left: 48%;
+}
+.p-3{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+ 
