@@ -28,4 +28,8 @@ export class MobilemoneydialogComponent implements OnInit {
     });
   }
 
+  uploadBulkPayments(): void{
+    console.log('logged');
+  }
+
 }

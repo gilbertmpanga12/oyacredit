@@ -19,9 +19,12 @@
 
     <mat-dialog-content >
     
+      <input type="file" class="display-none"  #ref
+      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, 
+      application/vnd.ms-excel" (change)="uploadBulkPayments()"/>
 
        <p class="text-center pt">
-        <button mat-raised-button color="primary" 
+        <button mat-raised-button color="primary" (click)="ref.click()" 
         class="upload-csv-btn text-center"><strong>&nbsp;&nbsp;&nbsp;Upload file with contacts now&nbsp;&nbsp;&nbsp;&nbsp;</strong></button>
        </p>
 
@@ -30,9 +33,11 @@
        <div class="split-layout__label text-center p-3"><strong>Or</strong></div>
 
       <p class="text-center">
-        <button mat-raised-button color="accent" 
-        class="upload-csv-btn text-center"><strong class="text-white">Download template for guidance</strong></button>
-
+        <a href="assets/BulkPaymentTemplate.csv" download>
+          <button mat-raised-button color="accent" 
+          class="upload-csv-btn text-center"><strong class="text-white">Download template for guidance</strong></button>
+  </a>
+        
       </p>
 
         
