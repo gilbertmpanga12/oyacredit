@@ -22,6 +22,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { ApprovalsComponent } from './approvals/approvals.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MobilemoneydialogComponent } from './mobilemoneydialog/mobilemoneydialog.component';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -39,7 +43,11 @@ import { MobilemoneydialogComponent } from './mobilemoneydialog/mobilemoneydialo
     MatButtonModule,
     FusionChartsModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     MobilemoneydialogComponent
