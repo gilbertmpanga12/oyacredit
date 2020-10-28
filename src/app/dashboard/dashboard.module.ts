@@ -20,6 +20,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { FusionChartsModule } from 'angular-fusioncharts';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ApprovalsComponent } from './approvals/approvals.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -35,7 +36,8 @@ import { ApprovalsComponent } from './approvals/approvals.component';
     MatToolbarModule,
     MatButtonModule,
     FusionChartsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ]
 })
 export class DashboardModule { }

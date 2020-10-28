@@ -117,6 +117,9 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
 .relative{
   position: relative;
 }
+.mx-auto{
+  margin-top: 3rem auto;
+}
 
 .snackbar{
   color: #fff !important;
@@ -142,8 +145,34 @@ h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
   
 }
 
-// remove ad-banner
-// #container-1{
-//   display: none !important;
-// }
+// cards and actions 
+.card-action-wrap{
+  padding: 5px;
+  // border: 1px solid red;
+  width: 290px;
+  height: 290px;
+}
+.card-action-header{
+  font-size: 1.5rem !important;
+  margin-top: -3px !important;
+}
+.svg-card-illustration{
+  left: 40%;
+}
+.w-icon-100{
+  font-size: 100px !important;
+  margin-left: -82px;
+  color: #c8b900 !important;
+}
+.send-cta-btn{
+  font-weight: 600 !important;
+  margin-top: 15px !important;
+}
+.px-5{
+  padding-left: 5px;padding-right: 5px;
+}
 
+// borders
+.border-1{
+  border-right: 1px solid #eee;
+}
