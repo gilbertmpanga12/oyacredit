@@ -10,3 +10,9 @@ export enum Login {
   PasswordRequired = "Please fill in password",
   PasswordInvalid = "Password should be at least 6 characters"
 }
+
+export enum MobileMoney{
+  SinglePayments = "Single Payments",
+  BulkPayments = "Bulk Payments",
+  Approvals = "Approvals"
+}

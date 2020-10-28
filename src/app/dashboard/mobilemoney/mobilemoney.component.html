@@ -19,7 +19,9 @@
                             <p class="text-center px-5"
                              >Single purchase allows you to send to one user</p>
                            <p class="text-center">
-                            <button mat-raised-button color="primary" class="send-cta-btn">Send to single person</button>
+                            <button mat-raised-button color="primary" 
+                            (click)="openDialog(operations.SinglePayments)"
+                            class="send-cta-btn">Send to single person</button>
                            </p>
                        </div>
                     </div>
@@ -39,7 +41,9 @@
                              <p class="text-center px-5"
                               >Bulk sending allows you to send mobile money to many people</p>
                             <p class="text-center">
-                             <button mat-raised-button color="primary" class="send-cta-btn">Send to many people</button>
+                             <button 
+                             (click)="openDialog(operations.BulkPayments)"
+                             mat-raised-button color="primary" class="send-cta-btn">Send to many people</button>
                             </p>
                         </div>
                      </div>
@@ -54,7 +58,9 @@
                              <p class="text-center px-5"
                              >Single purchase allows you to send to one user</p>
                             <p class="text-center">
-                             <button mat-raised-button color="primary" class="send-cta-btn">Send to single person</button>
+                             <button mat-raised-button  
+                            (click)="openDialog(operations.Approvals)"
+                             color="primary" class="send-cta-btn">Check approvals</button>
                             </p>
                         </div>
                      </div>
