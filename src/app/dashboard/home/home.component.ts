@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 dataSource = {
   chart: {
     caption: "Bulk Payments", //Set the chart caption
-    subCaption: "Monthly Recurring Revenue (MRR)", //Set the chart subcaption
+    // subCaption: "Monthly Recurring Revenue (MRR)", //Set the chart subcaption
     xAxisName: "Payments", //Set the x-axis name
     yAxisName: "Funds (UGX)", //Set the y-axis name
     numberSuffix: "K",

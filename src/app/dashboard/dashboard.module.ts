@@ -26,12 +26,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.component';
 
 
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
-     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent],
+     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
