@@ -18,8 +18,7 @@ export enum MobileMoney{
 }
 
 export interface SingleTransaction{
-  message: string;
-  statusCode: number;
+  StatusCode: number;
 }
 
 export interface SinglePayment{

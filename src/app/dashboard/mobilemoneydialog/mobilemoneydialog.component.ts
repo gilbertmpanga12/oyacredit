@@ -16,7 +16,7 @@ export class MobilemoneydialogComponent implements OnInit {
   bulkPaymentsGroup: FormGroup;
   constructor(public dialogRef: MatDialogRef<MobilemoneydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,  private _single_fb: 
-    FormBuilder, private _bulk_fb: FormBuilder, public service: MainService,  private _snackBar: MatSnackBar) { }
+    FormBuilder, private _bulk_fb: FormBuilder, public service: MainService) { }
 
   ngOnInit(): void {
     this.singlePaymentsGroup = this._single_fb.group({
@@ -40,22 +40,14 @@ export class MobilemoneydialogComponent implements OnInit {
     this.service.
     singleMobileMoneyTransaction(form.amount,form.phoneNumber,form.reason)
     .subscribe((data: SingleTransaction) => {
-      if(data.statusCode < 300){
+      if(data.StatusCode < 300){
         this.dialogRef.close();
-        this.openSnackBar('Transaction successfull','OK', 'success');
+        this.service.successSnackBar('Transaction successfull','OK');
         return;
       }
-      this.openSnackBar('Something went wrong','OK', 'error');
+      this.service.errorSnackBar('Something went wrong','OK');
     })
   }
 
-  openSnackBar(message: string, action: string, statusColor:string) {
-    this._snackBar.open(message, action, {
-      duration: 5000,
-      horizontalPosition: "right",
-      verticalPosition: "top",
-      panelClass: statusColor
-    });
-  }
 
 }

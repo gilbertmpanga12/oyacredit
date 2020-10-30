@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { environment } from 'src/environments/environment';
@@ -14,7 +15,7 @@ export class MainService {
   isLoading: boolean = false;
   
 
-  constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
+  constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient, private _snackBar: MatSnackBar) {
     this.auth.authState.subscribe(user => {
       if (user){
         this.user = user;
@@ -48,7 +49,24 @@ export class MainService {
   checkApprovals(){
     this.isLoading = true;
     return this.http.get(environment.baseUrl + 'balances' + '/check-status');
-  
+  }
+
+  errorSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: "error"
+    });
+  }
+
+  successSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: "success"
+    });
   }
 
 }
