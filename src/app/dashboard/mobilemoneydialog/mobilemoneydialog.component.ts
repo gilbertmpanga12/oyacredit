@@ -4,6 +4,7 @@ import {MobileMoney, SinglePayment, SingleTransaction} from '../../models/models
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as Papa from 'papaparse';
 
 @Component({
   selector: 'app-mobilemoneydialog',
@@ -31,8 +32,41 @@ export class MobilemoneydialogComponent implements OnInit {
     });
   }
 
-  uploadBulkPayments(): void{
-    console.log('logged');
+  uploadBulkPayments(event: FileList): void{
+    this.service.isLoading = true;
+    const file = event.item(0);
+    
+    if (file.type.split('/')[0] == 'image' || 
+    file.type.split('/')[0] == 'video'
+     || file.type.split('/')[0] == 'video') { 
+      alert('Please enter only documents');
+      return;
+    }
+
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        let resultsPaylod = results.data;
+        console.log(resultsPaylod);
+      }
+    },);
+    
+    // this.service.
+    // bulkMobileMoneyTransactiosn()
+    // .subscribe((data: any) => {
+    //   if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
+    //     this.service.isLoading = false;
+    //     this.dialogRef.close();
+    //     this.openSnackBar('Transaction successful','OK', 'success');
+    //     return;
+    //   }
+    //   this.service.isLoading = false;
+    //   this.openSnackBar('Something went wrong','OK', 'error');
+    // }, err => {
+    //   this.service.isLoading = false;
+    //   this.openSnackBar('Something went wrong','OK', 'error');
+    // });
   }
 
   uploadSingleTransaction(): void{
@@ -59,7 +93,7 @@ export class MobilemoneydialogComponent implements OnInit {
     }, err => {
       this.service.isLoading = false;
       this.openSnackBar('Something went wrong','OK', 'error');
-    })
+    });
   }
 
   openSnackBar(message: string, action: string, statusColor:string) {

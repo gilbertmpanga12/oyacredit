@@ -21,7 +21,7 @@
     
       <input type="file" class="display-none"  #ref
       accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, 
-      application/vnd.ms-excel" (change)="uploadBulkPayments()"/>
+      application/vnd.ms-excel" (change)="uploadBulkPayments($event.target.files)"/>
 
        <p class="text-center pt">
         <button mat-raised-button color="primary" (click)="ref.click()" 
