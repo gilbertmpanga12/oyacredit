@@ -30,6 +30,7 @@ import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.comp
 
 
 
+
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent],
