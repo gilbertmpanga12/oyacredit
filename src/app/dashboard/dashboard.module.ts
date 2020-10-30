@@ -27,7 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -49,7 +49,8 @@ import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.comp
     MatDividerModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     MobilemoneydialogComponent

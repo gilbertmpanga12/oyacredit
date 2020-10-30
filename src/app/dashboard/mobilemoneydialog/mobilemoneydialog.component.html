@@ -66,7 +66,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Telephone</mat-label>
                     <span matPrefix>+256 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber">
+                    <input type="tel" matInput placeholder="555-555-1234" minlength="9" formControlName="phoneNumber">
                     <!-- <mat-icon matPrefix>local_phone</mat-icon> -->
                   </mat-form-field>
             </p>
@@ -74,7 +74,8 @@
             <p>
                 <mat-form-field class="example-full-width">
                     <mat-label>Amount</mat-label>
-                    <textarea matInput placeholder="e.g 2000" formControlName="amount" type="number">1600 Amphitheatre Pkwy</textarea>
+                    <textarea matInput placeholder="e.g 2000" formControlName="amount" 
+                    type="number" min="1000">1600 Amphitheatre Pkwy</textarea>
                   </mat-form-field>
             </p>
             
@@ -88,6 +89,6 @@
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-flat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Send</button>
+        <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" mat-flat-button (click)="uploadSingleTransaction()" cdkFocusInitial color="primary">Send</button>
       </mat-dialog-actions>
 </ng-container>

@@ -36,7 +36,6 @@ export class MainService {
   }
 
    singleMobileMoneyTransaction(amount:string, phoneNumber:string, narrative:string){
-    this.isLoading = true;
     return this.http.get<SingleTransaction>(environment.baseUrl 
       + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
   }

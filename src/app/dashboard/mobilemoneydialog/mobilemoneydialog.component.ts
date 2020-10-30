@@ -20,8 +20,8 @@ export class MobilemoneydialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.singlePaymentsGroup = this._single_fb.group({
-      phoneNumber: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
+      amount: ['', [Validators.required, Validators.min(1000)]],
       reason: ['', [Validators.required]]
     });
     this.bulkPaymentsGroup = this._bulk_fb.group({
@@ -36,15 +36,28 @@ export class MobilemoneydialogComponent implements OnInit {
   }
 
   uploadSingleTransaction(): void{
+    this.service.isLoading = true;
     const form = <SinglePayment>this.singlePaymentsGroup.getRawValue();
+    let callCode = '256';
+    let telephone = form.phoneNumber;
+    let msnid = callCode + telephone;
+
+    if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
+      msnid= telephone = callCode + telephone.substring(1,);
+    }
     this.service.
-    singleMobileMoneyTransaction(form.amount,form.phoneNumber,form.reason)
-    .subscribe((data: SingleTransaction) => {
-      if(data.StatusCode < 300){
+    singleMobileMoneyTransaction(form.amount,msnid,form.reason)
+    .subscribe((data: any) => {
+      if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
+        this.service.isLoading = false;
         this.dialogRef.close();
-        this.openSnackBar('Transaction successfull','OK', 'success');
+        this.openSnackBar('Transaction successful','OK', 'success');
         return;
       }
+      this.service.isLoading = false;
+      this.openSnackBar('Something went wrong','OK', 'error');
+    }, err => {
+      this.service.isLoading = false;
       this.openSnackBar('Something went wrong','OK', 'error');
     })
   }
