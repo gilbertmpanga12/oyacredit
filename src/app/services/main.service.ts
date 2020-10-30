@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { environment } from 'src/environments/environment';
-import { SingleTransaction } from '../models/models';
+import { CSV, SingleTransaction } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +41,7 @@ export class MainService {
       + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
   }
 
-  bulkMobileMoneyTransactiosn(name:string, description:string, schedulePayment:string, 
-    privateBulkRequestId:string, beneficiary: string){
+  bulkMobileMoneyTransactions(beneficiary: string){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -50,9 +49,7 @@ export class MainService {
       })
     };
     return this.http.get(environment.baseUrl + 
-      'bulk-transactions' + '/pay' + `/${name}`
-       + `/${description}` + `/${schedulePayment}` 
-       + `/${privateBulkRequestId}`, httpOptions);
+      'bulk-transactions' + '/pay', httpOptions);
 
 
   }

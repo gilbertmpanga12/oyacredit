@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {MobileMoney, SinglePayment, SingleTransaction} from '../../models/models';
+import {CSV, MobileMoney, SinglePayment, SingleTransaction} from '../../models/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -46,14 +46,17 @@ export class MobilemoneydialogComponent implements OnInit {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
-      complete: function(results) {
-        let resultsPaylod = results.data;
-        console.log(resultsPaylod);
-      }
-    },);
-    
-    // this.service.
-    // bulkMobileMoneyTransactiosn()
+      complete: (results) => {
+        let parsedcsv: any[] = results.data;
+        let xml = parsedcsv.map((cell: CSV) => {
+return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+ 
+        "<AccountNumber>"+ cell.MSISND +
+        "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
+        + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
+        });
+        let resultsPayload = xml.join("");
+      console.log(resultsPayload)
+    //     this.service.bulkMobileMoneyTransactions(resultsPayload)
     // .subscribe((data: any) => {
     //   if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
     //     this.service.isLoading = false;
@@ -67,6 +70,10 @@ export class MobilemoneydialogComponent implements OnInit {
     //   this.service.isLoading = false;
     //   this.openSnackBar('Something went wrong','OK', 'error');
     // });
+      }
+    },);
+    
+    
   }
 
   uploadSingleTransaction(): void{
