@@ -55,21 +55,20 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
         + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
         });
         let resultsPayload = xml.join("");
-      console.log(resultsPayload)
-    //     this.service.bulkMobileMoneyTransactions(resultsPayload)
-    // .subscribe((data: any) => {
-    //   if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
-    //     this.service.isLoading = false;
-    //     this.dialogRef.close();
-    //     this.openSnackBar('Transaction successful','OK', 'success');
-    //     return;
-    //   }
-    //   this.service.isLoading = false;
-    //   this.openSnackBar('Something went wrong','OK', 'error');
-    // }, err => {
-    //   this.service.isLoading = false;
-    //   this.openSnackBar('Something went wrong','OK', 'error');
-    // });
+        this.service.bulkMobileMoneyTransactions(resultsPayload)
+    .subscribe((data: any) => {
+      if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
+        this.service.isLoading = false;
+        this.dialogRef.close();
+        this.openSnackBar('Transaction successful','OK', 'success');
+        return;
+      }
+      this.service.isLoading = false;
+      this.openSnackBar('Something went wrong','OK', 'error');
+    }, err => {
+      this.service.isLoading = false;
+      this.openSnackBar('Something went wrong','OK', 'error');
+    });
       }
     },);
     
