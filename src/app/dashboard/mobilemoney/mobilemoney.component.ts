@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MobilemoneydialogComponent} from '../mobilemoneydialog/mobilemoneydialog.component';
 import {MobileMoney} from '../../models/models';
+import { MainService } from 'src/app/services/main.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {MobileMoney} from '../../models/models';
 export class MobilemoneyComponent implements OnInit {
   operations = MobileMoney;
   
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public service: MainService) { }
 
   ngOnInit(): void {
    

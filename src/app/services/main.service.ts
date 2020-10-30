@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -35,18 +35,32 @@ export class MainService {
     this.router.navigate(['/auth']);
   }
 
-   singleMobileMoneyTransaction(amount:string, phoneNumber:string, narrative:string){
-    return this.http.get<SingleTransaction>(environment.baseUrl 
+
+  singleMobileMoneyTransaction(amount:string, phoneNumber:string, narrative:string){
+    return this.http.get(environment.baseUrl 
       + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
   }
 
-  bulkMobileMoneyTransactiosn(){
-    this.isLoading = true;
+  bulkMobileMoneyTransactiosn(name:string, description:string, schedulePayment:string, 
+    privateBulkRequestId:string, beneficiary: string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        beneficiary: beneficiary
+      })
+    };
+    return this.http.get(environment.baseUrl + 
+      'bulk-transactions' + '/pay' + `/${name}`
+       + `/${description}` + `/${schedulePayment}` 
+       + `/${privateBulkRequestId}`, httpOptions);
+
+
   }
 
   checkApprovals(){
     this.isLoading = true;
-    return this.http.get(environment.baseUrl + 'balances' + '/check-status');
+    return this.http.get(environment.baseUrl + 'balances' 
+    + '/check-status');
   }
 
   
