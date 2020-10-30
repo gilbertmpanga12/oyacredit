@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseUrl: "http://35.230.151.70/",
   firebase: { 
     apiKey: "AIzaSyDgsepomz7meneHDmg9qemBVDbEa-fnf3E",
     authDomain: "tax-as-a-service.firebaseapp.com",

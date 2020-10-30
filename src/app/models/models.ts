@@ -16,3 +16,14 @@ export enum MobileMoney{
   BulkPayments = "Bulk Payments",
   Approvals = "Approvals"
 }
+
+export interface SingleTransaction{
+  message: string;
+  statusCode: number;
+}
+
+export interface SinglePayment{
+  phoneNumber: string;
+  amount: string;
+  reason: string;
+}

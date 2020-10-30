@@ -19,6 +19,7 @@ import { FusionChartsModule } from "angular-fusioncharts";
 import * as FusionCharts from "fusioncharts";
 import * as charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import { HttpClientModule } from '@angular/common/http';
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
 
 
@@ -39,7 +40,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
     MatButtonModule,
     LayoutModule,
     FusionChartsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
