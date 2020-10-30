@@ -21,7 +21,7 @@ export class MobilemoneyComponent implements OnInit {
   openDialog(operation: string): void{
     this.dialog.open(MobilemoneydialogComponent, {
       width: '450px',
-      height: '450px',
+      height: 'auto',
       data: operation
     });
   }
