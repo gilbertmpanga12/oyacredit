@@ -22,7 +22,7 @@ export class MobilemoneydialogComponent implements OnInit {
   ngOnInit(): void {
     this.singlePaymentsGroup = this._single_fb.group({
       phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
-      amount: ['', [Validators.required, Validators.min(1000)]],
+      amount: ['', [Validators.required, Validators.min(500)]],
       reason: ['', [Validators.required]]
     });
     this.bulkPaymentsGroup = this._bulk_fb.group({
