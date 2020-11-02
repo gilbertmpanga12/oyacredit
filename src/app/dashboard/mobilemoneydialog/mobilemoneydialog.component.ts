@@ -95,7 +95,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
         return;
       }
       this.service.isLoading = false;
-      this.openSnackBar('Something went wrong','OK', 'error');
+      this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
     }, err => {
       this.service.isLoading = false;
       this.openSnackBar('Something went wrong','OK', 'error');
@@ -104,7 +104,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
 
   openSnackBar(message: string, action: string, statusColor:string) {
     this._snackBar.open(message, action, {
-      duration: 5000,
+      duration: 7000,
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: statusColor
