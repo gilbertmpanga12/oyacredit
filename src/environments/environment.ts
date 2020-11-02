@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://35.230.151.70/",
+  baseUrl: "https://oyamicrocredit.mpayments.online/",
   firebase: { 
     apiKey: "AIzaSyDgsepomz7meneHDmg9qemBVDbEa-fnf3E",
     authDomain: "tax-as-a-service.firebaseapp.com",

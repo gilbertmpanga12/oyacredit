@@ -45,12 +45,11 @@ export class MainService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        beneficiary: beneficiary
+        "Control-Allow-Origin": "*",
+         beneficiary: beneficiary
       })
     };
-    return this.http.get(environment.baseUrl + 
-      'bulk-transactions' + '/pay', httpOptions);
-
+    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay", httpOptions);
 
   }
 
