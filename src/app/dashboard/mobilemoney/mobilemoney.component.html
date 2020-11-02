@@ -64,9 +64,33 @@
                             </p>
                         </div>
                      </div>
-                    
+
+                  
                    
                 </div>
+               <br/><br/>
+                <div class="container mt-5">
+                    <div class="flex flex-wrap flex-row">
+                        
+                        <div class="col-3">
+                            <div class="card-action-wrap relative">
+                             <p class="text-center" >
+                                 <mat-icon class="w-icon-100">ad_units</mat-icon>
+                             </p>
+                                
+                                 <h1 class="dashboard-title text-center">Manual Transaction</h1>
+                                 <p class="text-center px-5"
+                                 >Allows you to send money from mobile money to Oyacredit</p>
+                                <p class="text-center">
+                                 <button mat-raised-button  
+                                 (click)="openDialog(operations.ManualTransaction)"
+                                 color="primary" class="send-cta-btn"><strong>Check approvals</strong></button>
+                                </p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <br/><br/>
             </div>
         </mat-card>
     </div>

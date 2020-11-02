@@ -14,7 +14,8 @@ export enum Login {
 export enum MobileMoney{
   SinglePayments = "Single Payments",
   BulkPayments = "Bulk Payments",
-  Approvals = "Approvals"
+  Approvals = "Approvals",
+  ManualTransaction = "ManualTransaction"
 }
 
 export interface SingleTransaction{

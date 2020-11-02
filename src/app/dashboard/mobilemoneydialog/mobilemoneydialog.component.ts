@@ -64,7 +64,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
         return;
       }
       this.service.isLoading = false;
-      this.openSnackBar('Something went wrong','OK', 'error');
+      this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
     }, err => {
       this.service.isLoading = false;
       this.openSnackBar('Something went wrong','OK', 'error');
@@ -75,7 +75,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
     
   }
 
-  uploadSingleTransaction(): void{
+  uploadSingleTransaction(transactionType: string): void{
     this.service.isLoading = true;
     const form = <SinglePayment>this.singlePaymentsGroup.getRawValue();
     let callCode = '256';
@@ -86,7 +86,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
       msnid= telephone = callCode + telephone.substring(1,);
     }
     this.service.
-    withdrawTransaction(form.amount,msnid,form.reason)
+    manualTransaction(form.amount,msnid,form.reason, transactionType)
     .subscribe((data: any) => {
       if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
         this.service.isLoading = false;
@@ -101,6 +101,10 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
       this.openSnackBar('Something went wrong','OK', 'error');
     });
   }
+
+
+
+
 
   openSnackBar(message: string, action: string, statusColor:string) {
     this._snackBar.open(message, action, {
