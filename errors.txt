@@ -1,0 +1,4 @@
+# Withdraw api
+Invalid transaction amount: UGX 500/=. For this type of transaction, 
+the amount to send must be at least twice the total charges to the beneficiary. 
+The total charge to the beneficiary for this transaction is UGX 390/=

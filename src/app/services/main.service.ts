@@ -35,10 +35,16 @@ export class MainService {
     this.router.navigate(['/auth']);
   }
 
-
-  singleMobileMoneyTransaction(amount:string, phoneNumber:string, narrative:string){
+// manual transaction
+  manualTransaction(amount:string, phoneNumber:string, narrative:string){
     return this.http.get(environment.baseUrl 
       + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
+  }
+
+  // withdraw from Yo! to mobile money account
+  withdrawTransaction(amount:string, phoneNumber:string, narrative:string){
+    return this.http.get(environment.baseUrl 
+      + 'bulk-transactions' + '/withdraw' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
   }
 
   bulkMobileMoneyTransactions(beneficiary: string){

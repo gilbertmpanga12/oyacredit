@@ -86,7 +86,7 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
       msnid= telephone = callCode + telephone.substring(1,);
     }
     this.service.
-    singleMobileMoneyTransaction(form.amount,msnid,form.reason)
+    withdrawTransaction(form.amount,msnid,form.reason)
     .subscribe((data: any) => {
       if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
         this.service.isLoading = false;
