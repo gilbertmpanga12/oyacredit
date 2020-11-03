@@ -14,10 +14,12 @@ import * as Papa from 'papaparse';
 export class MobilemoneydialogComponent implements OnInit {
   operations = MobileMoney;
   singlePaymentsGroup: FormGroup;
-  bulkPaymentsGroup: FormGroup;
+  telco: string = "MTN";
+  telcos: string[] = ['MTN', 'Airtel', 'Others'];
+  transactionCost: any = {'MTN': '390', 'Airtel': '300', 'Others':'390'};
   constructor(public dialogRef: MatDialogRef<MobilemoneydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,  private _single_fb: 
-    FormBuilder, private _bulk_fb: FormBuilder, public service: MainService,  private _snackBar: MatSnackBar) { }
+    FormBuilder, public service: MainService,  private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.singlePaymentsGroup = this._single_fb.group({
@@ -25,11 +27,7 @@ export class MobilemoneydialogComponent implements OnInit {
       amount: ['', [Validators.required, Validators.min(500)]],
       reason: ['', [Validators.required]]
     });
-    this.bulkPaymentsGroup = this._bulk_fb.group({
-      phoneNumber: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
-      reason: ['', [Validators.required]]
-    });
+    
   }
 
   uploadBulkPayments(event: FileList): void{
@@ -81,12 +79,12 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
     let callCode = '256';
     let telephone = form.phoneNumber;
     let msnid = callCode + telephone;
-
+    let amount: string = `${this.incrementWithTelcos(this.telco, form.amount)}`;
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }
     this.service.
-    manualTransaction(form.amount,msnid,form.reason, transactionType)
+    manualTransaction(amount,msnid, form.reason, transactionType)
     .subscribe((data: any) => {
       if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
         this.service.isLoading = false;
@@ -100,6 +98,20 @@ return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+
       this.service.isLoading = false;
       this.openSnackBar('Something went wrong','OK', 'error');
     });
+  }
+
+  incrementWithTelcos(telco: string, total: string): number{
+    if(parseInt(total) <= 600){
+      if(telco == "MTN"){
+        return parseInt(total) + 390;
+      }else if(telco == "Airtel"){
+        return parseInt(total) + 300;
+      }else{
+        return parseInt(total) + 390;
+      }
+    }else{
+      return parseInt(total);
+    }
   }
 
 

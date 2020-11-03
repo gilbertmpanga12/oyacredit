@@ -57,8 +57,15 @@
     <h2  mat-dialog-title class="dialog-title" 
     style="font-weight: 700 !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
     <p>
-     Each transaction costs 500 shillings accross all networks (MTN, Airtel, Africell)
+     Sending to an {{telco}} costs UGX{{transactionCost[telco]}}
     </p>
+
+    <mat-radio-group aria-label="Select a network" class="telco-radio-group" [(ngModel)]="telco">
+      <mat-radio-button class="custom-radio-btn" *ngFor="let telco_option of telcos" [value]="telco_option">
+        {{telco_option}}
+      </mat-radio-button>
+    </mat-radio-group>
+
    
     <mat-dialog-content>
         <br/>
@@ -76,8 +83,10 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Amount</mat-label>
                     <textarea matInput placeholder="e.g 2000" formControlName="amount" 
-                    type="number" min="500">1600 Amphitheatre Pkwy</textarea>
+                    type="number" min="500">UGX</textarea>
+                    <mat-hint>Least amount to send is UGX500</mat-hint>
                   </mat-form-field>
+            
             </p>
             
             <p>

@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import {MatCardModule} from '@angular/material/card';
-
-
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,9 +23,10 @@ import { MobilemoneydialogComponent } from './mobilemoneydialog/mobilemoneydialo
 import { MatDividerModule } from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -50,7 +49,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule,
+    FormsModule
   ],
   entryComponents: [
     MobilemoneydialogComponent
