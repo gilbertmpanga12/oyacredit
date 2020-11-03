@@ -33,7 +33,7 @@
        <div class="split-layout__label text-center p-3"><strong>Or</strong></div>
 
       <p class="text-center">
-        <a href="assets/BulkPaymentTemplate.csv" download>
+        <a href="https://firebasestorage.googleapis.com/v0/b/tax-as-a-service.appspot.com/o/templates%2FBulk%20payment%20template.csv?alt=media&token=22f015e1-44aa-455d-8b6c-08ba890de2b2" download>
           <button mat-raised-button color="accent" 
           class="upload-csv-btn text-center"><strong class="text-white">Download template for guidance</strong></button>
   </a>
@@ -54,7 +54,8 @@
 
 
 <ng-container *ngIf="data == operations.SinglePayments || data == operations.ManualTransaction">
-    <h2  mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Send mobile money to a single user</h2>
+    <h2  mat-dialog-title class="dialog-title" 
+    style="font-weight: 700 !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
     <p>
      Each transaction costs 500 shillings accross all networks (MTN, Airtel, Africell)
     </p>
