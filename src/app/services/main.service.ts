@@ -36,6 +36,9 @@ export class MainService {
     this.router.navigate(['/auth']);
   }
 
+// deleteContact(index: number): void{
+//   this.csvResults.splice(index,1);
+// }
 // manual transaction
 // withdraw from Yo! to mobile money account
   manualTransaction(amount:string, phoneNumber:string, narrative:string, transactionType: string){

@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ViewChild, OnInit,Input} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { CSV } from 'src/app/models/models';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-bulkcontacts',
@@ -13,14 +14,20 @@ export class BulkcontactsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() bulkContacts: CSV[];
   dataSource;
-  constructor() { }
+  constructor(public service: MainService) { }
 
   ngOnInit(): void {
-    console.log(this.bulkContacts)
-   this.dataSource = new MatTableDataSource<CSV>(this.bulkContacts);
+   this.dataSource = new MatTableDataSource<CSV>(this.service.csvResults);
   }
   ngAfterViewInit(): void{
     this.dataSource.paginator = this.paginator;
   }
+
+  deleteContact(index: number): void{
+    this.service.csvResults.splice(index,1);
+    this.dataSource = new MatTableDataSource<CSV>(this.service.csvResults);
+  }
+
+ 
 
 }

@@ -28,4 +28,4 @@ export interface SinglePayment{
   reason: string;
 }
 
-export interface CSV{Amount:string,MSISND:string,Name:string,Reason:string};
+export interface CSV{Amount:string,MSISND:string,Name:string,Reason:string,Index?:number};
