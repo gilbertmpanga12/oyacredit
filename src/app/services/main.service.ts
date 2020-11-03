@@ -13,7 +13,7 @@ export class MainService {
   user:  User;
   isLoading: boolean = false;
   csvResults: CSV[] = [];
-  
+  bulkTransactionReady: boolean = false;
 
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {

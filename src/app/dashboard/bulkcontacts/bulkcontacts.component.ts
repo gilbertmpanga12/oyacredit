@@ -28,6 +28,12 @@ export class BulkcontactsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<CSV>(this.service.csvResults);
   }
 
+  proceedWithBulkPayment(): void{
+    this.service.bulkTransactionReady = true;
+  }
+
+  
+
  
 
 }

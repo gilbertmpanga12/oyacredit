@@ -44,11 +44,6 @@
       </p>
 
     </mat-dialog-content>
-    </ng-container>
-
-    <app-bulkcontacts *ngIf="service.csvResults.length >= 1" [bulkContacts]="service.csvResults"></app-bulkcontacts>
-
-
     <br/><br/><br/><br/><br/>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
@@ -56,6 +51,12 @@
         [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
         cdkFocusInitial color="primary">Send</button>
       </mat-dialog-actions>
+    </ng-container>
+
+    <app-bulkcontacts *ngIf="service.csvResults.length >= 1" [bulkContacts]="service.csvResults"></app-bulkcontacts>
+
+
+   
 </ng-container>
 
 
@@ -108,4 +109,13 @@
         <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
         mat-flat-button (click)="uploadSingleTransaction(data)" cdkFocusInitial color="primary">Send</button>
       </mat-dialog-actions>
+</ng-container>
+
+<ng-container *ngIf="service.bulkTransactionReady">
+  <h1 mat-mat-dialog-title>Are you sure you're ready to send bulk transactions now?</h1>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="checkBulkPayment()">No,let me check first</button>
+    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    mat-flat-button (click)="sendBulkTransation()" cdkFocusInitial color="primary">Proceed and send bulk transaction</button>
+  </mat-dialog-actions>
 </ng-container>

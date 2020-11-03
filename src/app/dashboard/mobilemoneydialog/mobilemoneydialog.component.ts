@@ -49,7 +49,35 @@ export class MobilemoneydialogComponent implements OnInit {
       }
     },);
     
-    
+  }
+
+  checkBulkPayment(): void{
+    this.service.bulkTransactionReady = false;
+  }
+
+  sendBulkTransation(): void {
+    this.service.isLoading = true;
+    let xml = this.service.csvResults.map((cell: CSV) => {
+      return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+ 
+              "<AccountNumber>"+ cell.MSISND +
+              "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
+              + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
+              });
+              let resultsPayload = xml.join("");
+              this.service.bulkMobileMoneyTransactions(resultsPayload)
+          .subscribe((data: any) => {
+            if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
+              this.service.isLoading = false;
+              this.dialogRef.close();
+              this.openSnackBar('Transaction successful','OK', 'success');
+              return;
+            }
+            this.service.isLoading = false;
+            this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
+          }, err => {
+            this.service.isLoading = false;
+            this.openSnackBar('Something went wrong','OK', 'error');
+          });
   }
 
   uploadSingleTransaction(transactionType: string): void{

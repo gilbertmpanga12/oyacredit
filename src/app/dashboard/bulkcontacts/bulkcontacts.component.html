@@ -49,3 +49,10 @@ style="font-weight: 700 !important;margin-bottom: 1px !important;">Preview of co
 
   <mat-paginator [pageSizeOptions]="[10, 20, 30]" 
   showFirstLastButtons></mat-paginator>
+
+  <br/><br/><br/><br/><br/>
+  <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-flat-button (click)="proceedWithBulkPayment()"
+      cdkFocusInitial color="primary">Continue</button>
+    </mat-dialog-actions>
