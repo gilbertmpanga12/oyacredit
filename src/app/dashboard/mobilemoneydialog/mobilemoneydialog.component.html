@@ -14,8 +14,11 @@
 
 
 <ng-container *ngIf="data == operations.BulkPayments">
-    <h2 mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Send mobile money to a many users</h2>
-    <mat-divider></mat-divider>
+
+
+    <ng-container *ngIf="service.csvResults.length < 1">
+      <h2 mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Send mobile money to a many users</h2>
+   <mat-divider></mat-divider>
 
     <mat-dialog-content >
     
@@ -40,9 +43,12 @@
         
       </p>
 
-        
-
     </mat-dialog-content>
+    </ng-container>
+
+    <app-bulkcontacts *ngIf="service.csvResults.length >= 1" [bulkContacts]="service.csvResults"></app-bulkcontacts>
+
+
     <br/><br/><br/><br/><br/>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
@@ -84,7 +90,7 @@
                     <mat-label>Amount</mat-label>
                     <textarea matInput placeholder="e.g 2000" formControlName="amount" 
                     type="number" min="500">UGX</textarea>
-                    <mat-hint>Least amount to send is UGX500</mat-hint>
+                    <mat-hint>Least amount UGX500</mat-hint>
                   </mat-form-field>
             
             </p>

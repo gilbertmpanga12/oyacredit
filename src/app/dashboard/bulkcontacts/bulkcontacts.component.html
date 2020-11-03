@@ -1,0 +1,51 @@
+
+<h2 mat-dialog-title class="dialog-title" 
+style="font-weight: 700 !important;margin-bottom: 1px !important;">Preview of contacts</h2>
+<p>View, modify contacts before sending</p>
+
+<table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="MSISND">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Tel. </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.MSISND}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Name </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.Name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Amount </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.Amount}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Reason">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Reason </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.Reason}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Controls">
+        <th mat-header-cell *matHeaderCellDef class="mr-2"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="mr-2"> 
+          <button mat-mini-fab  class="mr-2"
+          color="accent" aria-label="Example icon button with a menu icon">
+          <mat-icon class="text-white">edit</mat-icon>
+        </button>
+        <button mat-mini-fab 
+            color="warn" aria-label="Example icon button with a menu icon">
+            <mat-icon class="text-white">delete</mat-icon>
+          </button> 
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" 
+  showFirstLastButtons></mat-paginator>

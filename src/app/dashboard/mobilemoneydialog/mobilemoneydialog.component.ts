@@ -45,28 +45,7 @@ export class MobilemoneydialogComponent implements OnInit {
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        let parsedcsv: any[] = results.data;
-        let xml = parsedcsv.map((cell: CSV) => {
-return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+ 
-        "<AccountNumber>"+ cell.MSISND +
-        "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
-        + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
-        });
-        let resultsPayload = xml.join("");
-        this.service.bulkMobileMoneyTransactions(resultsPayload)
-    .subscribe((data: any) => {
-      if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
-        this.service.isLoading = false;
-        this.dialogRef.close();
-        this.openSnackBar('Transaction successful','OK', 'success');
-        return;
-      }
-      this.service.isLoading = false;
-      this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
-    }, err => {
-      this.service.isLoading = false;
-      this.openSnackBar('Something went wrong','OK', 'error');
-    });
+        this.service.csvResults = results.data;
       }
     },);
     

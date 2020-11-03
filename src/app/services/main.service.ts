@@ -12,6 +12,7 @@ import { CSV, SingleTransaction } from '../models/models';
 export class MainService {
   user:  User;
   isLoading: boolean = false;
+  csvResults: CSV[] = [];
   
 
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {

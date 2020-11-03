@@ -27,12 +27,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatTableModule} from '@angular/material/table';
+import { BulkcontactsComponent } from './bulkcontacts/bulkcontacts.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
-     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent],
+     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -51,7 +53,9 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     MobilemoneydialogComponent
