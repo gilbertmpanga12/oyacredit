@@ -32,6 +32,7 @@ import { BulkcontactsComponent } from './bulkcontacts/bulkcontacts.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 
+
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent],

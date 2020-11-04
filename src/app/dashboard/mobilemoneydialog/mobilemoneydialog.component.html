@@ -53,18 +53,19 @@
       </mat-dialog-actions>
     </ng-container>
 
-    <app-bulkcontacts *ngIf="service.csvResults.length >= 1" [bulkContacts]="service.csvResults"></app-bulkcontacts>
+    <app-bulkcontacts *ngIf="service.csvResults.length >= 1 && service.bulkTransactionReady == false" [bulkContacts]="service.csvResults"></app-bulkcontacts>
 
 
    
 </ng-container>
 
 
-<ng-container *ngIf="data == operations.SinglePayments || data == operations.ManualTransaction">
+<ng-container *ngIf="data == operations.SinglePayments && service.bulkTransactionReady == false || 
+data == operations.ManualTransaction && service.bulkTransactionReady == false">
     <h2  mat-dialog-title class="dialog-title" 
     style="font-weight: 700 !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
     <p>
-     Sending to an {{telco}} costs UGX{{transactionCost[telco]}}
+      {{data == operations.ManualTransaction ? 'The transaction fee is 1.5% of the amount.': ' Sending to an telco costs UGX500'}}
     </p>
 
     <mat-radio-group aria-label="Select a network" class="telco-radio-group" [(ngModel)]="telco">

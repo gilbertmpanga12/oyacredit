@@ -46,6 +46,7 @@ export class MobilemoneydialogComponent implements OnInit {
       skipEmptyLines: true,
       complete: (results) => {
         this.service.csvResults = results.data;
+        this.service.isLoading = false;
       }
     },);
     
