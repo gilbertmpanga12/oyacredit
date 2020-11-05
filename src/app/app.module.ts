@@ -14,7 +14,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FusionChartsModule } from "angular-fusioncharts";
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 // Import FusionCharts library and chart modules
 import * as FusionCharts from "fusioncharts";
 import * as charts from "fusioncharts/fusioncharts.charts";
@@ -41,7 +41,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
     LayoutModule,
     FusionChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

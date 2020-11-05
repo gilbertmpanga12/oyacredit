@@ -71,6 +71,18 @@ export class MainService {
     + '/check-status');
   }
 
+  async resetName(displayName: string){
+    (await this.auth.currentUser).updateProfile({displayName});
+  }
+  
+  async resetPassword(password: string){
+    (await this.auth.currentUser).updatePassword(password);
+  }
+
+  async updatePhoto(photo: string){
+    (await this.auth.currentUser).updateProfile({photoURL: photo});
+  }
+
   
 
 }

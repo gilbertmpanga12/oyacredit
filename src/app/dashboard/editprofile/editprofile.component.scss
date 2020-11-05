@@ -10,8 +10,10 @@
 }
 
 button{
-    width: 100% !important;
-    font-size: 1.25rem !important;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px;
+    vertical-align: bottom !important;
 }
 
 .example-spacer {
@@ -24,4 +26,16 @@ button{
 .list-item-bar{
     width: 100%;height: 40px;padding-top: 5px;
     cursor: pointer;
+}
+.form-style{
+    margin-top:-15px !important; 
+}
+.spacer-top{
+    margin-top: 1rem !important;
+}
+.postion-btn{
+    top: 20%;
+    right: 33%;
+    position: absolute;
+    font-size: 35px;
 }

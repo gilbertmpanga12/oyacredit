@@ -1,22 +1,70 @@
 <h1 mat-dialog-title class="text-center" style="font-size:1.5rem !important;">Edit profile</h1>
 <mat-divider></mat-divider>
 <br/>
-<mat-dialog-content>
-    <p class="text-center"><img src="assets/icon.png" class="avatar-img"/></p>
+<mat-dialog-content class="relative">
+  <input type="image" #refImage />
+    <p class="text-center"><img src="assets/icon.png" class="avatar-img" 
+      (change)="handleChange($event.target.files)"
+      /></p>
     <h2 class="user-name text-center"><strong>HR MANAGER</strong></h2>
+    <button mat-mini-fab (click)="refImage.click()"
+    color="primary"
+    [class.spinner]="service.isLoading" [disabled]="service.isLoading"
+    class="postion-btn  absolute"
+   ><mat-icon class="text-gray-900">photo_camera</mat-icon></button>
   <br/>
+
     <div matTooltip="Tap to change username"
     class="flex flex-row flex-wrap list-item-bar">
-    <span class="text-gray-900"><strong>Change username</strong></span>
+
+    <ng-container *ngIf="!toggledUserName">
+      <span class="text-gray-900" (click)="changeUserName()"><strong>Change username</strong></span>
 <span class="example-spacer"></span>
-<mat-icon class="text-gray-900">edit</mat-icon>
+<mat-icon class="text-gray-900" (click)="changeUserName()">edit</mat-icon>
+    </ng-container>
+
+    <ng-container *ngIf="toggledUserName">
+      <mat-form-field class="width-full form-style">
+        <mat-label>Edit username</mat-label>
+        <input matInput placeholder="Ex. kirkdebs" value="" [(ngModel)]="username" name="username">
+        <mat-error>Username required</mat-error>
+      </mat-form-field>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" (click)="resetUserName()"
+      [class.spinner]="service.isLoading" [disabled]="service.isLoading"
+      class="text-gray-900">
+        <strong>Save</strong>
+      </button>
+    </ng-container>
 </div>
-<mat-divider></mat-divider>
+
+<mat-divider *ngIf="!toggledUserName&&!toggledPassword"></mat-divider>
+
 <div matTooltip="Tap to change password"
-    class="flex flex-row flex-wrap list-item-bar ">
-    <span class="text-gray-900"><strong>Update password</strong></span>
-<span class="example-spacer"></span>
-<mat-icon class="text-gray-900">lock</mat-icon>
+    class="flex flex-row flex-wrap list-item-bar spacer-top">
+   <ng-container *ngIf="!toggledPassword">
+    <span class="text-gray-900" (click)="changePassword()"><strong>Update password</strong></span>
+    <span class="example-spacer"></span>
+    <mat-icon class="text-gray-900" (click)="changePassword()">lock</mat-icon>
+   </ng-container>
+
+<ng-container *ngIf="toggledPassword">
+
+  <mat-form-field class="width-full">
+    <mat-label>Change password</mat-label>
+    <input matInput placeholder="***" value="" name="password" type="password"  [(ngModel)]="password"/>
+    <mat-error>Password required and must be atleast 6 characters</mat-error>
+  </mat-form-field>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" class="text-gray-900" (click)="resetPassword()"
+  [class.spinner]="service.isLoading" [disabled]="service.isLoading">
+    <strong>Save</strong>
+  </button>
+</ng-container>
 </div>
+
+
+
+
 
 </mat-dialog-content>

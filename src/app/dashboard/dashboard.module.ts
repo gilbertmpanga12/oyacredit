@@ -59,8 +59,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTooltipModule
-  ],
+    MatTooltipModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(EditprofileComponent, {
-      width: '400px',
+      width: '410px',
       height: 'auto'
     });
   }
