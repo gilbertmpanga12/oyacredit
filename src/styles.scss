@@ -13,9 +13,11 @@ main{
 }
 
 .display-none{
-  display: none;
+  display: none !important;
 }
-
+.uppercase{
+  text-transform:  uppercase !important;
+}
 .mat-toolbar{
  position: fixed;z-index: 2;
 }
@@ -25,7 +27,7 @@ main{
 }
 
 // typo
-h1,h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6,span{
   color: #2d3748 !important;
 }
 .text-gray-900{

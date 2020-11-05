@@ -26,9 +26,18 @@
     <mat-nav-list>
       <!-- <div mat-subheader>Dashboard</div> -->
    
-      <mat-list-item style="margin-bottom: 13px !important;" (click)="openDialog()">
+      <mat-list-item style="margin-bottom: 13px !important;" (click)="openDialog()" 
+      *ngIf="!service.user">
         <img matListAvatar src="assets/icon.png">
         <div mat-line style="font-weight: 700 !important;" class="text-gray-900">HR Manager</div>
+        <mat-icon style="color: #4a5568 !important;">widgets</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item style="margin-bottom: 13px !important;" (click)="openDialog()" 
+      *ngIf="service.user"
+      >
+        <img matListAvatar [src]="service.user?.photoURL">
+        <div mat-line style="font-weight: 700 !important;" class="text-gray-900 uppercase">{{service.user?.displayName}}</div>
         <mat-icon style="color: #4a5568 !important;">widgets</mat-icon>
       </mat-list-item>
  

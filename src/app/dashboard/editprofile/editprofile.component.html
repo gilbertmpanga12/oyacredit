@@ -2,12 +2,12 @@
 <mat-divider></mat-divider>
 <br/>
 <mat-dialog-content class="relative">
-  <input type="image" #refImage />
-    <p class="text-center"><img src="assets/icon.png" class="avatar-img" 
-      (change)="handleChange($event.target.files)"
+  <input type="file" #ref  class="display-none"  accept="image/*"  (change)="handleChange($event.target.files)"/>
+    <p class="text-center"><img  [src]="service.user?.photoURL" class="avatar-img" 
+     
       /></p>
-    <h2 class="user-name text-center"><strong>HR MANAGER</strong></h2>
-    <button mat-mini-fab (click)="refImage.click()"
+    <h2 class="user-name text-center uppercase"><strong>{{service.user?.displayName}}</strong></h2>
+    <button mat-mini-fab (click)="ref.click()"
     color="primary"
     [class.spinner]="service.isLoading" [disabled]="service.isLoading"
     class="postion-btn  absolute"
