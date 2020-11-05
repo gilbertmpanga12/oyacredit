@@ -69,7 +69,7 @@ data == operations.ManualTransaction && service.bulkTransactionReady == false">
     </p>
 
     <mat-radio-group aria-label="Select a network" class="telco-radio-group" [(ngModel)]="telco">
-      <mat-radio-button class="custom-radio-btn" *ngFor="let telco_option of telcos" [value]="telco_option">
+      <mat-radio-button class="custom-radio-btn text-gray-900" *ngFor="let telco_option of telcos" [value]="telco_option">
         {{telco_option}}
       </mat-radio-button>
     </mat-radio-group>

@@ -3,6 +3,8 @@ import { Router, RouterOutlet } from '@angular/router';
 import { Menu } from '../models/models';
 import { MainService } from '../services/main.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import {EditprofileComponent} from './editprofile/editprofile.component';
+import { MatDialog } from '@angular/material/dialog';
 
 // animations
 const slideInAnimation = trigger('routeAnimations', [ 
@@ -74,7 +76,7 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor(public router: Router, public service: MainService) { }
+  constructor(public router: Router, public service: MainService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -85,5 +87,12 @@ export class DashboardComponent implements OnInit {
   
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  openDialog(): void {
+    this.dialog.open(EditprofileComponent, {
+      width: '400px',
+      height: 'auto'
+    });
   }
 }

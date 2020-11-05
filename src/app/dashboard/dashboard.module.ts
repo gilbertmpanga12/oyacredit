@@ -30,12 +30,14 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { BulkcontactsComponent } from './bulkcontacts/bulkcontacts.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
-     MobilemoneyComponent, BanksComponent, NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent],
+     MobilemoneyComponent, BanksComponent,
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -56,10 +58,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatRadioModule,
     FormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   entryComponents: [
-    MobilemoneydialogComponent
+    MobilemoneydialogComponent,
+    EditprofileComponent
   ]
 })
 export class DashboardModule { }

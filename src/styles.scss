@@ -25,7 +25,10 @@ main{
 }
 
 // typo
-h1,h2,h3,h4,h5,h6,p,small,b,i,a,span,div{
+h1,h2,h3,h4,h5,h6{
+  color: #2d3748 !important;
+}
+.text-gray-900{
   color: #2d3748 !important;
 }
 
