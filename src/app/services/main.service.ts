@@ -83,6 +83,14 @@ export class MainService {
     (await this.auth.currentUser).updateProfile({photoURL: photo});
   }
 
+  get userId(): string{
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user["uid"];
+  }
+
+    getFundsAvailable(){
+      return this.http.get(environment.baseUrl + 'balances/' + 'get-balance');
+  }
   
 
 }

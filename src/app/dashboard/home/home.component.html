@@ -5,7 +5,7 @@
     <div class="col-4">
       <mat-card class="container-4 relative">
         <h1  class="header-card">Funds disbursed
-          <h1 class="mat-title">UGX0</h1>
+          <h1 class="mat-title">UGX{{(transactionCount$ | async)?.singleBulkTransactionCount}}</h1>
         </h1>
         <p class="absolute icon-position-dashboard">
           <mat-icon class="icon-size-dashboard" color="primary">insights</mat-icon>
@@ -17,7 +17,7 @@
     <div class="col-4">
      <mat-card class="container-4 relative">
       <h1  class="header-card">Transactions
-        <h1 class="mat-title">0</h1>
+        <h1 class="mat-title">{{(transactionCount$ | async)?.transactionCount}}</h1>
       </h1>
       <p class="absolute icon-position-dashboard">
         <mat-icon class="icon-size-dashboard" color="primary">point_of_sale</mat-icon>
@@ -29,7 +29,7 @@
     <div class="col-4">
       <mat-card class="container-4 relative">
         <h1  class="header-card">Funds available
-          <h1 class="mat-title">UGX0</h1>
+          <h1 class="mat-title">UGX{{fundsAvailable}}</h1>
         </h1>
         <p class="absolute icon-position-dashboard">
           <mat-icon class="icon-size-dashboard" color="primary">payments</mat-icon>

@@ -20,6 +20,7 @@ import * as FusionCharts from "fusioncharts";
 import * as charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
 
 
@@ -42,7 +43,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
     FusionChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
