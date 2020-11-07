@@ -46,7 +46,7 @@ style="font-weight: 700 !important;margin-bottom: 1px !important;">Preview of co
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
+  <h4 mat-dialog-title style="padding-top: 6px !important;padding-left: 3px !important;"><strong>Total amount: {{service.bulkTotal}}</strong></h4>
   <mat-paginator [pageSizeOptions]="[10, 20, 30]" 
   showFirstLastButtons></mat-paginator>
 

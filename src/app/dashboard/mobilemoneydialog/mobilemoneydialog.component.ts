@@ -46,6 +46,7 @@ export class MobilemoneydialogComponent implements OnInit {
       skipEmptyLines: true,
       complete: (results) => {
         this.service.csvResults = results.data;
+        this.service.csvResults.forEach((amount: CSV) => this.service.bulkTotal += parseInt(amount.Amount));
         this.service.isLoading = false;
       }
     },);
@@ -79,6 +80,8 @@ export class MobilemoneydialogComponent implements OnInit {
             this.service.isLoading = false;
             this.openSnackBar('Something went wrong','OK', 'error');
           });
+          
+          
   }
 
   uploadSingleTransaction(transactionType: string): void{
