@@ -15,6 +15,8 @@ transactionCount: AngularFirestoreDocument<any>;
 transactionCount$: Observable<any>;
 bulkSingleCount: AngularFirestoreDocument<any>;
 bulkSingleCount$:  Observable<any>;
+fundsCollectedCount: AngularFirestoreDocument<any>;
+fundsCollectedCount$:  Observable<any>;
 fundsAvailable: any;
 dataSource = {
   chart: {
@@ -38,6 +40,9 @@ dataSource = {
 
     this.bulkSingleCount = this.firestore.doc('singleBulkTransactionCount/' + this.service.userId);
     this.bulkSingleCount$ = this.transactionCount.valueChanges();
+
+    this.fundsCollectedCount = this.firestore.doc('fundsCollectedCount/' + this.service.userId);
+    this.fundsCollectedCount$ = this.transactionCount.valueChanges();
 
     this.service.getFundsAvailable().subscribe((data: any) => {
       this.fundsAvailable = data["AutoCreate"]["Response"][0]["Balance"][0]["Currency"][0]["Balance"][0];
