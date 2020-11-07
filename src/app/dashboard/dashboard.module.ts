@@ -32,12 +32,13 @@ import { BulkcontactsComponent } from './bulkcontacts/bulkcontacts.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -59,7 +60,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTooltipModule ],
+    MatTooltipModule, NgxSkeletonLoaderModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent
