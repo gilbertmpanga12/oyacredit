@@ -4,69 +4,89 @@
 <div class="flex mt-5 wrap flex-row">
 
     <div class="col-4">
+     <mat-card class="container-4 relative">
+      <div *ngIf="bulkSingleCount$ | async; let bulkSingleCount; else loading">
+        <h1  class="header-card">Funds disbursed
+    
+          <h3 class="responsive-brand"><strong>{{bulkSingleCount.singleBulkTransactionCount > 0 ? 'UGX' + bulkSingleCount.singleBulkTransactionCount : 'UGX0'}}</strong></h3>
+        </h1>
+        <p class="absolute icon-position-dashboard">
+          <mat-icon class="icon-size-dashboard" color="primary">insights</mat-icon>
+        </p>
+      </div>
+    
+    <ng-template  #loading>
+      <app-skeleton></app-skeleton>
+    </ng-template>
+
+     </mat-card>
+    </div>
+
+    <div class="col-4">
       <mat-card class="container-4 relative">
-  <ng-container *ngIf="false">
-    <h1  class="header-card">Funds disbursed
-      <h1 class="mat-title">UGX{{(transactionCount$ | async)?.singleBulkTransactionCount}}</h1>
+  <div *ngIf="transactionCount$ | async; let transactionCount; else loading">
+    <h1  class="header-card">Transactions
+
+    
+      <h3 class="responsive-brand"><strong>{{transactionCount.transactionCount > 0 ? 'UGX' + transactionCount.transactionCount : 'UGX0'}}</strong></h3>
     </h1>
     <p class="absolute icon-position-dashboard">
-      <mat-icon class="icon-size-dashboard" color="primary">insights</mat-icon>
+      <mat-icon class="icon-size-dashboard" color="primary">point_of_sale</mat-icon>
     </p>
-  </ng-container>
+  </div>
 
-     <app-skeleton></app-skeleton>
+<ng-template  #loading>
+  <app-skeleton></app-skeleton>
+</ng-template>
+     
      
        
        </mat-card>
     </div>
-  
-    <div class="col-4">
-     <mat-card class="container-4 relative">
-    <ng-container *ngIf="false">
-      <h1  class="header-card">Transactions
-        <h1 class="mat-title">{{(transactionCount$ | async)?.transactionCount}}</h1>
-      </h1>
-      <p class="absolute icon-position-dashboard">
-        <mat-icon class="icon-size-dashboard" color="primary">point_of_sale</mat-icon>
-      </p>
-    </ng-container>
-    <app-skeleton></app-skeleton>
-      
-     </mat-card>
-    </div>
+
+
   
     <div class="col-4">
       <mat-card class="container-4 relative">
-        <ng-container *ngIf="false">
-          <h1  class="header-card">Funds available
-            <h1 class="mat-title">UGX{{fundsAvailable}}</h1>
+        <div *ngIf="fundsCollectedCount$ | async; let fundsCollectedCount; else loading">
+          <h1  class="header-card">Funds collected
+   
+         
+            <h3 class="responsive-brand"><strong>{{fundsCollectedCount.fundsCollectedCount > 0 ? 'UGX' + fundsCollectedCount.fundsCollectedCount : 'UGX0'}}</strong></h3>
           </h1>
+
           <p class="absolute icon-position-dashboard">
             <mat-icon class="icon-size-dashboard" color="primary">payments</mat-icon>
           </p>
-        </ng-container>
+        </div>
+      
+      <ng-template  #loading>
         <app-skeleton></app-skeleton>
+      </ng-template>
        </mat-card>
     </div>
 
     <div class="col-4">
       <mat-card class="container-4 relative">
-       <ng-container *ngIf="false">
-        <h1  class="header-card">Funds collected
-          <h1 class="mat-title">UGX{{(fundsCollectedCount$ | async)?.fundsCollectedCount}}</h1>
-        </h1>
-        <p class="absolute icon-position-dashboard">
-          <mat-icon class="icon-size-dashboard" color="primary">payments</mat-icon>
-        </p>
-       </ng-container>
-        <app-skeleton></app-skeleton>
+      <div *ngIf="fundsAvailable > 0; else loading">
+    <h1  class="header-card">Funds available
+      <h3 class="responsive-brand"><strong>{{fundsAvailable > 0 ? 'UGX' + fundsAvailable : 'UGX0'}}</strong></h3>
+    </h1>
+    <p class="absolute icon-position-dashboard">
+      <mat-icon class="icon-size-dashboard-amount" color="primary">store</mat-icon>
+    </p>
+  </div>
+
+<ng-template  #loading>
+  <app-skeleton></app-skeleton>
+</ng-template>
        </mat-card>
     </div>
  
   </div>
 <br/><br/>
  
-  <div class="flex flex-wrap">
+  <!-- <div class="flex flex-wrap">
     <div class="col-10 mt-5">
         <mat-card class="container mat-elevation-z3 relative">
           <div style="background-color: #fff;
@@ -87,4 +107,4 @@
         </mat-card> 
       
     </div>
-</div>
+</div> -->

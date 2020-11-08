@@ -34,11 +34,15 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './skeleton/skeleton.component';
+import { TestComponent } from './test/test.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent, TestComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -60,7 +64,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTooltipModule, NgxSkeletonLoaderModule ],
+    MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

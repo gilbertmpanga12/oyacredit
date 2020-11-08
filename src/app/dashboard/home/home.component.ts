@@ -45,10 +45,20 @@ dataSource = {
     this.fundsCollectedCount$ = this.transactionCount.valueChanges();
 
     this.service.getFundsAvailable().subscribe((data: any) => {
-      this.fundsAvailable = data["AutoCreate"]["Response"][0]["Balance"][0]["Currency"][0]["Balance"][0];
+      this.fundsAvailable = data["totalBalance"];
     }, error => {
       console.log(error);
     })
+  }
+
+  numberTrimmer(amount:number): string{
+    if(amount > 1000){
+      return `${amount}`.substring(0,3) + 'k';
+    }else if(amount > 990000){
+      return `${amount}`.substring(0,3) + 'k';
+    }else{
+      return `${amount}`;
+    }
   }
 
 }

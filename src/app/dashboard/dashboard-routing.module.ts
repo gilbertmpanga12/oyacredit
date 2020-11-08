@@ -9,11 +9,12 @@ import {AirtimeComponent} from './airtime/airtime.component';
 import {MobilemoneyComponent} from './mobilemoney/mobilemoney.component';
 import {MobiledataComponent} from './mobiledata/mobiledata.component'
 import { NotificationsComponent } from './notifications/notifications.component';
+import { TestComponent } from './test/test.component';
 const routes: Routes = [{ path: '', component: DashboardComponent,
 children:[
 {
   path: '',
-  component: HomeComponent,
+  component: TestComponent,
   data: {animation: "HomePage"}
 },
 {
