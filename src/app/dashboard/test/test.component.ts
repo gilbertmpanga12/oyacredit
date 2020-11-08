@@ -13,20 +13,18 @@ export class TestComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          // { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Funds Disbursed', cols: 1, rows: 1 },
+          { title: 'Transactions', cols: 1, rows: 1 },
+          { title: 'Funds Collected', cols: 1, rows: 1 },
+          { title: 'Funds Available', cols: 1, rows: 1 }
         ];
       }
 
       return [
-        // { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 1 },
-        { title: 'Card 4', cols: 1, rows: 1 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Funds Disbursed', cols: 1, rows: 1 },
+        { title: 'Transactions', cols: 1, rows: 1 },
+        { title: 'Funds Collected', cols: 1, rows: 1 },
+        { title: 'Funds Available', cols: 1, rows: 1 }
       ];
     })
   );
