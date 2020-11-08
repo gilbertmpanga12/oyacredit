@@ -14,8 +14,27 @@
   position: absolute;
   top: 5px;
   right: 10px;
+  font-size: 2rem !important;
+  
+}
+.emphasize-btn{
+  width: 80px;height: 85px;margin-top: -22px;
 }
 
 .dashboard-card-content {
   text-align: center;
+}
+.card-title-decoration{
+  font-size: 1.875rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-card{
+  font-size:  1.6rem !important;
+
 }
