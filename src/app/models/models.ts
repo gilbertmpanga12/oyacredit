@@ -29,3 +29,10 @@ export interface SinglePayment{
 }
 
 export interface CSV{Amount:string,MSISND:string,Name:string,Reason:string,Index?:number};
+
+export interface History {
+  transactionRef: string;
+  amount: number;
+  transactionInitiationDate: number;
+  transactionType: string;
+}

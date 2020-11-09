@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as Papa from 'papaparse';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-mobilemoneydialog',
@@ -80,10 +81,7 @@ export class MobilemoneydialogComponent implements OnInit {
             }
             this.service.isLoading = false;
             this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
-          }, err => {
-            this.service.isLoading = false;
-            this.openSnackBar(err['error']['message'],'OK', 'error');
-          });
+          }, this.handleError.bind(this));
           
           
   }
@@ -95,26 +93,36 @@ export class MobilemoneydialogComponent implements OnInit {
     let telephone = form.phoneNumber;
     let msnid = callCode + telephone;
     let amount: string = `${this.incrementWithTelcos(this.telco, form.amount)}`;
+    let reason:string = "PAYMENT";
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }
     this.service.
-    manualTransaction(amount,msnid, form.reason, transactionType)
+    manualTransaction(amount,msnid, reason, transactionType)
     .subscribe((data: any) => {
-      if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
+      if(data["message"]["AutoCreate"]["Response"][0]["Status"] == "OK"){
         this.service.isLoading = false;
         this.dialogRef.close();
         this.openSnackBar('Transaction successful','OK', 'success');
         return;
       }
       this.service.isLoading = false;
-      console.log(data);
-      this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
-    }, err => {
-      this.service.isLoading = false;
-      this.openSnackBar(err['error']['message'],'OK', 'error');
-    });
+      this.openSnackBar(data["message"],'OK', 'error');
+    }, this.handleError.bind(this));
+
   }
+
+  handleError(err: HttpErrorResponse){
+    this.service.isLoading = false;
+    if(err.error['message']){
+      const message: string = err.error['message'];
+      this.openSnackBar(message, 'OK', 'error');
+      return;
+    }else{
+      this.openSnackBar('Oops something went wrong, check your network or contact support','OK', 'error');
+    }
+  }
+  
 
   incrementWithTelcos(telco: string, total: string): number{
     if(parseInt(total) <= 600){
@@ -139,7 +147,8 @@ export class MobilemoneydialogComponent implements OnInit {
       duration: 7000,
       horizontalPosition: "right",
       verticalPosition: "top",
-      panelClass: statusColor
+      panelClass: statusColor,
+      
     });
   }
 

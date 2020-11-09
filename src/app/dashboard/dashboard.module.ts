@@ -38,7 +38,8 @@ import { TestComponent } from './test/test.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSortModule} from '@angular/material/sort';
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
@@ -64,7 +65,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule ],
+    MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule,
+    MatProgressSpinnerModule, MatSortModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

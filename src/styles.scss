@@ -155,11 +155,18 @@ h1,h2,h3,h4,h5,h6,span{
 
 .success{
   background-color: #ffeb3b !important;
+  word-break: break-all !important;
+  span{
+    word-break: break-all !important;
+  }
+
 }
 .error{
   background-color: #f44336 !important;
+  word-break: break-all !important;
   span{
     color: #fff !important;
+    word-break: break-all !important;
   }
 }
 
