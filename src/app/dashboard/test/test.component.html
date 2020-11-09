@@ -41,7 +41,7 @@
           <div *ngIf="transactionCount$ | async; let transactionCount; else loading">
            
             <h1 
-            class="text-gray-900  card-title-decoration">{{transactionCount.transactionCount > 0 ? 'UGX' + transactionCount.transactionCount : '0 transactions'}}</h1>
+            class="text-gray-900  card-title-decoration">{{transactionCount.transactionCount > 0 ?  transactionCount.transactionCount  : '0'}} {{transactionCount.transactionCount > 1 ? '  transactions' : ' transaction'}}</h1>
         
           </div>
         

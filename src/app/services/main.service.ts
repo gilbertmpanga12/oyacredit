@@ -93,5 +93,10 @@ export class MainService {
       return this.http.get(environment.baseUrl + 'balances/' + 'get-balance');
   }
   
+  resetToDefaults(): void{
+    this.csvResults =  [];
+    this.bulkTransactionReady = false;
+    this.bulkTotal = 0;
+  }
 
 }
