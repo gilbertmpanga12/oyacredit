@@ -82,7 +82,7 @@ export class MobilemoneydialogComponent implements OnInit {
             this.openSnackBar(data["AutoCreate"]["Response"][0]["StatusMessage"],'OK', 'error');
           }, err => {
             this.service.isLoading = false;
-            this.openSnackBar('Something went wrong','OK', 'error');
+            this.openSnackBar(err['error']['message'],'OK', 'error');
           });
           
           
