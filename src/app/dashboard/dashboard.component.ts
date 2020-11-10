@@ -68,12 +68,12 @@ export class DashboardComponent implements OnInit {
       name: 'Mobile Money',
       icon: 'smartphone',
       url: '/mobile-money'
-    },
-    {
-      name: 'Banks',
-      icon: 'credit_card',
-      url: '/banks'
     }
+    // {
+    //   name: 'Banks',
+    //   icon: 'credit_card',
+    //   url: '/banks'
+    // }
   ];
 
   constructor(public router: Router, public service: MainService, private dialog: MatDialog) { }

@@ -18,6 +18,7 @@ export class MobilemoneydialogComponent implements OnInit {
   telco: string = "MTN";
   telcos: string[] = ['MTN', 'Airtel', 'Others'];
   transactionCost: any = {'MTN': '390', 'Airtel': '300', 'Others':'390'};
+  charge: string = "300";
   constructor(public dialogRef: MatDialogRef<MobilemoneydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,  private _single_fb: 
     FormBuilder, public service: MainService,  private _snackBar: MatSnackBar) { }
@@ -47,7 +48,10 @@ export class MobilemoneydialogComponent implements OnInit {
       skipEmptyLines: true,
       complete: (results) => {
         this.service.csvResults = results.data;
-        this.service.csvResults.forEach((amount: CSV) => this.service.bulkTotal += parseInt(amount.Amount));
+        this.service.csvResults.forEach((amount: CSV) => {
+          this.service.phoneNumbers.push(amount.MSISND);
+          this.service.bulkTotal += parseInt(amount.Amount);
+        });
         this.service.isLoading = false;
       }
     },);
@@ -100,7 +104,7 @@ export class MobilemoneydialogComponent implements OnInit {
     this.service.
     manualTransaction(amount,msnid, reason, transactionType)
     .subscribe((data: any) => {
-      if(data["message"]["AutoCreate"]["Response"][0]["Status"] == "OK"){
+      if(data["AutoCreate"]["Response"][0]["Status"] == "OK"){
         this.service.isLoading = false;
         this.dialogRef.close();
         this.openSnackBar('Transaction successful','OK', 'success');
@@ -127,10 +131,13 @@ export class MobilemoneydialogComponent implements OnInit {
   incrementWithTelcos(telco: string, total: string): number{
     if(parseInt(total) <= 600){
       if(telco == "MTN"){
+        this.charge = "390";
         return parseInt(total) + 390;
       }else if(telco == "Airtel"){
+        this.charge = "300";
         return parseInt(total) + 300;
       }else{
+        this.charge = "390";
         return parseInt(total) + 390;
       }
     }else{

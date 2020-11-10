@@ -40,6 +40,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSortModule} from '@angular/material/sort';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
@@ -66,7 +68,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule,
-    MatProgressSpinnerModule, MatSortModule ],
+    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

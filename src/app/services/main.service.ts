@@ -15,6 +15,7 @@ export class MainService {
   csvResults: CSV[] = [];
   bulkTransactionReady: boolean = false;
   bulkTotal: number = 0;
+  phoneNumbers: string[] = [];
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {
       if (user){
@@ -58,11 +59,10 @@ export class MainService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         "Control-Allow-Origin": "*",
-         beneficiary: beneficiary,
-         bulkTotal: `${this.bulkTotal}`
+         beneficiary: beneficiary
       })
     };
-    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay", httpOptions);
+    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay/" + `${this.bulkTotal}` + `/${this.phoneNumbers}`, httpOptions);
 
   }
 

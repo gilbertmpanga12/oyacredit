@@ -25,6 +25,7 @@ export class BulkcontactsComponent implements OnInit {
 
   deleteContact(index: number): void{
     this.service.csvResults.splice(index,1);
+    this.service.bulkTotal -= parseInt(this.service.csvResults[index].Amount);
     this.dataSource = new MatTableDataSource<CSV>(this.service.csvResults);
   }
 

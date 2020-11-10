@@ -35,4 +35,6 @@ export interface History {
   amount: number;
   transactionInitiationDate: number;
   transactionType: string;
+  charge: string;
+  phoneNumbers: string;
 }

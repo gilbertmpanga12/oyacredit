@@ -12,7 +12,7 @@ import {History} from '../../models/models';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['transactionRef', 'amount', 'transactionInitiationDate', 'transactionType'];
+  displayedColumns: string[] = ['transactionRef', 'amount', 'charge', 'phoneNumber','transactionInitiationDate', 'transactionType'];
   dataSource;
   itemsCount:number = 0;
   constructor(private firestore: AngularFirestore) {
@@ -29,6 +29,9 @@ export class HistoryComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   
+  shortenString(transactionRef: string): string {
+    return transactionRef.substring(0,10);
+  }
 
 }
 
