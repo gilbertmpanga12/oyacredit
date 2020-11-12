@@ -16,6 +16,8 @@ export class MainService {
   bulkTransactionReady: boolean = false;
   bulkTotal: number = 0;
   phoneNumbers: string[] = [];
+  actualAmount: string = "";
+  bulkFees: string[] = [];
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {
       if (user){
@@ -45,11 +47,11 @@ export class MainService {
   manualTransaction(amount:string, phoneNumber:string, narrative:string, transactionType: string){
     if(transactionType == 'ManualTransaction'){
       return this.http.get(environment.baseUrl 
-        + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
+        + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}` + `/${this.actualAmount}`);
     }
 
     return this.http.get(environment.baseUrl 
-      + 'bulk-transactions' + '/withdraw' + `/${amount}` + `/${phoneNumber}` + `/${narrative}`);
+      + 'bulk-transactions' + '/withdraw' + `/${amount}` + `/${phoneNumber}` + `/${narrative}` + `/${this.actualAmount}`);
    
   }
 
@@ -59,10 +61,11 @@ export class MainService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         "Control-Allow-Origin": "*",
-         beneficiary: beneficiary
+         beneficiary: JSON.stringify({xml: beneficiary,phoneNumbers:this.phoneNumbers,bulkFees: this.bulkFees})
       })
     };
-    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay/" + `${this.bulkTotal}` + `/${this.phoneNumbers}`, httpOptions);
+    // /pay/:amount/:actualAmount
+    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay/" + `${this.bulkTotal}` + `/${this.actualAmount}`, httpOptions);
 
   }
 

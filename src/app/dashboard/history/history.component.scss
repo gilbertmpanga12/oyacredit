@@ -2,5 +2,21 @@ table{
     width: 100%;
 }
 td {
-    max-width: 0px;
-    }
+    // padding-left: 5px !important;
+   margin-right: 95px !important;
+   padding: .9rem !important;
+   
+}
+
+.scrollable{
+    overflow: scroll !important;
+    overflow-x: scroll !important;
+    overflow-y: hidden !important;
+    width:200px !important;
+    height: 45px !important;
+    padding: .5rem !important;
+}
+
+.normal-block{
+    display: inline;
+}

@@ -51,6 +51,8 @@ export class MobilemoneydialogComponent implements OnInit {
         this.service.csvResults.forEach((amount: CSV) => {
           this.service.phoneNumbers.push(amount.MSISND);
           this.service.bulkTotal += parseInt(amount.Amount);
+          this.service.actualAmount = `${this.service.bulkTotal}`;
+          this.service.bulkFees.push(amount.Amount);
         });
         this.service.isLoading = false;
       }
@@ -98,6 +100,7 @@ export class MobilemoneydialogComponent implements OnInit {
     let msnid = callCode + telephone;
     let amount: string = `${this.incrementWithTelcos(this.telco, form.amount)}`;
     let reason:string = "PAYMENT";
+    this.service.actualAmount = `${form.amount}`;
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }

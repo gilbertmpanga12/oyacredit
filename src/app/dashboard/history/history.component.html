@@ -33,30 +33,41 @@
                     <table mat-table [dataSource]="dataSource" >
 
                
+                        <!-- <ng-container matColumnDef="transactionRef">
+                          <th mat-header-cell *matHeaderCellDef> Transaction reference </th>
+                          <td mat-cell *matCellDef="let element" > 
+                            <div [ngClass]="showRefCodeSet.has(element.transactionRef) ? 'scrollable': 'normal-block'">
+                              {{ showRefCodeSet.has(element.transactionRef) ? element.transactionRef : shortenString(element.transactionRef)}} 
+                            </div>
+                          
+                            <button [matTooltip]="element.transactionRef" 
+                            (click)="showRefCodeSet.has(element.transactionRef) ? removeKeyFromSet(element.transactionRef): addToSet(element.transactionRef)"
+                            mat-icon-button color="primary"><mat-icon>visibility</mat-icon></button></td>
+                        </ng-container> -->
                         <ng-container matColumnDef="transactionRef">
                           <th mat-header-cell *matHeaderCellDef> Transaction reference </th>
-                          <td mat-cell *matCellDef="let element" style="text-overflow:ellipsis;white-space: nowrap;
-                          overflow: hidden;"> {{element.transactionRef}} </td>
+                          <td mat-cell *matCellDef="let element" >{{element.transactionRef}} </td>
                         </ng-container>
-                    
                   
-                        <ng-container matColumnDef="amount">
-                          <th mat-header-cell *matHeaderCellDef> Amount </th>
-                          <td mat-cell *matCellDef="let element" ><span style="margin-left: 8px !important;">UGX{{element.amount}}</span>  </td>
+                        <ng-container matColumnDef="actualAmount">
+                          <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Amount </th>
+                          <td mat-cell *matCellDef="let element" > UGX{{element.actualAmount}}  </td>
                         </ng-container>
                         <ng-container matColumnDef="charge">
-                          <th mat-header-cell *matHeaderCellDef> Charge </th>
-                          <td mat-cell *matCellDef="let element"> UGX{{element.charge}} </td>
+                          <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Charge </th>
+                          <td mat-cell *matCellDef="let element"> UGX500 </td>
                         </ng-container>
                      
                         <ng-container matColumnDef="transactionInitiationDate">
-                          <th mat-header-cell *matHeaderCellDef> Transaction initiation date </th>
+                          <th mat-header-cell *matHeaderCellDef>Initiation date </th>
                           <td mat-cell *matCellDef="let element"> {{element.transactionInitiationDate | date}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="phoneNumber">
-                          <th mat-header-cell *matHeaderCellDef> Sent to</th>
-                          <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+                          <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Sent to</th>
+                          <td mat-cell *matCellDef="let element"> <div 
+                            [ngClass]="element.phoneNumber.length > 20 ? 'scrollable': ''"
+                            >+{{element.phoneNumber}}</div> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="transactionType">

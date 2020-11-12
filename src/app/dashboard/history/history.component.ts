@@ -12,26 +12,36 @@ import {History} from '../../models/models';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['transactionRef', 'amount', 'charge', 'phoneNumber','transactionInitiationDate', 'transactionType'];
+  displayedColumns: string[] = ['transactionRef', 'actualAmount', 'charge', 'phoneNumber','transactionInitiationDate', 'transactionType'];
   dataSource;
   itemsCount:number = 0;
+  showRefCodeSet: Set<string> = new Set();
   constructor(private firestore: AngularFirestore) {
-    this.firestore.collection('transactions').valueChanges().subscribe((data: History[]) => {
-      this.itemsCount = data.length;
-     this.dataSource =  new MatTableDataSource<History>(data);
-  });
+    
     
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.firestore.collection('transactions').valueChanges().subscribe((data: History[]) => {
+      this.itemsCount = data.length;
+     this.dataSource =  new MatTableDataSource<History>(data);
+     this.dataSource.paginator = this.paginator;
+  });
+
   }
   
   shortenString(transactionRef: string): string {
     return transactionRef.substring(0,10);
   }
 
+  addToSet(refCode: string): void{
+    this.showRefCodeSet.add(refCode);
+  }
+
+  removeKeyFromSet(refCode: string): void{
+    this.showRefCodeSet.delete(refCode);
+  }
 }
 
