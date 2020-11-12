@@ -49,10 +49,8 @@ export class MobilemoneydialogComponent implements OnInit {
       complete: (results) => {
         this.service.csvResults = results.data;
         this.service.csvResults.forEach((amount: CSV) => {
-          this.service.phoneNumbers.push(amount.MSISND);
           this.service.bulkTotal += parseInt(amount.Amount);
           this.service.actualAmount = `${this.service.bulkTotal}`;
-          this.service.bulkFees.push(amount.Amount);
         });
         this.service.isLoading = false;
       }
