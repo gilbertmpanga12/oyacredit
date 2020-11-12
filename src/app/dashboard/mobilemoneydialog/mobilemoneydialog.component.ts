@@ -29,7 +29,6 @@ export class MobilemoneydialogComponent implements OnInit {
       amount: ['', [Validators.required, Validators.min(500)]],
       reason: ['', [Validators.required]]
     });
-    
   }
 
   uploadBulkPayments(event: FileList): void{
@@ -69,7 +68,13 @@ export class MobilemoneydialogComponent implements OnInit {
   sendBulkTransation(): void {
     this.service.isLoading = true;
     let xml = this.service.csvResults.map((cell: CSV) => {
-      return "<Beneficiary>" + "<Amount>" + cell.Amount + "</Amount>"+ 
+      if(parseInt(cell.Amount) < 500){
+        throw this.stopSendingBulk(`
+        Your excel file includes an amount less than 500, 
+        please update it to an amount not less than 500
+        `,"Ok","error")
+      }
+      return "<Beneficiary>" + "<Amount>" + this.checkTelcoAndIncrement(cell.Amount,cell.MSISND) + "</Amount>"+ 
               "<AccountNumber>"+ cell.MSISND +
               "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
               + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
@@ -89,6 +94,9 @@ export class MobilemoneydialogComponent implements OnInit {
           
           
   }
+
+
+
 
   uploadSingleTransaction(transactionType: string): void{
     this.service.isLoading = true;
@@ -146,18 +154,45 @@ export class MobilemoneydialogComponent implements OnInit {
     }
   }
 
+  checkTelcoAndIncrement(total: string, phoneNumber: string): string{
+    let default_amount :string = `${parseInt(total) + 390}`;
+    switch(phoneNumber.substring(3,5)){
+      case "78":
+        default_amount = `${parseInt(total) + 390}`;
+        break;
+      case "77":
+        default_amount = `${parseInt(total) + 390}`;
+        break;
+      case "75":
+        default_amount = `${parseInt(total) + 300}`;
+        break;
+      case "70":
+        default_amount = `${parseInt(total) + 300}`;
+        break;
+      default:
+        default_amount =  `${parseInt(total) + 390}`;
+    }
+    return default_amount;
+  }
+
 
 
 
 
   openSnackBar(message: string, action: string, statusColor:string) {
     this._snackBar.open(message, action, {
-      duration: 7000,
+      duration: 9000,
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: statusColor,
       
     });
+  }
+  
+  stopSendingBulk(message: string, action: string, statusColor:string): void{
+    this.service.isLoading = false;
+    this.openSnackBar(message, action, statusColor);
+    this.checkBulkPayment();
   }
 
 }

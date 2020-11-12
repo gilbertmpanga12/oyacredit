@@ -17,8 +17,11 @@
 
 
     <ng-container *ngIf="service.csvResults.length < 1">
-      <h2 mat-dialog-title class="dialog-title" style="font-weight: 700 !important;">Send mobile money to a many users</h2>
-   <mat-divider></mat-divider>
+      <h2 mat-dialog-title class="dialog-title" 
+      style="font-weight: 700 !important;margin-bottom: 3px !important;">Send mobile money to a many users</h2>
+   <small class="text-gray-900" style="text-align: justify;">Minimum amount to send  bulk payments: <strong>UGX500</strong></small>
+  
+   <mat-divider style="margin-top: 10px !important;"></mat-divider>
 
     <mat-dialog-content >
     

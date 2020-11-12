@@ -22,12 +22,6 @@ export class HistoryComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngOnInit(): void{
-    
-    
-  }
-
-
   ngAfterViewInit() {
     this.firestore.collection('transactions').valueChanges().subscribe((data: History[]) => {
     this.itemsCount = data.length;
