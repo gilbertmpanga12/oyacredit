@@ -1,25 +1,42 @@
- 
-.header-card{
-    font-size: 1.1rem;
-    font-weight: 600 !important;
-    margin-bottom: 8px;
-    text-align: right;
-    text-transform: capitalize;
-  }
-.icon-size-dashboard{
-  font-size: 3.6rem;
-  // color:  #ffee58 !important;
-
-}
-.icon-size-dashboard-amount{
-  font-size: 3rem;
-}
-.icon-position-dashboard{
-  top: 32%;
-  left: 2.5%;
+.grid-container {
+  margin: 20px;
 }
 
-.responsive-brand{
-  font-size: 23px !important;
-  font-weight: 700 !important;
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 2rem !important;
+  // background-color: #c8b900 !important;
+  
+}
+.emphasize-btn{
+  width: 80px;height: 85px;margin-top: -22px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+.card-title-decoration{
+  font-size: 1.875rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-card{
+  font-size: 2rem !important;
+  text-align: center !important;
+
 }

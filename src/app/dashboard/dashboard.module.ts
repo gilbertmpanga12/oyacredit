@@ -34,7 +34,6 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './skeleton/skeleton.component';
-import { TestComponent } from './test/test.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -45,7 +44,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent, TestComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
