@@ -1,0 +1,21 @@
+<h2  mat-dialog-title class="dialog-title" 
+style="font-weight: 700 !important;">Enter money for float</h2>
+<mat-divider></mat-divider>
+<br/>
+<br/>
+
+<mat-dialog-content>
+    <p>
+        <mat-form-field appearance="fill" class="width-full">
+            <mat-label>Amount</mat-label>
+            <textarea matInput placeholder="UGX"></textarea>
+          </mat-form-field>
+    </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    mat-flat-button (click)="uploadFunds()" cdkFocusInitial color="primary"><strong>Confirm transaction</strong></button>
+  </mat-dialog-actions>
