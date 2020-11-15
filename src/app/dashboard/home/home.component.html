@@ -31,7 +31,7 @@
         <mat-card-header>
           <mat-card-title class="text-gray-900 ">
            <strong>Transactions</strong>
-            <button mat-raised-button color="primary" class="more-button emphasize-btn mat-elevation-z3">
+            <button routerLink="/history" style="outline: none;"  mat-raised-button color="primary" class="more-button emphasize-btn mat-elevation-z3">
               <mat-icon class="text-gray-900  icon-card">store</mat-icon>
             </button>
   
@@ -57,7 +57,9 @@
         <mat-card-header>
           <mat-card-title class="text-gray-900 ">
            <strong>Funds Disbursed</strong>
-            <button mat-raised-button color="primary" class="more-button emphasize-btn mat-elevation-z3">
+            <button mat-raised-button 
+            routerLink="/history" style="outline: none;"
+            color="primary" class="more-button emphasize-btn mat-elevation-z3">
               <mat-icon class="text-gray-900  icon-card">payments</mat-icon>
             </button>
           
@@ -67,7 +69,7 @@
 
           <div *ngIf="bulkSingleCount$ | async; let bulkSingleCount; else loading">
             <h1 
-          class="text-gray-900  card-title-decoration">{{bulkSingleCount.singleBulkTransactionCount > 0 ? 'UGX' + bulkSingleCount.singleBulkTransactionCount :  bulkSingleCount.singleBulkTransactionCount}}</h1>
+          class="text-gray-900  card-title-decoration">{{bulkSingleCount.singleBulkTransactionCount > 0 ? 'UGX' + bulkSingleCount.singleBulkTransactionCount :  'UGX0'}}</h1>
             
           </div>
         

@@ -24,7 +24,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ManualrepaymentComponent } from './manualrepayment/manualrepayment.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
@@ -41,10 +40,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoadMoneyComponent } from './load-money/load-money.component';
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent, ManualrepaymentComponent, BulkcontactsComponent, EditprofileComponent, SkeletonComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

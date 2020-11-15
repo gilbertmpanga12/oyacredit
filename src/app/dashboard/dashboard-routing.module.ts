@@ -9,6 +9,7 @@ import {AirtimeComponent} from './airtime/airtime.component';
 import {MobilemoneyComponent} from './mobilemoney/mobilemoney.component';
 import {MobiledataComponent} from './mobiledata/mobiledata.component'
 import { NotificationsComponent } from './notifications/notifications.component';
+import {LoadMoneyComponent} from './load-money/load-money.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent,
 children:[
@@ -46,7 +47,13 @@ children:[
   path: 'notifications',
   component: NotificationsComponent,
   data: {animation: "NotificationsPage"}
+},
+{
+  path: 'load-money',
+  component: LoadMoneyComponent,
+  data: {animation: 'LoadMoneyPage'}
 }
+
 ] }];
 
 @NgModule({
