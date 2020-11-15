@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { MainService } from 'src/app/services/main.service';
 import {LoadMoneyDialogComponent} from '../load-money-dialog/load-money-dialog.component';
 
 @Component({
@@ -8,10 +11,13 @@ import {LoadMoneyDialogComponent} from '../load-money-dialog/load-money-dialog.c
   styleUrls: ['./load-money.component.scss']
 })
 export class LoadMoneyComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
+  fundsCollectedCount: AngularFirestoreDocument<any>;
+  fundsCollectedCount$: Observable<any>;
+  constructor(public dialog: MatDialog,private firestore: AngularFirestore, public service:MainService) { }
 
   ngOnInit(): void {
+    this.fundsCollectedCount = this.firestore.doc('fundsCollectedCount/' + this.service.userId);
+    this.fundsCollectedCount$ = this.fundsCollectedCount.valueChanges();
   }
 
   openDialog(): void{
@@ -20,5 +26,7 @@ export class LoadMoneyComponent implements OnInit {
       height: 'auto'
     });
   }
+
+  
 
 }
