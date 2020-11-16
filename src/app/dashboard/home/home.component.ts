@@ -17,7 +17,9 @@ export class HomeComponent implements OnInit{
   bulkSingleCount$: Observable<any>;
   fundsCollectedCount: AngularFirestoreDocument<any>;
   fundsCollectedCount$: Observable<any>;
-  fundsAvailable: any;
+  fundsAvailableCount: AngularFirestoreDocument<any>;
+  fundsAvailableCount$: Observable<any>;
+  
   /** Based on the screen size, switch from standard to one column per row */
   // cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
   //   map(({ matches }) => {
@@ -53,13 +55,9 @@ export class HomeComponent implements OnInit{
       this.fundsCollectedCount = this.firestore.doc('fundsCollectedCount/' + this.service.userId);
       this.fundsCollectedCount$ = this.fundsCollectedCount.valueChanges();
   
-      this.service.getFundsAvailable().subscribe((data: any) => {
-        this.fundsAvailable = data["totalBalance"];
-        console.log(this.fundsAvailable)
-      }, error => {
-        console.log(error);
-      })
-    }
+      this.fundsAvailableCount = this.firestore.doc('fundsAvailableCount/' + this.service.userId);
+      this.fundsAvailableCount$ = this.fundsAvailableCount.valueChanges();
+ }
 
     
 }

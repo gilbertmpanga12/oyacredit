@@ -1,33 +1,35 @@
-<div class="flex flex-wrap">
-    <div class="col-10 mr-5 mt-5">
-
-     <mat-card class="container mat-elevation-z8">
-         <p class="text-center">
-             <img src="assets/pay.svg" height="200px" width="200px"/>
-
-         </p>
-        <h2 class="dashboard-title text-center">Available amount</h2>
-
-        
-
-        <div *ngIf="fundsCollectedCount$ | async; let fundsCollectedCount; else loading">
-           
-            <h2 class="dashboard-title text-center" style="font-size: 2rem !important;font-weight: 700 !important;">
-                {{fundsCollectedCount.fundsCollectedCount > 0 ? 'UGX' + fundsCollectedCount.fundsCollectedCount : 'UGX0'}}
-            </h2>
-          </div>
-          <ng-template  #loading>
-            <app-skeleton></app-skeleton>
-          </ng-template>
-        <br/>
-        <p class="text-center">
-            <button mat-raised-button class="custom-cta-lg text-gray-900" 
-            (click)="openDialog()"
-            color="primary"><mat-icon>add_circle</mat-icon><strong> Load more money</strong></button>
-        </p>
-        <br/>
-        
-    </mat-card>
-
-    </div>
-    </div>
+<ng-container>
+    <div class="flex flex-wrap">
+        <div class="col-10 mr-5 mt-5">
+    
+         <mat-card class="container mat-elevation-z8">
+             <p class="text-center">
+                 <img src="assets/pay.svg" height="200px" width="200px"/>
+    
+             </p>
+            <h2 class="dashboard-title text-center">Available amount</h2>
+    
+            
+    
+            <div *ngIf="fundsCollectedCount$ | async; let fundsCollectedCount; else loading">
+               
+                <h2 class="dashboard-title text-center" style="font-size: 2rem !important;font-weight: 700 !important;">
+                    {{fundsCollectedCount.fundsCollectedCount > 0 ? 'UGX' + fundsCollectedCount.fundsCollectedCount : 'UGX0'}}
+                </h2>
+              </div>
+              <ng-template  #loading>
+                <app-skeleton></app-skeleton>
+              </ng-template>
+            <br/>
+            <p class="text-center">
+                <button mat-raised-button class="custom-cta-lg text-gray-900" 
+                (click)="openDialog()"
+                color="primary"><mat-icon>add_circle</mat-icon><strong> Load more money</strong></button>
+            </p>
+            <br/>
+            
+        </mat-card>
+    
+        </div>
+        </div>
+</ng-container>
