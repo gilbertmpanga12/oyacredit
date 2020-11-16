@@ -23,7 +23,7 @@ export class LoadMoneyDialogComponent implements OnInit {
     try{
     this.service.isLoading = true;
     const increment = firebase.firestore.FieldValue.increment(parseInt(this.amount));
-    this.firestore.doc('fundsCollectedCount/' + this.service.userId).update({fundsCollectedCount:increment});
+    this.firestore.doc('fundsAvailableCount/' + this.service.userId).update({fundsAvailableCount:increment});
     this.openSnackBar('Great! amount successfully added','Ok','success');
     this.service.isLoading = false;
     this.dialogRef.close();
