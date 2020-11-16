@@ -11,13 +11,13 @@ import {LoadMoneyDialogComponent} from '../load-money-dialog/load-money-dialog.c
   styleUrls: ['./load-money.component.scss']
 })
 export class LoadMoneyComponent implements OnInit {
-  fundsCollectedCount: AngularFirestoreDocument<any>;
-  fundsCollectedCount$: Observable<any>;
+  fundsAvailableCount: AngularFirestoreDocument<any>;
+  fundsAvailableCount$: Observable<any>;
   constructor(public dialog: MatDialog,private firestore: AngularFirestore, public service:MainService) { }
 
   ngOnInit(): void {
-    this.fundsCollectedCount = this.firestore.doc('fundsCollectedCount/' + this.service.userId);
-    this.fundsCollectedCount$ = this.fundsCollectedCount.valueChanges();
+    this.fundsAvailableCount = this.firestore.doc('fundsAvailableCount/' + this.service.userId);
+    this.fundsAvailableCount$ = this.fundsAvailableCount.valueChanges();
   }
 
   openDialog(): void{

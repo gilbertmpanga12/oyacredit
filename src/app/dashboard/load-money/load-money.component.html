@@ -11,10 +11,10 @@
     
             
     
-            <div *ngIf="fundsCollectedCount$ | async; let fundsCollectedCount; else loading">
+            <div *ngIf="fundsAvailableCount$ | async; let fundsAvailableCount; else loading">
                
                 <h2 class="dashboard-title text-center" style="font-size: 2rem !important;font-weight: 700 !important;">
-                    {{fundsCollectedCount.fundsCollectedCount > 0 ? 'UGX' + fundsCollectedCount.fundsCollectedCount : 'UGX0'}}
+                    {{fundsAvailableCount.fundsAvailableCount > 0 ? 'UGX' + fundsAvailableCount.fundsAvailableCount : 'UGX0'}}
                 </h2>
               </div>
               <ng-template  #loading>
