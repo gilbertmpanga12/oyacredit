@@ -37,4 +37,5 @@ export interface History {
   transactionType: string;
   charge: string;
   phoneNumbers: string;
+  status?:string;
 }

@@ -52,6 +52,34 @@ export class MainService {
       + 'bulk-transactions' + '/withdraw' + `/${amount}` + `/${phoneNumber}` + `/${narrative}` + `/${this.actualAmount}`);
    
   }
+  /*
+  curl -v --insecure  -H "CLIENT_ACCESS_APIKEY: 63DC7C1C-C969-4439-A725-561FD8152B5D" -H  "API_CLIENT: TEST" 
+  -d "TYPE=SYNC_BILLPAY_REQUEST" -d "TXNID=83753391505" 
+  -d "MSISDN=255678218678" -d "AMOUNT=5000" -d "COMPANYNAME=25565555888" -d "CUSTOMERREFERENCEID=101001"  
+  https://api.test.provisocloud.com:200/provisio/api/v1000/_transactions/_momopost/mp-500/repayments
+  */
+
+  test(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'CLIENT_ACCESS_APIKEY':  '63DC7C1C-C969-4439-A725-561FD8152B5D',
+        "API_CLIENT": "TEST"
+      })
+    };
+    const url:string = 'https://api.test.provisocloud.com:200/provisio/api/v1000/_transactions/_momopost/mp-500/repayments';
+    this.http.post(url, {
+      "TYPE": "SYNC_BILLPAY_REQUEST",
+      "TXNID":"83753391505",
+      "MSISDN":"255678218678",
+      "AMOUNT":"5000",
+      "COMPANYNAME":"25565555888",
+      "CUSTOMERREFERENCEID":"101001",
+    },httpOptions).subscribe(data => {
+      console.log(data);
+    }, err => {
+      console.log(err);
+    })
+  }
 
 
   bulkMobileMoneyTransactions(beneficiary: string){

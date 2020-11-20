@@ -12,7 +12,8 @@ import {History} from '../../models/models';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['transactionRef', 'actualAmount', 'charge', 'phoneNumber','transactionInitiationDate', 'transactionType'];
+  displayedColumns: string[] = ['transactionRef', 'actualAmount', 'charge', 
+  'phoneNumber','transactionInitiationDate', 'transactionType', 'status'];
   dataSource: MatTableDataSource<History>;
   itemsCount:number = 0;
   showRefCodeSet: Set<string> = new Set();
