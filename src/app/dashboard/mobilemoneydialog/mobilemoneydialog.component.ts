@@ -103,13 +103,13 @@ export class MobilemoneydialogComponent implements OnInit {
     const form = <SinglePayment>this.singlePaymentsGroup.getRawValue();
     let callCode = '256';
     let telephone = form.phoneNumber;
-    let msnid = callCode + telephone;
-    let amount: string = `${this.incrementWithTelcos(this.telco, form.amount)}`;
+    let msnid = callCode + telephone;// , 
     let reason:string = "PAYMENT";
     this.service.actualAmount = `${form.amount}`;
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }
+    let amount: string = `${this.checkTelcoAndIncrement(form.amount, msnid)}`;
     this.service.
     manualTransaction(amount,msnid, reason, transactionType)
     .subscribe((data: any) => {
@@ -137,22 +137,22 @@ export class MobilemoneydialogComponent implements OnInit {
   }
   
 
-  incrementWithTelcos(telco: string, total: string): number{
-    if(parseInt(total) <= 600){
-      if(telco == "MTN"){
-        this.charge = "390";
-        return parseInt(total) + 390;
-      }else if(telco == "Airtel"){
-        this.charge = "300";
-        return parseInt(total) + 300;
-      }else{
-        this.charge = "390";
-        return parseInt(total) + 390;
-      }
-    }else{
-      return parseInt(total);
-    }
-  }
+  // incrementWithTelcos(telco: string, total: string): number{
+  //   if(parseInt(total) <= 600){
+  //     if(telco == "MTN"){
+  //       this.charge = "390";
+  //       return parseInt(total) + 390;
+  //     }else if(telco == "Airtel"){
+  //       this.charge = "300";
+  //       return parseInt(total) + 300;
+  //     }else{
+  //       this.charge = "390";
+  //       return parseInt(total) + 390;
+  //     }
+  //   }else{
+  //     return parseInt(total);
+  //   }
+  // }
 
   checkTelcoAndIncrement(total: string, phoneNumber: string): string{
     let default_amount :string = `${parseInt(total) + 390}`;

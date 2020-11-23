@@ -127,6 +127,10 @@ export class MainService {
     this.bulkTransactionReady = false;
     this.bulkTotal = 0;
   }
+
+  // async isBalanceEnough(){
+  //   return 
+  // }
   
 
 }
