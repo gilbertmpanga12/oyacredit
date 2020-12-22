@@ -128,9 +128,5 @@ export class MainService {
     this.bulkTotal = 0;
   }
 
-  // async isBalanceEnough(){
-  //   return 
-  // }
-  
 
 }

@@ -66,7 +66,7 @@
 <ng-container *ngIf="data == operations.SinglePayments && service.bulkTransactionReady == false || 
 data == operations.ManualTransaction && service.bulkTransactionReady == false">
     <h2  mat-dialog-title class="dialog-title" 
-    style="font-weight: 700 !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
+    style="font-weight: 700 !important;margin-bottom: 10px !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
     <p>
       {{data == operations.ManualTransaction ? 'The transaction fee is 1.5% of the amount.': ' Sending to an telco costs UGX500'}}
     </p>

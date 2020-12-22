@@ -5,6 +5,9 @@ import { MainService } from '../services/main.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import {EditprofileComponent} from './editprofile/editprofile.component';
 import { MatDialog } from '@angular/material/dialog';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 // animations
 const slideInAnimation = trigger('routeAnimations', [ 
@@ -47,6 +50,11 @@ const slideInAnimation = trigger('routeAnimations', [
 })
 
 export class DashboardComponent implements OnInit {
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
   howFiller: boolean = false;
   features: Menu[] = [
     {
@@ -76,7 +84,7 @@ export class DashboardComponent implements OnInit {
     // }
   ];
 
-  constructor(public router: Router, public service: MainService, private dialog: MatDialog) { }
+  constructor(public router: Router, public service: MainService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
   }

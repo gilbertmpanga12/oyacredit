@@ -1,6 +1,14 @@
 
 
   <mat-toolbar color="primary" class="mat-elevation-z3">
+    <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
     <span class="brand text-gray-900">Oya MicroCredit</span>
     <span class="example-spacer"></span>
     <!-- <button mat-icon-button 
@@ -22,7 +30,12 @@
   
 
   </mat-drawer-content>
-  <mat-drawer mode="side" opened>
+  <mat-drawer mode="side" 
+  #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+  >
     <mat-nav-list>
       <!-- <div mat-subheader>Dashboard</div> -->
    

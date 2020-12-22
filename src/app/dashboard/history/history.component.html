@@ -2,11 +2,11 @@
     <div class="col-10 mr-5 mt-5">
 
      <mat-card class="container mat-elevation-z8">
-            <h1 class="dashboard-title" >All transactional history</h1>
+            <h1 class="application-title">All transactional history</h1>
 
             
             <p style="text-align: right;" class="relative" [hidden]="itemsCount == 0 && dataSource">
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Sort reports by date</mat-label>
               <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate placeholder="Start date">
@@ -14,17 +14,18 @@
               </mat-date-range-input>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
+            </mat-form-field> -->
+            <button  mat-raised-button 
+            
+            color="accent"  
+            [matMenuTriggerFor]="menu"
+            class="cta-offer"><mat-icon>timeline</mat-icon> <span>Generate report</span></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Today's report</button>
+              <button mat-menu-item>This month's report</button>
+            </mat-menu>
             </p>
-            <!-- <div *ngIf="dataSource;else loading">
-                <div *ngIf="itemsCount > 0;else default">
-                    
-                </div>
-                <ng-template #default>
-                    <p class="text-center py-10 text-gray-900">You have transactions yet</p>
-                </ng-template>
-                
-            </div> -->
+          
 <div [hidden]="!dataSource">
   <div [hidden]="itemsCount == 0 && dataSource">
     <table mat-table [dataSource]="dataSource">
@@ -32,7 +33,7 @@
                
                        
       <ng-container matColumnDef="transactionRef">
-        <th mat-header-cell *matHeaderCellDef> Transaction reference </th>
+        <th mat-header-cell *matHeaderCellDef> Reference ID. </th>
         <td mat-cell *matCellDef="let element" >{{element.transactionRef}} </td>
       </ng-container>
   
@@ -58,7 +59,7 @@
       </ng-container>
   
       <ng-container matColumnDef="transactionType">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Type of transaction </th>
+        <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Type </th>
         <td mat-cell *matCellDef="let element"> {{element.transactionType}} </td>
       </ng-container>
 
