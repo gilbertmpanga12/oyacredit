@@ -32,3 +32,15 @@
 p,button,span,i,div{
     color: #2d3748 !important;
 }
+
+.mat-dialog-title{
+    color: #2d3748 !important;
+    font-weight: 400 !important;
+    margin-bottom: .5em !important;
+}
+
+.subtitle{
+    font-weight: 400;
+    --tw-text-opacity: 1;
+    color: rgba(55, 65, 81, var(--tw-text-opacity)) !important;
+}

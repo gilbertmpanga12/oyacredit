@@ -19,8 +19,8 @@
     <ng-container *ngIf="service.csvResults.length < 1">
       <h2 mat-dialog-title class="dialog-title" 
       style="font-weight: 700 !important;margin-bottom: 3px !important;">Send mobile money to a many users</h2>
-   <small class="text-gray-900" style="text-align: justify;">Minimum amount to send  bulk payments: <strong>UGX500</strong></small>
-  
+   <p class="text-gray-900" style="text-align: justify;">Sending UGX4000 after 4% processing fee</p>
+   
    <mat-divider style="margin-top: 10px !important;"></mat-divider>
 
     <mat-dialog-content >
@@ -65,11 +65,15 @@
 
 <ng-container *ngIf="data == operations.SinglePayments && service.bulkTransactionReady == false || 
 data == operations.ManualTransaction && service.bulkTransactionReady == false">
-    <h2  mat-dialog-title class="dialog-title" 
-    style="font-weight: 700 !important;margin-bottom: 10px !important;">{{data == operations.SinglePayments ? 'Send mobile money to a single user': 'Deposit from MobileMoney to OyaMicroCredit'}}</h2>
-    <p>
-      {{data == operations.ManualTransaction ? 'The transaction fee is 1.5% of the amount.': ' Sending to an telco costs UGX500'}}
-    </p>
+    
+
+    <h2 mat-dialog-title class="dialog-title" 
+      style="font-weight: 700 !important;margin-bottom: 3px !important;">
+      {{data == operations.SinglePayments ? 'Send mobile money to single user': 'Deposit from MobileMoney to OyaMicroCredit'}}
+    </h2>
+   <p class="text-gray-900" style="text-align: justify;">Sending <strong>UGX4000</strong> after 4% processing fee</p>
+   
+   <mat-divider style="margin-top: 10px !important;"></mat-divider>
 
     <!-- <mat-radio-group aria-label="Select a network" class="telco-radio-group" [(ngModel)]="telco">
       <mat-radio-button class="custom-radio-btn text-gray-900" *ngFor="let telco_option of telcos" [value]="telco_option">
