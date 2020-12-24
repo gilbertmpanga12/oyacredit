@@ -18,6 +18,11 @@ export enum MobileMoney{
   ManualTransaction = "ManualTransaction"
 }
 
+export enum HistoryReport{
+  Today = "Today",
+  Month = "Month"
+}
+
 export interface SingleTransaction{
   StatusCode: number;
 }

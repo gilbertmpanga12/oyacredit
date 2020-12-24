@@ -1,9 +1,11 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Observable } from 'rxjs';
-import {History} from '../../models/models';
+import {History, HistoryReport} from '../../models/models';
+import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class HistoryComponent implements AfterViewInit {
   dataSource: MatTableDataSource<History>;
   itemsCount:number = 0;
   showRefCodeSet: Set<string> = new Set();
-  constructor(private firestore: AngularFirestore) {
+  historyTransaction =  HistoryReport;
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
    
   }
 
@@ -53,6 +56,14 @@ export class HistoryComponent implements AfterViewInit {
   // ngAfterViewInit() {
   //   this.dataSource.paginator = this.paginator;
   // }
+
+  openDialog(transationType: string): void{
+    this.dialog.open(LoadingdialogComponent, {
+      width: '400px',
+      height: 'auto',
+      data: {transationType}
+    });
+  }
 
 
 }

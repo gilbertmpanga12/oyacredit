@@ -20,9 +20,9 @@
             color="accent"  
             [matMenuTriggerFor]="menu"
             class="cta-offer"><mat-icon>timeline</mat-icon> <span>Generate report</span></button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Today's report</button>
-              <button mat-menu-item>This month's report</button>
+            <mat-menu #menu="matMenu" xPosition="after">
+              <button mat-menu-item (click)="openDialog(historyTransaction.Today)">Today's report</button>
+              <button mat-menu-item (click)="openDialog(historyTransaction.Month)">This month's report</button>
             </mat-menu>
             </p>
           
