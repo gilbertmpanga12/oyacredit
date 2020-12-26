@@ -19,6 +19,7 @@ export class MobilemoneydialogComponent implements OnInit {
   telcos: string[] = ['MTN', 'Airtel', 'Others'];
   transactionCost: any = {'MTN': '390', 'Airtel': '300', 'Others':'390'};
   charge: string = "300";
+  finalAmount: string = '0';
   constructor(public dialogRef: MatDialogRef<MobilemoneydialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,  private _single_fb: 
     FormBuilder, public service: MainService,  private _snackBar: MatSnackBar) { }
@@ -29,6 +30,15 @@ export class MobilemoneydialogComponent implements OnInit {
       amount: ['', [Validators.required, Validators.min(500)]],
       reason: ['', [Validators.required]]
     });
+
+    this.singlePaymentsGroup.get('amount').valueChanges.subscribe((amount) => {
+      this.finalAmount =  this.getProcessingFee(amount);
+    });
+  }
+
+  getProcessingFee(amount: string): string {
+    const computedtotal = `${parseInt(amount) - (4/100 * parseInt(amount))}`;
+   return  `${parseInt(computedtotal)}`;
   }
 
   uploadBulkPayments(event: FileList): void{
@@ -48,7 +58,7 @@ export class MobilemoneydialogComponent implements OnInit {
       complete: (results) => {
         this.service.csvResults = results.data;
         this.service.csvResults.forEach((amount: CSV) => {
-          this.service.bulkTotal += parseInt(amount.Amount);
+          this.service.bulkTotal += parseInt(this.getProcessingFee(amount.Amount));
           this.service.actualAmount = `${this.service.bulkTotal}`;
         });
         this.service.isLoading = false;
@@ -105,11 +115,11 @@ export class MobilemoneydialogComponent implements OnInit {
     let telephone = form.phoneNumber;
     let msnid = callCode + telephone;// , 
     let reason:string = "PAYMENT";
-    this.service.actualAmount = `${form.amount}`;
+    this.service.actualAmount = this.finalAmount;
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }
-    let amount: string = `${this.checkTelcoAndIncrement(form.amount, msnid)}`;
+    let amount: string = `${this.checkTelcoAndIncrement(this.finalAmount, msnid)}`;
     this.service.
     manualTransaction(amount,msnid, reason, transactionType)
     .subscribe((data: any) => {
