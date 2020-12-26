@@ -44,3 +44,10 @@ export interface History {
   phoneNumbers: string;
   status?:string;
 }
+
+export interface LoanCollectionHistory{
+  AMOUNT: string;
+  CUSTOMERREFERENCEID: string;
+  MSISDN: string;
+  ISSUED_AT: number;
+}
