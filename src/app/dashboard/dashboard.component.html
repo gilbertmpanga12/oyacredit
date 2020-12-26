@@ -63,9 +63,14 @@
       <mat-divider></mat-divider>
       <div mat-subheader>Others</div>
 
-      <mat-list-item routerLink="/history" [ngClass]="router.url == '/history' ? 'active text-gray-900' : 'not-active text-gray-900'">
+      <mat-list-item routerLink="/collection-history" [ngClass]="router.url == '/collection-history' ? 'active text-gray-900' : 'not-active text-gray-900'">
+        <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+        <div mat-line>Collection History</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/disbursement-history" [ngClass]="router.url == '/disbursement-history' ? 'active text-gray-900' : 'not-active text-gray-900'">
         <mat-icon mat-list-icon>history</mat-icon>
-        <div mat-line>History</div>
+        <div mat-line>Disbursements</div>
       </mat-list-item>
 
       <mat-list-item (click)="service.signOut()">

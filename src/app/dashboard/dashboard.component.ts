@@ -35,6 +35,10 @@ const slideInAnimation = trigger('routeAnimations', [
     style({ opacity: 0 }), 
     animate(300, style({opacity: 1})),
   ]),
+  transition('* <=> CollectionHistoryPage', [
+    style({ opacity: 0 }), 
+    animate(300, style({opacity: 1})),
+  ]),
   transition('* <=> NotificationsPage', [
     style({ opacity: 0 }), 
     animate(300, style({opacity: 1})),

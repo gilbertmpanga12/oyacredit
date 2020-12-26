@@ -10,6 +10,7 @@ import {MobilemoneyComponent} from './mobilemoney/mobilemoney.component';
 import {MobiledataComponent} from './mobiledata/mobiledata.component'
 import { NotificationsComponent } from './notifications/notifications.component';
 import {LoadMoneyComponent} from './load-money/load-money.component';
+import { CollectionhistoryComponent } from './collectionhistory/collectionhistory.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent,
 children:[
@@ -19,9 +20,14 @@ children:[
   data: {animation: "HomePage"}
 },
 {
-  path: 'history',
+  path: 'disbursement-history',
   component: HistoryComponent,
   data: {animation: "HistoryPage"}
+},
+{
+  path: 'collection-history',
+  component: CollectionhistoryComponent,
+  data: {animation: "CollectionHistoryPage"}
 },
 {
   path: 'banks',

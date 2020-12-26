@@ -43,11 +43,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoadMoneyComponent } from './load-money/load-money.component';
 import { LoadMoneyDialogComponent } from './load-money-dialog/load-money-dialog.component';
 import { LoadingdialogComponent } from './loadingdialog/loadingdialog.component';
+import { CollectionhistoryComponent } from './collectionhistory/collectionhistory.component';
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent, LoadingdialogComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent, LoadingdialogComponent, CollectionhistoryComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
