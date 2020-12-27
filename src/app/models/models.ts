@@ -46,8 +46,11 @@ export interface History {
 }
 
 export interface LoanCollectionHistory{
-  AMOUNT: string;
-  CUSTOMERREFERENCEID: string;
-  MSISDN: string;
-  ISSUED_AT: number;
+AMOUNT: number;
+COMPANYNAME: string;
+CUSTOMERREFERENCEID: string;
+ISSUED_AT: number;
+MSISD: string;
+TXNID: string;
+TYPE: string;
 }
