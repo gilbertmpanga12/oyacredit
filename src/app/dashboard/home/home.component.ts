@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit{
     private firestore: AngularFirestore, public service: MainService) { }
   
     ngOnInit(): void {
-      
       this.transactionCount = this.firestore.doc('transactionCount/' + this.service.userId);
       this.transactionCount$ = this.transactionCount.valueChanges();
   

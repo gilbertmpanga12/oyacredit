@@ -88,9 +88,10 @@ export class DashboardComponent implements OnInit {
     // }
   ];
 
-  constructor(public router: Router, public service: MainService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
+  constructor(private router: Router, public service: MainService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
+    console.log(this.router.url);
   }
 
   navigate(url: string): void{
@@ -106,5 +107,9 @@ export class DashboardComponent implements OnInit {
       width: '410px',
       height: 'auto'
     });
+  }
+
+  checkCurrentRoute(route: string): boolean{
+    return this.router.url === route;
   }
 }
