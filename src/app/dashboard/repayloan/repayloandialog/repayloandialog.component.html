@@ -1,0 +1,54 @@
+<h2 mat-dialog-title class="dialog-title" 
+style="font-weight: 400 !important;margin-bottom: 3px !important;">Repay your loan</h2>
+
+<mat-divider style="margin-top: 10px !important;"></mat-divider>
+
+<mat-dialog-content>
+   <ng-container *ngIf="service.userEnteredReferenceId">
+    <form #referenceForm="ngForm">
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Enter your reference id</mat-label>
+            <textarea matInput name="referenceId" 
+            [(ngModel)]="referenceId"></textarea>
+          </mat-form-field>
+    </form>
+   </ng-container>
+
+   <ng-container *ngIf="!service.userEnteredReferenceId">
+    <div *ngIf="displayAmount else loading">
+     <br/>
+      <h1 class="title">{{displayName}}</h1>
+      <h1 class="emphasize">UGX{{displayAmount}} 
+        <small class="small">AVAILABLE BALANCE</small></h1>
+        <br/><br/>
+        <form>
+       <mat-form-field appearance="fill" class="example-full-width">
+          
+           <textarea matInput name="referenceId"  placeholder="Enter amount"
+           [(ngModel)]="amount"></textarea>
+         </mat-form-field>
+   </form>
+    </div>
+  
+  <ng-template  #loading>
+    <app-skeleton></app-skeleton>
+  </ng-template>
+
+  
+   </ng-container>
+
+</mat-dialog-content>
+
+
+  <mat-dialog-actions align="end" *ngIf="service.userEnteredReferenceId">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    mat-flat-button (click)="validateCustomer()" cdkFocusInitial color="primary">Continue</button>
+  </mat-dialog-actions>
+
+
+  <mat-dialog-actions align="end" *ngIf="!service.userEnteredReferenceId">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    mat-flat-button (click)="payLoan()" cdkFocusInitial color="primary">Finish and pay loan</button>
+  </mat-dialog-actions>

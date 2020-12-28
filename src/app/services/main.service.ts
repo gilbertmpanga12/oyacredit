@@ -10,6 +10,7 @@ import { CSV, SingleTransaction } from '../models/models';
   providedIn: 'root'
 })
 export class MainService {
+  userEnteredReferenceId: boolean = true;
   user:  User;
   isLoading: boolean = false;
   csvResults: CSV[] = [];
