@@ -76,6 +76,9 @@ import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloand
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent
+  ],
+  exports: [
+    CollectionhistoryComponent,HistoryComponent
   ]
 })
 export class DashboardModule { }

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
@@ -20,6 +20,7 @@ export class HistoryComponent implements AfterViewInit {
   itemsCount:number = 0;
   showRefCodeSet: Set<string> = new Set();
   historyTransaction =  HistoryReport;
+  @Input() shouldPrint: boolean = false;
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
    
   }
@@ -31,6 +32,11 @@ export class HistoryComponent implements AfterViewInit {
     this.itemsCount = data.length;
     this.dataSource =  new MatTableDataSource<History>(data);
     this.dataSource.paginator = this.paginator;
+    if(this.shouldPrint){
+      setTimeout(() => {
+        window.print();
+      }, 5000);
+    }
   });
 
   

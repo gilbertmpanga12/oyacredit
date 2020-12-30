@@ -17,17 +17,34 @@ style="font-weight: 400 !important;margin-bottom: 3px !important;">Repay your lo
    <ng-container *ngIf="!service.userEnteredReferenceId">
     <div *ngIf="displayAmount else loading">
      <br/>
-      <h1 class="title">{{displayName}}</h1>
-      <h1 class="emphasize">UGX{{displayAmount}} 
-        <small class="small">AVAILABLE BALANCE</small></h1>
-        <br/><br/>
-        <form>
-       <mat-form-field appearance="fill" class="example-full-width">
-          
-           <textarea matInput name="referenceId"  placeholder="Enter amount"
-           [(ngModel)]="amount"></textarea>
-         </mat-form-field>
-   </form>
+      <ng-container *ngIf="!hasError">
+        <h1 class="title">{{displayName}}</h1>
+        <h1 class="emphasize">UGX{{displayAmount}} 
+          <small class="small">AVAILABLE BALANCE</small></h1>
+          <br/><br/>
+          <form>
+            <p>
+              <mat-form-field class="example-full-width">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+256 &nbsp;</span>
+                <input type="tel" matInput placeholder="555-555-1234" minlength="9" 
+                name="telephone"
+                [(ngModel)]="telephone">
+                <!-- <mat-icon matPrefix>local_phone</mat-icon> -->
+              </mat-form-field>
+            </p>
+         <p>
+          <mat-form-field appearance="fill" class="example-full-width">
+            
+            <textarea matInput name="amount"  placeholder="Enter amount"
+            [(ngModel)]="amount"></textarea>
+          </mat-form-field>
+         </p>
+     </form>
+      </ng-container>
+      <ng-container *ngIf="hasError">
+        <h1 class="title">Account doesn't exist</h1>
+      </ng-container>
     </div>
   
   <ng-template  #loading>
@@ -49,6 +66,6 @@ style="font-weight: 400 !important;margin-bottom: 3px !important;">Repay your lo
 
   <mat-dialog-actions align="end" *ngIf="!service.userEnteredReferenceId">
     <button mat-button (click)="cancel()">Cancel</button>
-    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    <button  [class.spinner]="loading" [disabled]="loading" 
     mat-flat-button (click)="payLoan()" cdkFocusInitial color="primary">Finish and pay loan</button>
   </mat-dialog-actions>

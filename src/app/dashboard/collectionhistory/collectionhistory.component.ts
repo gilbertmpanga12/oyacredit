@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
@@ -13,11 +13,12 @@ import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component
   styleUrls: ['./collectionhistory.component.scss']
 })
 export class CollectionhistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['AMOUNT', 'CUSTOMERREFERENCEID', 'MSISDN', 'ISSUED_AT'];
+  displayedColumns: string[] = ['amount', 'customerReferenceId', 'msisdn', 'date_time'];
   dataSource: MatTableDataSource<LoanCollectionHistory>;
   itemsCount:number = 0;
   showRefCodeSet: Set<string> = new Set();
   historyTransaction =  HistoryReport;
+  @Input() shouldPrint: boolean = false;
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
    
   }
@@ -25,10 +26,15 @@ export class CollectionhistoryComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.firestore.collection('loancollectionhistory').valueChanges().subscribe((data: LoanCollectionHistory[]) => {
+    this.firestore.collection('loancollection_logs').valueChanges().subscribe((data: LoanCollectionHistory[]) => {
     this.itemsCount = data.length;
     this.dataSource =  new MatTableDataSource<LoanCollectionHistory>(data);
     this.dataSource.paginator = this.paginator;
+    if(this.shouldPrint){
+      setTimeout(() => {
+        window.print();
+      }, 5000);
+    }
   });
 
   

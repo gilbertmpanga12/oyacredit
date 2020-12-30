@@ -43,15 +43,17 @@ export class MainService {
 // }
 // manual transaction
 // withdraw from Yo! to mobile money account
-  manualTransaction(amount:string, phoneNumber:string, narrative:string, transactionType: string){
+  manualTransaction(amount:string, phoneNumber:string, narrative:string, transactionType: string, referenceId=""){
+    // /api/:amount/:phoneNumber/:narrative/:actualAmount
     if(transactionType == 'ManualTransaction'){
-      return this.http.get(environment.baseUrl 
-        + 'single-transaction' + '/api' + `/${amount}` + `/${phoneNumber}` + `/${narrative}` + `/${this.actualAmount}`);
+      return this.http.post(environment.baseUrl 
+        + 'single-transaction/api/manual-loans' , {
+          amount, phoneNumber, narrative, transactionType, referenceId
+        });
     }
 
     return this.http.get(environment.baseUrl 
       + 'bulk-transactions' + '/withdraw' + `/${amount}` + `/${phoneNumber}` + `/${narrative}` + `/${this.actualAmount}`);
-   
   }
   /*
   curl -v --insecure  -H "CLIENT_ACCESS_APIKEY: 63DC7C1C-C969-4439-A725-561FD8152B5D" -H  "API_CLIENT: TEST" 
@@ -60,27 +62,33 @@ export class MainService {
   https://api.test.provisocloud.com:200/provisio/api/v1000/_transactions/_momopost/mp-500/repayments
   */
 
-  test(){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'CLIENT_ACCESS_APIKEY':  '63DC7C1C-C969-4439-A725-561FD8152B5D',
-        "API_CLIENT": "TEST"
-      })
-    };
-    const url:string = 'https://api.test.provisocloud.com:200/provisio/api/v1000/_transactions/_momopost/mp-500/repayments';
-    this.http.post(url, {
-      "TYPE": "SYNC_BILLPAY_REQUEST",
-      "TXNID":"83753391505",
-      "MSISDN":"255678218678",
-      "AMOUNT":"5000",
-      "COMPANYNAME":"25565555888",
-      "CUSTOMERREFERENCEID":"101001",
-    },httpOptions).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-    })
-  }
+  // test(){
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'CLIENT_ACCESS_APIKEY':  '63DC7C1C-C969-4439-A725-561FD8152B5D',
+  //       "API_CLIENT": "TEST"
+  //     })
+  //   };
+  //   const url:string = 'https://api.test.provisocloud.com:200/provisio/api/v1000/_transactions/_momopost/mp-500/repayments';
+  //   this.http.post(url, {
+  //     "TYPE": "SYNC_BILLPAY_REQUEST",
+  //     "TXNID":"83753391505",
+  //     "MSISDN":"255678218678",
+  //     "AMOUNT":"5000",
+  //     "COMPANYNAME":"25565555888",
+  //     "CUSTOMERREFERENCEID":"101001",
+  //   },httpOptions).subscribe(data => {
+  //     console.log(data);
+  //   }, err => {
+  //     console.log(err);
+  //   })
+  // }
+
+   checkReferenceID(id){
+    return this.http.get(`https://oyamicrocredit.mpayments.online/single-transaction/api/validate-customer/${id}`);
+   }
+
+   
 
 
   bulkMobileMoneyTransactions(beneficiary: string){

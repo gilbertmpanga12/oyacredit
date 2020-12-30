@@ -1,0 +1,7 @@
+<ng-container *ngIf="url === 'loancollections' else default">
+<app-collectionhistory [shouldPrint]="true"></app-collectionhistory>
+</ng-container>
+
+<ng-template #default>
+<app-history [shouldPrint]="true"></app-history>
+</ng-template>

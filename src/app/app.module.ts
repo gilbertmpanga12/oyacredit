@@ -21,6 +21,8 @@ import * as charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { PrintingTableComponent } from './printing-table/printing-table.component';
+import {DashboardModule} from './dashboard/dashboard.module';
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
 
 
@@ -28,7 +30,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
   declarations: [
     AppComponent,
     PagenotfoundComponent,
-    AppshellComponent
+    AppshellComponent,
+    PrintingTableComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
