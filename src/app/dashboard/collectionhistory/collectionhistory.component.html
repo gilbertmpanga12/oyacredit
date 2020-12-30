@@ -21,8 +21,10 @@
             [matMenuTriggerFor]="menu"
             class="cta-offer"><mat-icon>timeline</mat-icon> <span>Generate report</span></button>
             <mat-menu #menu="matMenu" xPosition="after">
-              <button mat-menu-item (click)="openDialog(historyTransaction.Today)"><span class="text-gray-900">Weekly report</span></button>
-              <button mat-menu-item (click)="openDialog(historyTransaction.Month)"><span class="text-gray-900">Monthly report</span></button>
+              <!-- (click)="openDialog(historyTransaction.Today)" -->
+              <!--  (click)="openDialog(historyTransaction.Month)" -->
+              <button mat-menu-item  routerLink="/print-reports/loancollections"><span class="text-gray-900">Weekly report</span></button>
+              <button mat-menu-item routerLink="/print-reports/loancollections"><span class="text-gray-900">Monthly report</span></button>
             </mat-menu>
             </p>
           
@@ -129,4 +131,18 @@
 <app-skeleton *ngIf="!dataSource"></app-skeleton>
 
 </mat-card>
+<div 
+*ngIf="spinload"
+style="
+vertical-align: middle;
+text-align: center;
+color: #129DD8;
+border-style: none;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);">
+<img height="100" width="100" src="./assets/Spinner-1s-200px.gif" alt="Oya MicroCredit" /></div>
 </ng-container>

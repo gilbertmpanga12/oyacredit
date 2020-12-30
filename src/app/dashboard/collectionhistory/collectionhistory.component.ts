@@ -19,6 +19,7 @@ export class CollectionhistoryComponent implements AfterViewInit {
   showRefCodeSet: Set<string> = new Set();
   historyTransaction =  HistoryReport;
   @Input() shouldPrint: boolean = false;
+  spinload: boolean = true;
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
    
   }
@@ -30,10 +31,11 @@ export class CollectionhistoryComponent implements AfterViewInit {
     this.itemsCount = data.length;
     this.dataSource =  new MatTableDataSource<LoanCollectionHistory>(data);
     this.dataSource.paginator = this.paginator;
-    if(this.shouldPrint){
+    if(this.shouldPrint && this.itemsCount){
+      this.spinload = false;
       setTimeout(() => {
         window.print();
-      }, 5000);
+      }, 3000);
     }
   });
 
