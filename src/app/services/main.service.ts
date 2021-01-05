@@ -22,6 +22,7 @@ export class MainService {
       if (user){
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.refreshToken();
       } else {
         localStorage.setItem('user', null);
       }
@@ -135,6 +136,33 @@ export class MainService {
     this.csvResults =  [];
     this.bulkTransactionReady = false;
     this.bulkTotal = 0;
+  }
+
+  async refreshToken(){
+    const user = (await this.auth.currentUser).getIdToken(true);
+    const token = await user;
+    if(token){
+        this.checkToken(token);
+    }
+  }
+
+  checkToken(token:string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };//environment.baseUrl
+    this.http.get(environment.baseUrl + 'refresh-token', httpOptions).subscribe((user) => {
+      if(user['status'] && user['user_id']){
+        console.log('OK');
+      }else{
+      alert('Your session has expired');
+      this.signOut();
+      }
+    }, error => {
+      alert('Your session has expired');
+      this.signOut();
+    });
   }
 
 

@@ -91,7 +91,6 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, public service: MainService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-    console.log(this.router.url);
   }
 
   navigate(url: string): void{

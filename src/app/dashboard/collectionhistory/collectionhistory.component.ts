@@ -13,7 +13,7 @@ import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component
   styleUrls: ['./collectionhistory.component.scss']
 })
 export class CollectionhistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['amount', 'customerReferenceId', 'msisdn', 'date_time'];
+  displayedColumns: string[] = ['amount', 'customerReferenceId', 'msisdn', 'date_time', 'network_ref'];
   dataSource: MatTableDataSource<LoanCollectionHistory>;
   itemsCount:number = 0;
   showRefCodeSet: Set<string> = new Set();
