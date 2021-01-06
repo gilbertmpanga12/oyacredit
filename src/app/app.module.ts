@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PrintingTableComponent } from './printing-table/printing-table.component';
 import {DashboardModule} from './dashboard/dashboard.module';
-import { TokenvalidatorInterceptor } from './services/tokenvalidator.interceptor';
+import { httpInterceptorProviders } from './services/httpInterceptors';
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
 
 
@@ -51,7 +51,7 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme)
     AngularFirestoreModule,
     DashboardModule
   ],
-  providers: [TokenvalidatorInterceptor],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

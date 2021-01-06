@@ -17,12 +17,12 @@ export class MainService {
   bulkTransactionReady: boolean = false;
   bulkTotal: number = 0;
   actualAmount: string = "";
+  token: string;
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {
       if (user){
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
-        this.refreshToken();
       } else {
         localStorage.setItem('user', null);
       }
@@ -92,16 +92,26 @@ export class MainService {
    
 
 
+  // bulkMobileMoneyTransactions(beneficiary: string){
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json',
+  //       "Control-Allow-Origin": "*",
+  //        beneficiary: JSON.stringify({xml: beneficiary,phoneNumbers:this.csvResults})
+  //     })
+  //   };
+  //   // /pay/:amount/:actualAmount
+  //   return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay/" + `${this.bulkTotal}` + `/${this.actualAmount}`, httpOptions);
+
+  // }
+
+
   bulkMobileMoneyTransactions(beneficiary: string){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        "Control-Allow-Origin": "*",
-         beneficiary: JSON.stringify({xml: beneficiary,phoneNumbers:this.csvResults})
-      })
-    };
     // /pay/:amount/:actualAmount
-    return this.http.get(environment.baseUrl + "bulk-transactions" + "/pay/" + `${this.bulkTotal}` + `/${this.actualAmount}`, httpOptions);
+    return this.http.post(environment.baseUrl + "bulk-transactions" + "/pay-bulk-payment", {
+      xml: beneficiary, phoneNumbers: this.csvResults, bulkTotal: this.bulkTotal,
+      actualAmount: this.actualAmount
+    });
 
   }
 
@@ -142,27 +152,13 @@ export class MainService {
     const user = (await this.auth.currentUser).getIdToken(true);
     const token = await user;
     if(token){
+        this.token = token;
         this.checkToken(token);
     }
   }
 
   checkToken(token:string){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      })
-    };//environment.baseUrl
-    this.http.get(environment.baseUrl + 'refresh-token', httpOptions).subscribe((user) => {
-      if(user['status'] && user['user_id']){
-        console.log('OK');
-      }else{
-      alert('Your session has expired');
-      this.signOut();
-      }
-    }, error => {
-      alert('Your session has expired');
-      this.signOut();
-    });
+    this.http.get(environment.baseUrl + 'refresh-token').subscribe(resp => null, err => null);
   }
 
 

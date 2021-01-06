@@ -19,7 +19,7 @@
     <ng-container *ngIf="service.csvResults.length < 1">
       <h2 mat-dialog-title class="dialog-title" 
       style="font-weight: 700 !important;margin-bottom: 3px !important;">Send mobile money to a many users</h2>
-   <p  *ngIf="finalAmount != '0'" class="text-gray-900" style="text-align: justify;">Sending UGX{{finalAmount}} after 4% processing fee</p>
+   <!-- <p  *ngIf="finalAmount != '0'" class="text-gray-900" style="text-align: justify;">Sending UGX{{finalAmount}} after 4% processing fee</p> -->
    
    <mat-divider style="margin-top: 10px !important;"></mat-divider>
 
@@ -71,9 +71,9 @@ data == operations.ManualTransaction && service.bulkTransactionReady == false">
       style="font-weight: 700 !important;margin-bottom: 3px !important;">
       {{data == operations.SinglePayments ? 'Send mobile money to single user': 'Deposit from MobileMoney to OyaMicroCredit'}}
     </h2>
-   <p
+   <!-- <p
    *ngIf="finalAmount != '0'"
-   class="text-gray-900" style="text-align: justify;">Sending <strong>UGX{{finalAmount}}</strong> after 4% processing fee</p>
+   class="text-gray-900" style="text-align: justify;">Sending <strong>UGX{{finalAmount}}</strong> after 4% processing fee</p> -->
    
    <mat-divider style="margin-top: 10px !important;"></mat-divider>
 

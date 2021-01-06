@@ -79,6 +79,7 @@ import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloand
   ],
   exports: [
     CollectionhistoryComponent,HistoryComponent
-  ]
+  ],
+  providers: []
 })
 export class DashboardModule { }

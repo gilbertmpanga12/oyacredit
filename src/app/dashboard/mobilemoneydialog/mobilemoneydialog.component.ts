@@ -32,7 +32,7 @@ export class MobilemoneydialogComponent implements OnInit {
     });
 
     this.singlePaymentsGroup.get('amount').valueChanges.subscribe((amount) => {
-      this.finalAmount =  this.getProcessingFee(amount);
+      this.finalAmount =  amount;
     });
   }
 
@@ -58,7 +58,7 @@ export class MobilemoneydialogComponent implements OnInit {
       complete: (results) => {
         this.service.csvResults = results.data;
         this.service.csvResults.forEach((amount: CSV) => {
-          this.service.bulkTotal += parseInt(this.getProcessingFee(amount.Amount));
+          this.service.bulkTotal += parseInt(amount.Amount);
           this.service.actualAmount = `${this.service.bulkTotal}`;
         });
         this.service.isLoading = false;

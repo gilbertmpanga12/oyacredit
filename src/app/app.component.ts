@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { MainService } from './services/main.service';
 
 
 @Component({
@@ -7,6 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(){}
+  constructor(private router: Router, private service: MainService){
+    router.events.pipe(filter(events => events instanceof NavigationEnd)).subscribe(events => {
+        this.service.refreshToken();
+    })
+  }
   
 }
