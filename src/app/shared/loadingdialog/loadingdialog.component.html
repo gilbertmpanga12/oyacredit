@@ -1,0 +1,23 @@
+<div mat-dialog-content>
+    <div class="mx-auto">
+        <mat-spinner class="mx-auto" color="accent" *ngIf="!service.hasGeneratedReport && !service.reportUrl"></mat-spinner>
+        <br/>
+        <h2 class="transaction-message" *ngIf="!service.hasGeneratedReport && data.transactionType === ''">
+            Generating all transaction reports
+        </h2>
+        <h2 class="transaction-message" *ngIf="!service.hasGeneratedReport && data.transactionType === reports.Monthly">
+            Generating report for this month
+        </h2>
+        <h2 class="transaction-message" *ngIf="!service.hasGeneratedReport && data.transactionType === reports.Range">
+            Generating report for transactions made between {{data.startDate | date}} and {{data.endDate | date}}
+        </h2>
+        <div class="transaction-message" *ngIf="service.hasGeneratedReport">
+            <h1>Your Report is ready</h1>
+            <a [href]="service.reportUrl" download style="width: 400px !important;">
+                <button mat-raised-button color="primary"><strong>Click to download report</strong></button>
+            </a>
+        </div>
+    </div>
+    
+</div>
+

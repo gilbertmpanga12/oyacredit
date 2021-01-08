@@ -42,14 +42,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoadMoneyComponent } from './load-money/load-money.component';
 import { LoadMoneyDialogComponent } from './load-money-dialog/load-money-dialog.component';
-import { LoadingdialogComponent } from './loadingdialog/loadingdialog.component';
 import { CollectionhistoryComponent } from './collectionhistory/collectionhistory.component';
 import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloandialog.component';
+import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent, LoadingdialogComponent, CollectionhistoryComponent, RepayloandialogComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent , CollectionhistoryComponent, RepayloandialogComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -72,13 +72,13 @@ import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloand
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule,
-    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule ],
+    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule, LoadingSpinnerModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent
   ],
   exports: [
-    CollectionhistoryComponent,HistoryComponent
+    CollectionhistoryComponent, HistoryComponent
   ],
   providers: []
 })

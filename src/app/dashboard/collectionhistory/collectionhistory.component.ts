@@ -2,10 +2,12 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatTableDataSource} from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { HistoryReport, LoanCollectionHistory} from '../../models/models';
-import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component';
+import { MainService } from 'src/app/services/main.service';
+import { HistoryReport, LoanCollectionHistory, Report, ReportCollections} from '../../models/models';
+import { LoadingdialogComponent } from '../../shared/loadingdialog/loadingdialog.component';
 
 @Component({
   selector: 'app-collectionhistory',
@@ -20,14 +22,17 @@ export class CollectionhistoryComponent implements AfterViewInit {
   historyTransaction =  HistoryReport;
   @Input() shouldPrint: boolean = false;
   spinload: boolean = true;
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
+  reports = Report;
+  reportCollectionType = ReportCollections;
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
+    private service: MainService, private _snackBar: MatSnackBar) {
    
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.firestore.collection('loancollection_logs').valueChanges().subscribe((data: LoanCollectionHistory[]) => {
+    this.firestore.collection('loancollection_logs', ref => ref.orderBy('date_time','desc')).valueChanges().subscribe((data: LoanCollectionHistory[]) => {
     this.itemsCount = data.length;
     this.dataSource =  new MatTableDataSource<LoanCollectionHistory>(data);
     this.dataSource.paginator = this.paginator;
@@ -63,11 +68,37 @@ export class CollectionhistoryComponent implements AfterViewInit {
   //   this.dataSource.paginator = this.paginator;
   // }
 
-  openDialog(transationType: string): void{
+  openDialog(startDate:string, endDate:string, transactionType: string): void{
     this.dialog.open(LoadingdialogComponent, {
       width: '400px',
       height: 'auto',
-      data: {transationType}
+      data: {startDate: startDate, endDate: endDate, transactionType: transactionType}
+    });
+  }
+
+  getReport(typeofReport:string) {
+    this.openDialog('', '', typeofReport);
+        this.service.getReportsInRange(
+          '', '', typeofReport, this.reportCollectionType.Collections).subscribe((data) => {
+          this.service.hasGeneratedReport = true;
+          this.service.reportUrl =  data['message'];
+         
+        }, (error) => {
+          console.log(error);
+          this.openSnackBar(error['message'],'OK');
+          this.dialog.closeAll();
+        }, () => {
+          // this.dialog.closeAll();
+        });
+    
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: ["error"]
     });
   }
 

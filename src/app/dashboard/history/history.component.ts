@@ -1,11 +1,14 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { Observable } from 'rxjs';
-import {History, HistoryReport} from '../../models/models';
-import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {History, HistoryReport, Report, ReportCollections} from '../../models/models';
+import { LoadingdialogComponent } from '../../shared/loadingdialog/loadingdialog.component';
+import { MainService } from 'src/app/services/main.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,7 +17,7 @@ import { LoadingdialogComponent } from '../loadingdialog/loadingdialog.component
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['transactionRef', 'actualAmount', 'charge', 
+  displayedColumns: string[] = ['transactionRef', 'amount', 'charge', 
   'phoneNumber','transactionInitiationDate', 'transactionType', 'status'];
   dataSource: MatTableDataSource<History>;
   itemsCount:number = 0;
@@ -22,24 +25,33 @@ export class HistoryComponent implements AfterViewInit {
   historyTransaction =  HistoryReport;
   @Input() shouldPrint: boolean = false;
   spinload: boolean = true;
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
-   
+  range: FormGroup;
+  startDate: string;
+  endDate: Date;
+  reports = Report;
+  reportCollectionType = ReportCollections;
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
+    private _fb: FormBuilder, private service: MainService, private _snackBar: MatSnackBar) {
+   this.range = this._fb.group({
+    start: '',
+    end: ''
+   });
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.firestore.collection('transactions').valueChanges().subscribe((data: History[]) => {
-    this.itemsCount = data.length;
-    this.dataSource =  new MatTableDataSource<History>(data);
-    this.dataSource.paginator = this.paginator;
-    if(this.shouldPrint && this.itemsCount){
-      this.spinload = false;
-      setTimeout(() => {
-        window.print();
-      }, 3000);
-    }
-  });
+    this.firestore.collection('transactions', ref => ref.orderBy('transactionInitiationDate','desc')).valueChanges().subscribe((data: History[]) => {
+      this.itemsCount = data.length;
+      this.dataSource =  new MatTableDataSource<History>(data);
+      this.dataSource.paginator = this.paginator;
+      if(this.shouldPrint && this.itemsCount){
+        this.spinload = false;
+        setTimeout(() => {
+          window.print();
+        }, 3000);
+      }
+    });
 
   
   }
@@ -65,14 +77,67 @@ export class HistoryComponent implements AfterViewInit {
   //   this.dataSource.paginator = this.paginator;
   // }
 
-  openDialog(transationType: string): void{
+  openDialog(startDate:string, endDate:string, transactionType: string): void{
     this.dialog.open(LoadingdialogComponent, {
       width: '400px',
       height: 'auto',
-      data: {transationType}
+      data: {startDate: startDate, endDate: endDate, transactionType: transactionType}
     });
   }
 
+  getReport(typeofReport:string) {
+    this.openDialog('', '', typeofReport);
+        this.service.getReportsInRange(
+          '', '', typeofReport, this.reportCollectionType.Disbursements).subscribe((data) => {
+          this.service.hasGeneratedReport = true;
+          this.service.reportUrl =  data['message'];
+         
+        }, (error) => {
+          console.log(error);
+          this.openSnackBar(error['message'],'OK');
+          this.dialog.closeAll();
+        }, () => {
+          // this.dialog.closeAll();
+        });
+    
+  }
+
+  // addEventEnd(event: MatDatepickerInputEvent<Date>) {
+  //   const endDate = this.range.get('end').value;
+  //   if(endDate){
+  //     const startDateTimeStamp = this.range.get('start').value;
+  //     const endDateTimeStamp = this.range.get('end').value;
+  //     this.openDialog(startDateTimeStamp, endDateTimeStamp);
+  //       this.service.getReportsInRange(
+  //         startDateTimeStamp, endDateTimeStamp).subscribe((data) => {
+  //         this.service.hasGeneratedReport = true;
+  //         this.service.reportUrl =  data['message'];
+         
+  //       }, (error) => {
+  //         console.log(error);
+  //         this.openSnackBar(error['message'],'OK');
+  //         this.dialog.closeAll();
+  //       }, () => {
+  //         this.dialog.closeAll();
+  //       });
+  //   }
+  // }
+
+  transform(value: string, max: number, append = '...'): string {
+    if(value.includes('BULK')){
+      return `${value.slice(0, max)}${append}`;
+    }
+    return value;
+}
+
+openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    duration: 5000,
+    horizontalPosition: "right",
+    verticalPosition: "top",
+    panelClass: ["error"]
+  });
+}
 
 }
 

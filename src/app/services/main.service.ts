@@ -18,6 +18,8 @@ export class MainService {
   bulkTotal: number = 0;
   actualAmount: string = "";
   token: string;
+  hasGeneratedReport: boolean = false;
+  reportUrl: string;
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {
       if (user){
@@ -159,6 +161,14 @@ export class MainService {
 
   checkToken(token:string){
     this.http.get(environment.baseUrl + 'refresh-token').subscribe(resp => null, err => null);
+  }
+
+  getReportsInRange(startDate: string, endDate:string, typeofReport:string, collectionType: string){
+    return this.http.post('http://localhost:5000/' + 'reports/api/monthly-report', {startDate, endDate, typeofReport, collectionType});// environment.baseUrl
+  }
+
+  test(){
+    return this.http.get('http://localhost:5000').subscribe((data) => console.log(data),err=> console.log(err));
   }
 
 

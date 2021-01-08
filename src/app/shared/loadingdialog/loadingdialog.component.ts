@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { HistoryReport } from 'src/app/models/models';
+import { HistoryReport, Report } from 'src/app/models/models';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-loadingdialog',
@@ -9,7 +10,8 @@ import { HistoryReport } from 'src/app/models/models';
 })
 export class LoadingdialogComponent implements OnInit {
  transactionType = HistoryReport;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {transationType: string}) { }
+ reports = Report;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {startDate: string, endDate: string, transactionType: string}, public service: MainService) { }
 
   ngOnInit(): void {
   }

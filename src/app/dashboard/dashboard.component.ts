@@ -50,7 +50,8 @@ const slideInAnimation = trigger('routeAnimations', [
   selector: 'app-home',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  animations: [slideInAnimation]
+  animations: [slideInAnimation],
+  
 })
 
 export class DashboardComponent implements OnInit {

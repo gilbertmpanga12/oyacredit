@@ -23,6 +23,16 @@ export enum HistoryReport{
   Month = "Month"
 }
 
+export enum Report {
+  Monthly = 'monthly',
+  Range = 'range'
+}
+
+export enum ReportCollections{
+  Disbursements = 'transactions',
+  Collections = 'loancollection_logs'
+}
+
 export interface SingleTransaction{
   StatusCode: number;
 }
