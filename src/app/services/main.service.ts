@@ -1,10 +1,12 @@
-import { HttpClient,HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 import { User } from 'firebase';
 import { environment } from 'src/environments/environment';
-import { CSV, SingleTransaction, History, FailedHistory } from '../models/models';
+import { CSV, FailedHistory } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class MainService {
   hasGeneratedReport: boolean = false;
   reportUrl: string;
   csvUrl: string;
-  constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
+  constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient, private firestore: AngularFirestore) {
     this.auth.authState.subscribe(user => {
       if (user){
         this.user = user;
@@ -195,6 +197,8 @@ export class MainService {
     const id = "" + Math.random() * 10000000000;
     return `E${parseInt(id)}@foo.com`;
   }
+
+
 
 
 }

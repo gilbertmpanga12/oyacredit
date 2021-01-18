@@ -22,8 +22,8 @@
     <!-- <button mat-raised-button class="sort-btns" (click)="resetOrder('desc')"> Sort descending</button>
     <button mat-raised-button class="sort-btns" (click)="resetOrder('asc')"> Sort ascending </button> -->
     <br/>
-    <div>
-      <h1 class="dashboard-title-bold"><strong>Selected 2 items to resend </strong></h1>
+    <div *ngIf="selection.selected.length > 0">
+      <h1 class="dashboard-title-bold"><strong>Selected {{selection.selected.length}} bulk payments to resend </strong></h1>
       <button mat-raised-button class="sort-btns" (click)="openConfirmDialog()"  color="primary"> <strong>Resend payments</strong> </button>
     </div>
 
