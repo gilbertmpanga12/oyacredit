@@ -9,6 +9,7 @@ import { HistoryReport, Report, ReportCollections } from 'src/app/models/models'
 import { MainService } from 'src/app/services/main.service';
 import { LoadingdialogComponent } from 'src/app/shared/loadingdialog/loadingdialog.component';
 import {SelectionModel} from '@angular/cdk/collections';
+import { ConfirmbulkpaymentComponent } from 'src/app/shared/confirmbulkpayment/confirmbulkpayment/confirmbulkpayment.component';
 
 
 @Component({
@@ -68,31 +69,24 @@ export class NotificationsComponent{
   //   this.dataSource.paginator = this.paginator;
   // }
 
-  openDialog(startDate:string, endDate:string, transactionType: string): void{
-    this.dialog.open(LoadingdialogComponent, {
+  openConfirmDialog(): void{
+    this.dialog.open(ConfirmbulkpaymentComponent, {
       width: '400px',
       height: 'auto',
-      data: {startDate: startDate, endDate: endDate, transactionType: transactionType}
+      data: this.selection.selected
     });
   }
 
-  getReport(typeofReport:string) {
-    this.openDialog('', '', typeofReport);
-        this.service.getReportsInRange(
-          '', '', typeofReport, this.reportCollectionType.Disbursements).subscribe((data) => {
-          this.service.hasGeneratedReport = true;
-          this.service.reportUrl =  data['pdfUrl'];
-          this.service.csvUrl = data['csvUrl'];
-         
-        }, (error) => {
-          console.log(error);
-          this.openSnackBar(error['message'],'OK');
-          this.dialog.closeAll();
-        }, () => {
-          // this.dialog.closeAll();
-        });
-    
-  }
+  // openDialogResu(): void{
+  //   this.dialog.open(ConfirmbulkpaymentComponent, {
+  //     width: '400px',
+  //     height: 'auto',
+  //     data: this.selection.selected
+  //   });
+  // }
+
+
+  
 
   // addEventEnd(event: MatDatepickerInputEvent<Date>) {
   //   const endDate = this.range.get('end').value;

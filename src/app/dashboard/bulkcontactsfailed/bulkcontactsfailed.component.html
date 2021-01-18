@@ -1,0 +1,58 @@
+
+<h2 mat-dialog-title class="dialog-title" 
+style="font-weight: 700 !important;margin-bottom: 1px !important;">Preview of contacts</h2>
+<p>View, modify contacts before sending</p>
+
+<table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Tel. </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.phoneNumber}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Name </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Amount </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.amount}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef class="mr-2"> Reason </th>
+      <td mat-cell *matCellDef="let element" class="mr-2"> {{element.reason}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Controls">
+        <th mat-header-cell *matHeaderCellDef class="mr-2"> Actions </th>
+        <td mat-cell *matCellDef="let element; let i = index" class="mr-2"> 
+          <!-- <button mat-mini-fab  class="mr-2" 
+          color="accent" aria-label="Example icon button with a menu icon">
+          <mat-icon class="text-white">edit</mat-icon>
+        </button> -->
+        <button mat-mini-fab (click)="deleteContact(i)"
+            color="warn" aria-label="Example icon button with a menu icon">
+            <mat-icon class="text-white">delete</mat-icon>
+          </button> 
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <h4 mat-dialog-title style="padding-top: 6px !important;padding-left: 3px !important;"><strong>Total amount: {{service.bulkTotal}}</strong></h4>
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" 
+  showFirstLastButtons></mat-paginator>
+
+  <br/><br/><br/><br/><br/>
+  <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-flat-button (click)="proceedWithBulkPayment()"
+      cdkFocusInitial color="primary">Continue</button>
+    </mat-dialog-actions>

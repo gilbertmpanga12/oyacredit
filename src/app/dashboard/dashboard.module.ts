@@ -46,12 +46,14 @@ import { CollectionhistoryComponent } from './collectionhistory/collectionhistor
 import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloandialog.component';
 import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { BulkcontactsfailedComponent } from './bulkcontactsfailed/bulkcontactsfailed.component';
+import { ConfirmbulkpaymentModule } from '../shared/confirmbulkpayment/confirmbulkpayment.module';
 
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
      MobilemoneyComponent, BanksComponent,
-      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent , CollectionhistoryComponent, RepayloandialogComponent],
+      NotificationsComponent, ApprovalsComponent, MobilemoneydialogComponent,  BulkcontactsComponent, EditprofileComponent, SkeletonComponent, LoadMoneyComponent, LoadMoneyDialogComponent , CollectionhistoryComponent, RepayloandialogComponent, BulkcontactsfailedComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -74,7 +76,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule,
-    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule, LoadingSpinnerModule, MatCheckboxModule ],
+    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule, 
+    LoadingSpinnerModule, MatCheckboxModule,ConfirmbulkpaymentModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

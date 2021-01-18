@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { environment } from 'src/environments/environment';
-import { CSV, SingleTransaction } from '../models/models';
+import { CSV, SingleTransaction, History, FailedHistory } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class MainService {
   user:  User;
   isLoading: boolean = false;
   csvResults: CSV[] = [];
+  bulkResults: FailedHistory[] = [];
   bulkTransactionReady: boolean = false;
   bulkTotal: number = 0;
   actualAmount: string = "";
@@ -166,6 +167,33 @@ export class MainService {
 
   getReportsInRange(startDate: string, endDate:string, typeofReport:string, collectionType: string){
     return this.http.post(environment.baseUrl + 'reports/api/monthly-report', {startDate, endDate, typeofReport, collectionType});// environment.baseUrl
+  }
+
+
+  checkTelcoAndIncrement(total: string, phoneNumber: string): string{
+    let default_amount :string = `${parseInt(total) + 390}`;
+    switch(phoneNumber.substring(3,5)){
+      case "78":
+        default_amount = `${parseInt(total) + 390}`;
+        break;
+      case "77":
+        default_amount = `${parseInt(total) + 390}`;
+        break;
+      case "75":
+        default_amount = `${parseInt(total) + 300}`;
+        break;
+      case "70":
+        default_amount = `${parseInt(total) + 300}`;
+        break;
+      default:
+        default_amount =  `${parseInt(total) + 390}`;
+    }
+    return default_amount;
+  }
+
+  generateRandomId(): string {
+    const id = "" + Math.random() * 10000000000;
+    return `E${parseInt(id)}@foo.com`;
   }
 
 

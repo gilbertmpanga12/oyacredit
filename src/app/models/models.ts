@@ -64,3 +64,15 @@ MSISD: string;
 TXNID: string;
 TYPE: string;
 }
+
+export interface FailedHistory{
+  amount: string;
+  amountWithCharges: number;
+  name: string;
+  phoneNumber: string;
+  reason: string;
+  status: "SUCCESS" | "FAILED";
+  transactionInitiationDate: string;
+  transactionRef: string;
+  transactionType: string;
+  }

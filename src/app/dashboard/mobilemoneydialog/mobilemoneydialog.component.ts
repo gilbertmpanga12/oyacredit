@@ -75,10 +75,7 @@ export class MobilemoneydialogComponent implements OnInit {
     this.service.bulkTransactionReady = false;
   }
 
-   generateRandomId(): string {
-    const id = "" + Math.random() * 10000000000;
-    return `E${parseInt(id)}@foo.com`;
-  }
+   
 
   sendBulkTransation(): void {
     this.service.isLoading = true;
@@ -89,10 +86,10 @@ export class MobilemoneydialogComponent implements OnInit {
         please update it to an amount not less than 500
         `,"Ok","error")
       }
-      return "<Beneficiary>" + "<Amount>" + this.checkTelcoAndIncrement(cell.Amount,cell.MSISND) + "</Amount>"+ 
+      return "<Beneficiary>" + "<Amount>" + this.service.checkTelcoAndIncrement(cell.Amount,cell.MSISND) + "</Amount>"+ 
               "<AccountNumber>"+ cell.MSISND +
               "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
-              + "MOBILE MONEY" + "</AccountType>" + "<EmailAddress>" + this.generateRandomId() +"</EmailAddress>" + "</Beneficiary>"
+              + "MOBILE MONEY" + "</AccountType>" + "<EmailAddress>" + this.service.generateRandomId() +"</EmailAddress>" + "</Beneficiary>"
               });
               let resultsPayload = xml.join("");
               this.service.bulkMobileMoneyTransactions(resultsPayload)
@@ -124,7 +121,7 @@ export class MobilemoneydialogComponent implements OnInit {
     if(form.phoneNumber.startsWith('0') && form.phoneNumber.length == 10){
       msnid= telephone = callCode + telephone.substring(1,);
     }
-    let amount: string = `${this.checkTelcoAndIncrement(this.finalAmount, msnid)}`;
+    let amount: string = `${this.service.checkTelcoAndIncrement(this.finalAmount, msnid)}`;
     this.service.
     manualTransaction(amount,msnid, reason, transactionType)
     .subscribe((data: any) => {
@@ -169,26 +166,6 @@ export class MobilemoneydialogComponent implements OnInit {
   //   }
   // }
 
-  checkTelcoAndIncrement(total: string, phoneNumber: string): string{
-    let default_amount :string = `${parseInt(total) + 390}`;
-    switch(phoneNumber.substring(3,5)){
-      case "78":
-        default_amount = `${parseInt(total) + 390}`;
-        break;
-      case "77":
-        default_amount = `${parseInt(total) + 390}`;
-        break;
-      case "75":
-        default_amount = `${parseInt(total) + 300}`;
-        break;
-      case "70":
-        default_amount = `${parseInt(total) + 300}`;
-        break;
-      default:
-        default_amount =  `${parseInt(total) + 390}`;
-    }
-    return default_amount;
-  }
 
 
 
