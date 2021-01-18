@@ -45,6 +45,8 @@ import { LoadMoneyDialogComponent } from './load-money-dialog/load-money-dialog.
 import { CollectionhistoryComponent } from './collectionhistory/collectionhistory.component';
 import { RepayloandialogComponent } from './repayloan/repayloandialog/repayloandialog.component';
 import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [DashboardComponent, HomeComponent, HistoryComponent, AirtimeComponent, MobiledataComponent,
@@ -72,7 +74,7 @@ import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule, NgxSkeletonLoaderModule, MatGridListModule, MatMenuModule, LayoutModule,
-    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule, LoadingSpinnerModule ],
+    MatProgressSpinnerModule, MatSortModule, MatDatepickerModule, MatNativeDateModule, LoadingSpinnerModule, MatCheckboxModule ],
   entryComponents: [
     MobilemoneydialogComponent,
     EditprofileComponent

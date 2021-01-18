@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 // animations
 const slideInAnimation = trigger('routeAnimations', [ 
@@ -55,6 +56,7 @@ const slideInAnimation = trigger('routeAnimations', [
 })
 
 export class DashboardComponent implements OnInit {
+  errorNotificationCounter:any = 0;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -89,7 +91,14 @@ export class DashboardComponent implements OnInit {
     // }
   ];
 
-  constructor(private router: Router, public service: MainService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
+  constructor(private router: Router, public service: MainService, 
+    private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private af: AngularFirestore) {
+      this.af.collection('disbursementErrorCount').doc(this.service.userId).valueChanges().subscribe((res) => {
+        if(res){
+          this.errorNotificationCounter = res;
+        }
+      });
+     }
 
   ngOnInit(): void {
   }

@@ -14,7 +14,16 @@
     <button mat-icon-button 
     routerLink="/notifications"
     class="example-icon" aria-label="Example icon-button with share icon">
-     <mat-icon >notifications_none</mat-icon>
+
+     <ng-container *ngIf="errorNotificationCounter > 0 else default">
+      <mat-icon [matBadge]="errorNotificationCounter" matBadgeOverlap="true" 
+      matBadgeColor="accent">notifications</mat-icon>
+     </ng-container>
+
+     <ng-template #default>
+      <mat-icon>notifications_none</mat-icon>
+     </ng-template>
+     
    </button>
   </mat-toolbar>
  
