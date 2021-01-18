@@ -30,6 +30,7 @@ export class HistoryComponent implements AfterViewInit {
   endDate: Date;
   reports = Report;
   reportCollectionType = ReportCollections;
+  sortingOrder: any = 'desc';
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
     private _fb: FormBuilder, private service: MainService, private _snackBar: MatSnackBar) {
    this.range = this._fb.group({
@@ -41,19 +42,7 @@ export class HistoryComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.firestore.collection('transactions', ref => ref.orderBy('transactionInitiationDate','desc')).valueChanges().subscribe((data: History[]) => {
-      this.itemsCount = data.length;
-      this.dataSource =  new MatTableDataSource<History>(data);
-      this.dataSource.paginator = this.paginator;
-      if(this.shouldPrint && this.itemsCount){
-        this.spinload = false;
-        setTimeout(() => {
-          window.print();
-        }, 3000);
-      }
-    });
-
-  
+    this.getData();
   }
   
   shortenString(transactionRef: string): string {
@@ -90,7 +79,8 @@ export class HistoryComponent implements AfterViewInit {
         this.service.getReportsInRange(
           '', '', typeofReport, this.reportCollectionType.Disbursements).subscribe((data) => {
           this.service.hasGeneratedReport = true;
-          this.service.reportUrl =  data['message'];
+          this.service.reportUrl =  data['pdfUrl'];
+          this.service.csvUrl = data['csvUrl'];
          
         }, (error) => {
           console.log(error);
@@ -138,6 +128,22 @@ openSnackBar(message: string, action: string) {
     panelClass: ["error"]
   });
 }
+
+resetOrder(order: string): void{
+  this.sortingOrder = order;
+  this.getData();
+}
+
+getData(){
+  this.firestore.collection('transactions', ref => ref.orderBy('transactionInitiationDate', 
+    this.sortingOrder)).valueChanges().subscribe((data: History[]) => {
+      this.itemsCount = data.length;
+      this.dataSource =  new MatTableDataSource<History>(data);
+      this.dataSource.paginator = this.paginator;
+     });
+}
+
+
 
 }
 

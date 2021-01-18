@@ -24,6 +24,7 @@ export class CollectionhistoryComponent implements AfterViewInit {
   spinload: boolean = true;
   reports = Report;
   reportCollectionType = ReportCollections;
+  sortingOrder: any = 'desc';
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
     private service: MainService, private _snackBar: MatSnackBar) {
    
@@ -32,19 +33,7 @@ export class CollectionhistoryComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.firestore.collection('loancollection_logs', ref => ref.orderBy('date_time','desc')).valueChanges().subscribe((data: LoanCollectionHistory[]) => {
-    this.itemsCount = data.length;
-    this.dataSource =  new MatTableDataSource<LoanCollectionHistory>(data);
-    this.dataSource.paginator = this.paginator;
-    if(this.shouldPrint && this.itemsCount){
-      this.spinload = false;
-      setTimeout(() => {
-        window.print();
-      }, 3000);
-    }
-  });
-
-  
+    this.getData();
   }
   
   shortenString(transactionRef: string): string {
@@ -81,7 +70,8 @@ export class CollectionhistoryComponent implements AfterViewInit {
         this.service.getReportsInRange(
           '', '', typeofReport, this.reportCollectionType.Collections).subscribe((data) => {
           this.service.hasGeneratedReport = true;
-          this.service.reportUrl =  data['message'];
+          this.service.reportUrl =  data['pdfUrl'];
+          this.service.csvUrl = data['csvUrl'];
          
         }, (error) => {
           console.log(error);
@@ -99,6 +89,19 @@ export class CollectionhistoryComponent implements AfterViewInit {
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: ["error"]
+    });
+  }
+
+  resetOrder(order: string): void{
+    this.sortingOrder = order;
+    this.getData();
+  }
+
+  getData(){
+    this.firestore.collection('loancollection_logs', ref => ref.orderBy('date_time', this.sortingOrder)).valueChanges().subscribe((data: LoanCollectionHistory[]) => {
+      this.itemsCount = data.length;
+      this.dataSource =  new MatTableDataSource<LoanCollectionHistory>(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

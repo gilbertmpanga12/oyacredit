@@ -75,6 +75,11 @@ export class MobilemoneydialogComponent implements OnInit {
     this.service.bulkTransactionReady = false;
   }
 
+   generateRandomId(): string {
+    const id = "" + Math.random() * 10000000000;
+    return `E${parseInt(id)}@foo.com`;
+  }
+
   sendBulkTransation(): void {
     this.service.isLoading = true;
     let xml = this.service.csvResults.map((cell: CSV) => {
@@ -87,7 +92,7 @@ export class MobilemoneydialogComponent implements OnInit {
       return "<Beneficiary>" + "<Amount>" + this.checkTelcoAndIncrement(cell.Amount,cell.MSISND) + "</Amount>"+ 
               "<AccountNumber>"+ cell.MSISND +
               "</AccountNumber>" + "<Name>" + cell.Name + "</Name>" + "<AccountType>" 
-              + "MOBILE MONEY" + "</AccountType>" +  "</Beneficiary>"
+              + "MOBILE MONEY" + "</AccountType>" + "<EmailAddress>" + this.generateRandomId() +"</EmailAddress>" + "</Beneficiary>"
               });
               let resultsPayload = xml.join("");
               this.service.bulkMobileMoneyTransactions(resultsPayload)

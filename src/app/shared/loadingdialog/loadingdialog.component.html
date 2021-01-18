@@ -14,7 +14,12 @@
         <div class="transaction-message" *ngIf="service.hasGeneratedReport">
             <h1>Your Report is ready</h1>
             <a [href]="service.reportUrl" download style="width: 400px !important;">
-                <button mat-raised-button color="primary"><strong>Click to download report</strong></button>
+                <button mat-raised-button color="primary"><strong>Download PDF version</strong></button>
+            </a>
+            <br/>
+            <br/>
+            <a [href]="service.csvUrl" download style="width: 400px !important;">
+                <button mat-raised-button color="accent"><strong>Download CSV version</strong></button>
             </a>
         </div>
     </div>

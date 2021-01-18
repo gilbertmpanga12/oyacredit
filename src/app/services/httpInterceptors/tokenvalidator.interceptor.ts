@@ -20,7 +20,8 @@ export class TokenvalidatorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const headers = request.clone({headers: new HttpHeaders({
-      'Authorization': `Bearer ${this.service.token}`
+      'Authorization': `Bearer ${this.service.token}`,
+      'Uid': this.service.userId
     })});
     return next.handle(headers).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {

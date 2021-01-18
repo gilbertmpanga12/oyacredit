@@ -17,9 +17,9 @@
             </mat-form-field> -->
             <button  mat-raised-button 
             
-            color="accent"  
+            color="primary"  
             [matMenuTriggerFor]="menu"
-            class="cta-offer"><mat-icon>timeline</mat-icon> <span>Generate report</span></button>
+            class="cta-offer"><mat-icon>timeline</mat-icon> <strong>Generate report</strong></button>
             <mat-menu #menu="matMenu" xPosition="after">
               <button mat-menu-item (click)="getReport(reports.Monthly)"><span class="text-gray-900">Monthly report</span></button>
               <button mat-menu-item (click)="getReport('')"><span class="text-gray-900">All transactions report</span></button>
@@ -28,6 +28,8 @@
           
 <div [hidden]="!dataSource">
   <div [hidden]="itemsCount == 0 && dataSource">
+    <button mat-raised-button class="sort-btns" (click)="resetOrder('desc')"> Sort descending</button>
+<button mat-raised-button class="sort-btns" (click)="resetOrder('asc')"> Sort ascending </button>
     <table mat-table [dataSource]="dataSource">
 
                

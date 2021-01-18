@@ -20,6 +20,7 @@ export class MainService {
   token: string;
   hasGeneratedReport: boolean = false;
   reportUrl: string;
+  csvUrl: string;
   constructor(private router: Router, private auth: AngularFireAuth, private http: HttpClient) {
     this.auth.authState.subscribe(user => {
       if (user){
@@ -112,7 +113,7 @@ export class MainService {
     // /pay/:amount/:actualAmount
     return this.http.post(environment.baseUrl + "bulk-transactions" + "/pay-bulk-payment", {
       xml: beneficiary, phoneNumbers: this.csvResults, bulkTotal: this.bulkTotal,
-      actualAmount: this.actualAmount
+      actualAmount: this.actualAmount, reason: 'Oya Bulk Payments', from: 'OyaMicroCredit'
     });
 
   }
@@ -164,11 +165,7 @@ export class MainService {
   }
 
   getReportsInRange(startDate: string, endDate:string, typeofReport:string, collectionType: string){
-    return this.http.post('http://localhost:5000/' + 'reports/api/monthly-report', {startDate, endDate, typeofReport, collectionType});// environment.baseUrl
-  }
-
-  test(){
-    return this.http.get('http://localhost:5000').subscribe((data) => console.log(data),err=> console.log(err));
+    return this.http.post(environment.baseUrl + 'reports/api/monthly-report', {startDate, endDate, typeofReport, collectionType});// environment.baseUrl
   }
 
 

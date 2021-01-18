@@ -53,13 +53,13 @@ h1,h2,h3,h4,h5,h6,span,td{
   font-size: 1.125rem !important;
   line-height: 1.75rem !important;
   padding-left:7px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   text-transform: capitalize !important;
 
 }
 
 .cta-offer{
-  font-weight: 800 !important;
+  // font-weight: 800 !important;
   padding-top: 0.25em !important;
   padding-bottom: 0.25em !important;
   padding-left: 1em !important;
@@ -76,7 +76,7 @@ h1,h2,h3,h4,h5,h6,span,td{
 
 .card-header{
   font-size: 1.5rem;
-  font-weight: 600 !important;
+  // font-weight: 600 !important;
 }
 .mat-drawer-inner-container{
     width: 256px !important;
@@ -194,8 +194,8 @@ h1,h2,h3,h4,h5,h6,span,td{
 .active{
   background-color: #eee !important;
   .mat-line, .mat-list-icon{
-    font-weight: 600 !important;
-    // color: #c9bc1f !important;
+    // font-weight: 600 !important;
+    color: #c9bc1f;
   }
   
 }
@@ -220,7 +220,7 @@ h1,h2,h3,h4,h5,h6,span,td{
   color: #c8b900 !important;
 }
 .send-cta-btn{
-  font-weight: 600 !important;
+  // font-weight: 600 !important;
   margin-top: 15px !important;
 }
 .px-5{
@@ -238,7 +238,7 @@ padding-bottom: 4rem;
 
 
 .application-title{
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   font-size: 1.125rem !important;
   line-height: 1.75rem !important;
   text-transform: capitalize !important;
@@ -248,4 +248,8 @@ padding-bottom: 4rem;
 }
 .example-full-width{
   width: 100% !important;
+}
+
+.sort-btns{
+  margin: 16px 8px !important;
 }
