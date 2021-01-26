@@ -19,7 +19,7 @@ export class ConfirmbulkpaymentComponent implements OnInit {
   }
 
   checkBulkPayment(): void{
-    this.service.bulkTransactionReady = false;
+    this.dialogRef.close();
   }
 
   sendBulkTransation(): void {
@@ -34,7 +34,7 @@ export class ConfirmbulkpaymentComponent implements OnInit {
       return "<Beneficiary>" + "<Amount>" + this.service.checkTelcoAndIncrement(cell.amount,cell.phoneNumber) + "</Amount>"+ 
               "<AccountNumber>"+ cell.phoneNumber +
               "</AccountNumber>" + "<Name>" + cell.name + "</Name>" + "<AccountType>" 
-              + "MOBILE MONEY" + "</AccountType>" + "<EmailAddress>" + this.service.generateRandomId() +"</EmailAddress>" + "</Beneficiary>"
+              + "MOBILE MONEY" + "</AccountType>" + "<EmailAddress>" + `E${cell.transactionRef}@foo.com` +"</EmailAddress>" + "</Beneficiary>"
               });
               let resultsPayload = xml.join("");
               this.service.bulkMobileMoneyTransactions(resultsPayload)

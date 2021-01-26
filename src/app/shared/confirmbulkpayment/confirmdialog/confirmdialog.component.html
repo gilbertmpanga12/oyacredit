@@ -1,0 +1,8 @@
+<h1 mat-mat-dialog-title>Are you sure you want to delete selected transactions?</h1>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close><strong>Cancel transaction</strong></button>
+    <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
+    mat-raised-button (click)="deleteTransactions()" cdkFocusInitial color="primary" style="margin-right: 6px !important;">
+  <strong>Yes proceed and delete</strong>
+  </button>
+  </mat-dialog-actions>

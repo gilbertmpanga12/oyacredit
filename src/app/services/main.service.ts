@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import { User } from 'firebase';
 import { environment } from 'src/environments/environment';
 import { CSV, FailedHistory } from '../models/models';
+import { nanoid } from 'nanoid';
 
 @Injectable({
   providedIn: 'root'
@@ -194,11 +195,13 @@ export class MainService {
   }
 
   generateRandomId(): string {
-    const id = "" + Math.random() * 10000000000;
-    return `E${parseInt(id)}@foo.com`;
+    const id = nanoid(10);
+    return `E${id}@foo.com`;
   }
 
-
+  deleteSelectedBulkPayments(selectedItems: FailedHistory[]){
+    return this.http.post(environment.baseUrl + 'bulk-transactions/' +  'delete-selected-bulk-payments', {selectedItems:selectedItems});
+  }
 
 
 }

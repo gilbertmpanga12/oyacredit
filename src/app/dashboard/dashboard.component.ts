@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
     private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private af: AngularFirestore) {
       this.af.collection('disbursementErrorCount').doc(this.service.userId).valueChanges().subscribe((res) => {
         if(res){
-          this.errorNotificationCounter = res;
+          this.errorNotificationCounter = res['disbursementErrorCount'];
         }
       });
      }

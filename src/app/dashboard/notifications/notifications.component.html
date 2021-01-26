@@ -1,7 +1,7 @@
 <div class="flex flex-wrap">
     <div class="col-10 mr-5 mt-5">
         <mat-card class="container">
-            <h1 class="dashboard-title">Updates & Notifications</h1>
+            <h1 class="dashboard-title">Manage Bulk Payments</h1>
  
 <!--             
             <p style="text-align: right;" class="relative" [hidden]="itemsCount == 0 && dataSource">
@@ -25,6 +25,7 @@
     <div *ngIf="selection.selected.length > 0">
       <h1 class="dashboard-title-bold"><strong>Selected {{selection.selected.length}} bulk payments to resend </strong></h1>
       <button mat-raised-button class="sort-btns" (click)="openConfirmDialog()"  color="primary"> <strong>Resend payments</strong> </button>
+      <button mat-stroked-button class="sort-btns" (click)="openDeleteDialog()"  color="primary"> <strong>Clear selected</strong> </button>
     </div>
 
     <table mat-table [dataSource]="dataSource">
@@ -78,7 +79,7 @@
 
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Status </th>
-        <td mat-cell *matCellDef="let element"> <span [ngClass]="element.status == 'FAILED' ? 'warning': 'success-text'">{{element.status}}</span> </td>
+        <td mat-cell *matCellDef="let element"> <span class='success-text'>CONFIRMED</span> </td>
       </ng-container>
   
   
@@ -90,7 +91,7 @@
   
   </div>
   
-  <p *ngIf="itemsCount == 0" class="text-center py-10 text-gray-900">You have transactions yet</p>
+  <p *ngIf="itemsCount == 0" class="text-center py-10 text-gray-900">You have no updates</p>
 
 </div>
 

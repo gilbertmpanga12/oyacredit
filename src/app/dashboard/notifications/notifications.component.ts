@@ -10,6 +10,7 @@ import { MainService } from 'src/app/services/main.service';
 import { LoadingdialogComponent } from 'src/app/shared/loadingdialog/loadingdialog.component';
 import {SelectionModel} from '@angular/cdk/collections';
 import { ConfirmbulkpaymentComponent } from 'src/app/shared/confirmbulkpayment/confirmbulkpayment/confirmbulkpayment.component';
+import { ConfirmdialogComponent } from 'src/app/shared/confirmbulkpayment/confirmdialog/confirmdialog.component';
 
 
 @Component({
@@ -39,13 +40,15 @@ export class NotificationsComponent{
     start: '',
     end: ''
    });
-   
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.getData();
+    this.dialog.afterAllClosed.subscribe((e) => {
+      this.selection.clear();
+    });
   }
   
   shortenString(transactionRef: string): string {
@@ -71,7 +74,15 @@ export class NotificationsComponent{
 
   openConfirmDialog(): void{
     this.dialog.open(ConfirmbulkpaymentComponent, {
-      width: '400px',
+      width: 'auto',
+      height: 'auto',
+      data: this.selection.selected
+    });
+  }
+
+  openDeleteDialog(): void{
+    this.dialog.open(ConfirmdialogComponent, {
+      width: 'auto',
       height: 'auto',
       data: this.selection.selected
     });
@@ -160,7 +171,5 @@ checkboxLabel(row?: History): string {
   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row `;// ${row.position + 1}
 }
 
-log(){
-  console.log(this.selection.selected);
-}
+
 }

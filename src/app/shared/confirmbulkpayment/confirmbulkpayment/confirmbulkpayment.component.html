@@ -1,6 +1,8 @@
 <h1 mat-mat-dialog-title>Are you sure you're ready to send bulk transactions now?</h1>
   <mat-dialog-actions align="end">
-    <button mat-button (click)="checkBulkPayment()">No,let me check first</button>
+    <button mat-button (click)="checkBulkPayment()"><strong>Cancel transaction</strong></button>
     <button  [class.spinner]="service.isLoading" [disabled]="service.isLoading" 
-    mat-flat-button (click)="sendBulkTransation()" cdkFocusInitial color="primary">Proceed and send bulk transaction</button>
+    mat-flat-button (click)="sendBulkTransation()" cdkFocusInitial color="primary" style="margin-right: 6px !important;">
+  <strong>Proceed and send bulk transaction</strong>
+  </button>
   </mat-dialog-actions>
