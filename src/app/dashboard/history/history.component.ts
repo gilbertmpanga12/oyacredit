@@ -9,6 +9,8 @@ import {History, HistoryReport, Report, ReportCollections} from '../../models/mo
 import { LoadingdialogComponent } from '../../shared/loadingdialog/loadingdialog.component';
 import { MainService } from 'src/app/services/main.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SelectionModel } from '@angular/cdk/collections';
+
 
 
 @Component({
@@ -17,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['transactionRef', 'amount', 'charge', 
+  displayedColumns: string[] = ['charge', 'transactionRef', 'amount', 
   'phoneNumber','transactionInitiationDate', 'transactionType', 'status'];
   dataSource: MatTableDataSource<History>;
   itemsCount:number = 0;
@@ -26,12 +28,14 @@ export class HistoryComponent implements AfterViewInit {
   @Input() shouldPrint: boolean = false;
   spinload: boolean = true;
   range: FormGroup;
-  startDate: string;
-  endDate: Date;
+  startDate: number;
+  endDate: number
   reports = Report;
   reportCollectionType = ReportCollections;
   sortingOrder: any = 'desc';
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
+  selection = new SelectionModel<History>(true, []);
+  
+constructor(private firestore: AngularFirestore, public dialog: MatDialog, 
     private _fb: FormBuilder, private service: MainService, private _snackBar: MatSnackBar) {
    this.range = this._fb.group({
     start: '',
@@ -97,21 +101,38 @@ export class HistoryComponent implements AfterViewInit {
   //   if(endDate){
   //     const startDateTimeStamp = this.range.get('start').value;
   //     const endDateTimeStamp = this.range.get('end').value;
-  //     this.openDialog(startDateTimeStamp, endDateTimeStamp);
-  //       this.service.getReportsInRange(
-  //         startDateTimeStamp, endDateTimeStamp).subscribe((data) => {
-  //         this.service.hasGeneratedReport = true;
-  //         this.service.reportUrl =  data['message'];
+  //     // this.openDialog(startDateTimeStamp, endDateTimeStamp);
+  //     //   this.service.getReportsInRange(
+  //     //     startDateTimeStamp, endDateTimeStamp).subscribe((data) => {
+  //     //     this.service.hasGeneratedReport = true;
+  //     //     this.service.reportUrl =  data['message'];
          
-  //       }, (error) => {
-  //         console.log(error);
-  //         this.openSnackBar(error['message'],'OK');
-  //         this.dialog.closeAll();
-  //       }, () => {
-  //         this.dialog.closeAll();
-  //       });
+  //     //   }, (error) => {
+  //     //     console.log(error);
+  //     //     this.openSnackBar(error['message'],'OK');
+  //     //     this.dialog.closeAll();
+  //     //   }, () => {
+  //     //     this.dialog.closeAll();
+  //     //   });
   //   }
   // }
+
+  addEventStart(event: MatDatepickerInputEvent<Date>) {
+    this.startDate = event.value.getTime();
+  }
+
+  addEventEnd(event: MatDatepickerInputEvent<Date>) {
+    try{
+      this.endDate = event.value.getTime();
+      if(this.endDate && this.startDate){
+        console.log('called range');
+        this.getDataDateRange(this.startDate, this.endDate);
+      }
+    }catch(e){
+      return false;
+    }
+  }
+
 
   transform(value: string, max: number, append = '...'): string {
     if(value.includes('BULK')){
@@ -134,6 +155,12 @@ resetOrder(order: string): void{
   this.getData();
 }
 
+resetPage(){
+  this.startDate = null;
+  this.endDate = null;
+  this.selection.clear();
+}
+
 getData(){
   this.firestore.collection('transactions', ref => ref.orderBy('transactionInitiationDate', 
     this.sortingOrder)).valueChanges().subscribe((data: History[]) => {
@@ -141,8 +168,42 @@ getData(){
       this.dataSource =  new MatTableDataSource<History>(data);
       this.dataSource.paginator = this.paginator;
      });
-     this.firestore.collection('transactions', ref => ref.where('transactionRef','==', '49786015652')).get().subscribe(data => data.forEach(x => console.log(x.id)));
+     //this.firestore.collection('transactions', ref => ref.where('transactionRef','==', '49786015652')).get().subscribe(data => data.forEach(x => console.log(x.id)));
 }
+
+getDataDateRange(startDate: number, endDate: number){
+  this.firestore.collection('transactions', ref => 
+  ref.where('transactionInitiationDate','>=',startDate).where('transactionInitiationDate','<=', endDate).orderBy('transactionInitiationDate', 
+    this.sortingOrder)).valueChanges().subscribe((data: History[]) => {
+      this.itemsCount = data.length;
+      console.log(this.itemsCount);
+      this.dataSource =  new MatTableDataSource<History>(data);
+      this.dataSource.paginator = this.paginator;
+     });
+}
+
+isAllSelected() {
+  const numSelected = this.selection.selected.length;
+  const numRows = this.itemsCount;
+  return numSelected === numRows;
+}
+
+
+masterToggle() {
+  this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+}
+
+
+checkboxLabel(row?: History): string {
+  if (!row) {
+    return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+  }
+  return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row `;// ${row.position + 1}
+}
+
+
 
 }
 
