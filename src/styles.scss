@@ -21,17 +21,29 @@ main{
 .uppercase{
   text-transform:  uppercase !important;
 }
+
 .mat-toolbar{
  position: fixed;z-index: 2;
 }
 
+
 .mat-list-base{
   padding-top: 5rem !important;
+ // font-family: 'Poppins', sans-serif !important;
+}
+
+.mat-card-title, .mat-button{
+ font-family: 'Poppins', sans-serif !important;
+}
+.mat-list-text{
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
 }
 
 // typo
 h1,h2,h3,h4,h5,h6,span,td{
   color: #2d3748 !important;
+  //font-family: 'Poppins', sans-serif !important;
 }
 .text-gray-900{
   color: #2d3748 !important;

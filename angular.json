@@ -29,8 +29,7 @@
             ],
             "styles": [
               "src/customtheme.scss",
-              "src/styles.scss",
-              "src/typo.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },

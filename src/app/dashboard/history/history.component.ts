@@ -141,7 +141,7 @@ getData(){
       this.dataSource =  new MatTableDataSource<History>(data);
       this.dataSource.paginator = this.paginator;
      });
-     //this.firestore.collection('transactions', ref => ref.where('transactionRef','==', '49764194570')).get().subscribe(data => data.forEach(x => console.log(x.id)));
+     this.firestore.collection('transactions', ref => ref.where('transactionRef','==', '49786015652')).get().subscribe(data => data.forEach(x => console.log(x.id)));
 }
 
 }
